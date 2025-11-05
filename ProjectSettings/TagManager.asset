@@ -18,17 +18,17 @@ TagManager:
   - 
   - Player
   - Enemy
-  - Hitbox
-  - Hurtbox
+  - PlayerHitbox
+  - PlayerHurtbox
+  - EnemyHitbox
+  - EnemyHurtbox
+  - Generic Hitbox
   - 
   - Solid Surface
   - One Way Playform
   - 
-  - Generic Hitbox
-  - 
-  - Projectile
-  - 
-  - 
+  - PlayerProjectile
+  - EnemyProjectile
   - 
   - 
   - 

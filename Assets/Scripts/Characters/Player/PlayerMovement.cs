@@ -1,11 +1,14 @@
 using System;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D), typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Scriptable Object")]
     [SerializeField] private InputReaderSO inputReader;
+
+    [Header("Components")]
+    [SerializeField] private BoxCollider2D coll;
 
     [Header("Stats")]
     [SerializeField] private PlayerStats stats;
@@ -16,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
 
     // Private Veriables
     private Rigidbody2D rb;
-    private BoxCollider2D coll;
     private Vector2 moveInput;
     private Vector2 velocity;
     private bool jumpDown;
@@ -29,7 +31,6 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         TryGetComponent(out rb);
-        TryGetComponent(out coll);
 
         cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
     }

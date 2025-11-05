@@ -3,5 +3,6 @@ using UnityEngine;
 public interface IDamageable
 {
     int Health { get; }
-    void Damage();
+    float InvincibilityTime { get; }
+    void Damage(int amount);
 }

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1099670740508950493}
   - component: {fileID: 7009792346642980248}
-  m_Layer: 0
-  m_Name: PoisonPuddle
+  m_Layer: 13
+  m_Name: Poison Puddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -71,9 +71,11 @@ GameObject:
   m_Component:
   - component: {fileID: 6424494914498509036}
   - component: {fileID: 6198491811885750403}
-  m_Layer: 0
+  - component: {fileID: 8136741755238129956}
+  - component: {fileID: 8727145186684892774}
+  m_Layer: 13
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +125,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -139,6 +141,47 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 0.5}
   m_EdgeRadius: 0
+--- !u!114 &8136741755238129956
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5048804632902930083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee5c0fc3729ab34eaccd64768be83c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 5
+  destroyOnHit: 0
+--- !u!50 &8727145186684892774
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5048804632902930083}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &7725542615853923711
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,7 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 883365041723973406}
   - component: {fileID: 6970643064313531650}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
