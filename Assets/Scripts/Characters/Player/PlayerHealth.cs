@@ -8,10 +8,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
 
     private int health;
     private float invincibleTimer;
+    private PlayerAttack playerAttack;
 
     public int Health => health;
     public float InvincibilityTime => invincibilityTime;
     private bool IsInvincible => invincibleTimer > 0;
+
+    private void Awake()
+    {
+        TryGetComponent(out playerAttack);
+    }
 
     private void Start()
     {
@@ -32,7 +38,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         if (collision.TryGetComponent(out DamageComponent damageComponent))
         {
-            if (collision.CompareTag("Enemy") && !IsInvincible)
+            if (collision.CompareTag("Enemy") && !IsInvincible && !playerAttack.IsParrying)
             {
                 Damage(damageComponent.Damage);
                 damageComponent.HitSomething();
@@ -45,5 +51,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         health -= amount;
         invincibleTimer = invincibilityTime;
         hurtboxCollider.enabled = false;
+        print("Damaged");
     }
 }

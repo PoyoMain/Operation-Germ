@@ -230,6 +230,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66420738842dc374f8a2c1ca26e22c3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileDataReference: {fileID: 11400000, guid: 12fdbbc4e97243e40823076d6ecf3348, type: 2}
   poisonPuddlePrefab: {fileID: 4441014841914799530, guid: 0d9cc977dd6bdc748b0bb1a41ef32eb6, type: 3}
 --- !u!1 &8949664506518728633
 GameObject:

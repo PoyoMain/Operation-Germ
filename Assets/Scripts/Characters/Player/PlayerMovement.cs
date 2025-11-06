@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private BoxCollider2D coll;
 
     [Header("Stats")]
-    [SerializeField] private PlayerStats stats;
+    [SerializeField] private PlayerMovementStats stats;
 
     // Constants
     private const int ROTATION_FACING_RIGHT = 0;
