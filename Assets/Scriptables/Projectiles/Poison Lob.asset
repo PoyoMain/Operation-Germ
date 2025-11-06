@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358def4896bb2054ea7ede45965f0adc, type: 3}
+  m_Name: Poison Lob
+  m_EditorClassIdentifier: 
+  identifyAmount: 0
+  playerLaunchAngle: 45
+  playerLaunchForce: 10
+  enemyProjectile: {fileID: 1672236079810485589, guid: 9cd46f8cad41727409d31e986eca97bf, type: 3}
+  playerProjectile: {fileID: 1672236079810485589, guid: 42c0cc1fac1fedb45bbcb814183cdbca, type: 3}

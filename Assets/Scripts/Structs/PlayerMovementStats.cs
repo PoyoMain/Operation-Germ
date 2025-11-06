@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public struct PlayerStats
+public struct PlayerMovementStats
 {
     [Header("Layers")]
     public LayerMask PlayerLayer;
@@ -36,21 +36,7 @@ public struct PlayerStats
     public float CoyoteTime;
     public float JumpBuffer;
 
-    [Header("Attacking")]
-    public float TimeBetweenAttacks;
-    public float SpecialAttackTime;
-    public float TimeBetweenSpecialAttacks;
-    public int SpecialAttackEnergyCost;
-
-    [Header("Knockback")]
-    public float SurfaceKnockback;
-    public float KnockbackAppliedTime;
-
     [Header("Dash")]
     public float DashPower;
     public float DashTime;
-
-    [Header("Health")]
-    public int MaxHealth;
-    public float InvincibleTime;
 }

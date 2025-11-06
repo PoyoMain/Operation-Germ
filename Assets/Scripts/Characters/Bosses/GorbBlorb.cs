@@ -10,7 +10,7 @@ public class GorbBlorb : MonoBehaviour
     [SerializeField] private int minNumberOfLobsToShoot;
     [SerializeField] private int maxNumberOfLobsToShoot;
     [SerializeField] private float timeBetweenPoisonLobs;
-    [SerializeField] private Rigidbody2D poisonLobPrefab;
+    [SerializeField] private ProjectileSO poisonLobData;
     [SerializeField] private Transform poisonLobFireTransform;
     [SerializeField] private float lobLaunchAngle;
     [SerializeField] private float lobLaunchForce;
@@ -23,7 +23,7 @@ public class GorbBlorb : MonoBehaviour
     [Header("Poison Spine Settings")]
     [SerializeField] private int numberOfSpinesToShoot;
     [SerializeField] private float timeBetweenPoisonSpines;
-    [SerializeField] private Rigidbody2D poisonSpinePrefab;
+    [SerializeField] private ProjectileSO poisonSpineData;
     [SerializeField] private Transform poisonSpineSpawnPoint;
     [SerializeField] private float spineLaunchForce;
 
@@ -54,7 +54,7 @@ public class GorbBlorb : MonoBehaviour
 
     private void Start()
     { 
-        ChangeState(State.PoisonSpines);
+        ChangeState(State.Waiting);
     }
 
     private void FixedUpdate()
@@ -226,10 +226,10 @@ public class GorbBlorb : MonoBehaviour
 
     private void ShootPoisonLob()
     {
-        Rigidbody2D projectile = Instantiate(poisonLobPrefab, poisonLobFireTransform.position, Quaternion.identity);
+        IProjectile projectile = Instantiate(poisonLobData.EnemyProjectile, poisonLobFireTransform.position, Quaternion.identity).GetComponent<IProjectile>();
         float angleRad = lobLaunchAngle * Mathf.Deg2Rad;
         Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
-        projectile.linearVelocity = launchDirection * lobLaunchForce;
+        projectile.Initialize(launchDirection, lobLaunchForce);
     }
     #endregion
 
@@ -320,8 +320,8 @@ public class GorbBlorb : MonoBehaviour
 
     private void ShootPoisonSpines()
     {
-        Rigidbody2D projectile = Instantiate(poisonSpinePrefab, poisonSpineSpawnPoint.position, Quaternion.identity);
-        projectile.linearVelocity = transform.right * spineLaunchForce;
+        IProjectile projectile = Instantiate(poisonSpineData.EnemyProjectile, poisonSpineSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
+        projectile.Initialize(transform.right, spineLaunchForce);
     }
     #endregion
 
