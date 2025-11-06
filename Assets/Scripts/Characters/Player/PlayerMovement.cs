@@ -16,9 +16,14 @@ public class PlayerMovement : MonoBehaviour
     // Constants
     private const int ROTATION_FACING_RIGHT = 0;
     private const int ROTATION_FACING_LEFT = 180;
+    private const string ANIM_PARAM_MOVING = "IsMoving";
+    private const string ANIM_PARAM_GROUNDED = "IsGrounded";
+    private const string ANIM_PARAM_VERTICAL_VELOCITY = "VerticalVelocity";
+
 
     // Private Veriables
     private Rigidbody2D rb;
+    private Animator anim;
     private Vector2 moveInput;
     private Vector2 velocity;
     private bool jumpDown;
@@ -31,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private void Awake()
     {
         TryGetComponent(out rb);
+        TryGetComponent(out anim);
 
         cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
     }
@@ -66,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
         HandleJump();
         HandleDirection();
         HandleGravity();
+        HandleAnimation();
 
         ApplyVelocity();
     }
@@ -210,6 +217,18 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region Animation
+    private void HandleAnimation()
+    {
+        anim.SetBool(ANIM_PARAM_MOVING, moveInput.x != 0);
+        anim.SetBool(ANIM_PARAM_GROUNDED, grounded);
+
+        if (grounded && velocity.y <= 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, 0);
+        else if (velocity.y > 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, 1);
+        else if (velocity.y < 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, -1);
+    }
     #endregion
 
     private void ApplyVelocity() => rb.linearVelocity = velocity;
