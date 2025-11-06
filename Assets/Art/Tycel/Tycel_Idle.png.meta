@@ -1,25 +1,31 @@
 fileFormatVersion: 2
-guid: d7f51dc17062f014fb1df16545503bac
+guid: 81aa1876917b1bb4d8ab505197f7815e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -343202981925190390
-    second: Tycel_run-Sheet_0
+      213: 2775614863595884201
+    second: Tycel_Idle-Sheet_0
   - first:
-      213: -7447772159816630748
-    second: Tycel_run-Sheet_1
+      213: -32741383960072499
+    second: Tycel_Idle-Sheet_1
   - first:
-      213: -4116735341405713131
-    second: Tycel_run-Sheet_2
+      213: -6714216092602599001
+    second: Tycel_Idle-Sheet_2
   - first:
-      213: -8469773229512047096
-    second: Tycel_run-Sheet_3
+      213: -1030285768982515209
+    second: Tycel_Idle-Sheet_3
   - first:
-      213: -3424434981140326303
-    second: Tycel_run-Sheet_4
+      213: 4861481524886027572
+    second: Tycel_Idle-Sheet_4
   - first:
-      213: -3191752824407427746
-    second: Tycel_run-Sheet_5
+      213: 592144436380022494
+    second: Tycel_Idle-Sheet_5
+  - first:
+      213: 2455066167205949522
+    second: Tycel_Idle-Sheet_6
+  - first:
+      213: 1745913093739562013
+    second: Tycel_Idle-Sheet_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -111,137 +117,194 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tycel_run-Sheet_0
+      name: Tycel_Idle_0
       rect:
         serializedVersion: 2
-        x: 6
-        y: 6
-        width: 91
-        height: 100
+        x: 0
+        y: 0
+        width: 64
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a058e70d4b2bc3bf0800000000000000
-      internalID: -343202981925190390
+      spriteID: 4a84f0e2450f5784288c225bbaedc33e
+      internalID: -1554335439
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tycel_run-Sheet_1
+      name: Tycel_Idle_1
       rect:
         serializedVersion: 2
-        x: 107
-        y: 4
-        width: 65
-        height: 102
+        x: 64
+        y: 0
+        width: 64
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 42ef51e3ea234a890800000000000000
-      internalID: -7447772159816630748
+      spriteID: 2f0be3c7e07e7a440b1d00d939a5758a
+      internalID: 252337511
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tycel_run-Sheet_2
+      name: Tycel_Idle_2
       rect:
         serializedVersion: 2
-        x: 222
-        y: 5
-        width: 37
-        height: 100
+        x: 128
+        y: 0
+        width: 64
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 51d4735b40b6ed6c0800000000000000
-      internalID: -4116735341405713131
+      spriteID: eae123d2c422cf1468c6715e7484955a
+      internalID: -1410657021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tycel_run-Sheet_3
+      name: Tycel_Idle_3
       rect:
         serializedVersion: 2
-        x: 294
-        y: 7
-        width: 86
-        height: 99
+        x: 192
+        y: 0
+        width: 64
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 80642de5f12557a80800000000000000
-      internalID: -8469773229512047096
+      spriteID: 7babd2cc67269a1419434d75ef82c2d7
+      internalID: 630306326
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tycel_run-Sheet_4
+      name: Tycel_Idle_4
       rect:
         serializedVersion: 2
-        x: 396
-        y: 5
-        width: 69
-        height: 99
+        x: 256
+        y: 0
+        width: 64
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 16895b03786f970d0800000000000000
-      internalID: -3424434981140326303
+      spriteID: f4dbf53c50199844f99d1c004bc8d07c
+      internalID: 1322934569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tycel_run-Sheet_5
+      name: Tycel_Idle_5
       rect:
         serializedVersion: 2
-        x: 515
-        y: 10
-        width: 34
-        height: 94
+        x: 320
+        y: 0
+        width: 64
+        height: 144
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e55785287bd94b3d0800000000000000
-      internalID: -3191752824407427746
+      spriteID: bb808f57ab9d6be4d9d9222ce5167560
+      internalID: -1445593422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tycel_Idle_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 875c693eac58f3f48a3b0a2ce9060039
+      internalID: 736762756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tycel_Idle_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3d84a0020ccab043b748ee0015196ea
+      internalID: 864087910
       vertices: []
       indices: 
       edges: []
@@ -250,7 +313,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 84dd3e2cfa759a2459062f453818a422
     internalID: 0
     vertices: []
     indices: 
@@ -260,12 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tycel_run-Sheet_0: -343202981925190390
-      Tycel_run-Sheet_1: -7447772159816630748
-      Tycel_run-Sheet_2: -4116735341405713131
-      Tycel_run-Sheet_3: -8469773229512047096
-      Tycel_run-Sheet_4: -3424434981140326303
-      Tycel_run-Sheet_5: -3191752824407427746
+      Tycel_Idle_0: -1554335439
+      Tycel_Idle_1: 252337511
+      Tycel_Idle_2: -1410657021
+      Tycel_Idle_3: 630306326
+      Tycel_Idle_4: 1322934569
+      Tycel_Idle_5: -1445593422
+      Tycel_Idle_6: 736762756
+      Tycel_Idle_7: 864087910
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
