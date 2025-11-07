@@ -1,6 +1,3 @@
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
-using UnityEditor.ShaderGraph;
 using UnityEngine;
 
 public class PlayerAttack : MonoBehaviour
@@ -20,19 +17,24 @@ public class PlayerAttack : MonoBehaviour
     private bool attackDown;
     private bool attackOneDown;
     private bool attackTwoDown;
+    private bool attackHeld;
+    private bool attackOneHeld;
+    private bool attackTwoHeld;
     private bool parryDown;
+    private bool chargeHeld;
     private float attackInputTimer;
     private float parryInputTimer;
     private Animator anim;
+    private PlayerMovement playerMovement;
     private (ProjectileSO, int) heldAttackOne = new();
     private (ProjectileSO, int) heldAttackTwo = new();
 
-    public bool IsParrying => isParryingOne || isParryingTwo;
     private PlayerControls.GameplayActions Controls => inputReader.Controls;
 
     private void Awake()
     {
         TryGetComponent(out anim);
+        TryGetComponent(out playerMovement);
     }
 
     private void Update()
@@ -42,11 +44,16 @@ public class PlayerAttack : MonoBehaviour
 
     private void GetInput()
     {
-        if (!attackOneDown && !isAttacking)
+        attackOneHeld = Controls.AttackOne.IsPressed();
+        attackTwoHeld = Controls.AttackTwo.IsPressed();
+        attackHeld = (attackOneHeld || attackTwoHeld);
+        chargeHeld = Controls.Charge.IsPressed() && attackHeld;
+
+        if (!attackOneDown && !IsAttacking)
         {
             attackOneDown = Controls.AttackOne.WasPressedThisFrame();
         }
-        if (!attackTwoDown && !isAttacking)
+        if (!attackTwoDown && !IsAttacking)
         {
             attackTwoDown = Controls.AttackTwo.WasPressedThisFrame();
         }
@@ -64,6 +71,7 @@ public class PlayerAttack : MonoBehaviour
     {
         HandleInputTimers();
         HandleParry();
+        HandleCharge();
         HandleAttack();
     }
 
@@ -93,6 +101,8 @@ public class PlayerAttack : MonoBehaviour
     private float parryTimer;
     private bool isParryingOne;
     private bool isParryingTwo;
+    public bool IsParrying => isParryingOne || isParryingTwo;
+
     private void HandleParry()
     {
         if (parryTimer > 0)
@@ -111,8 +121,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void ExecuteParry()
     {
-        if (attackOneDown) { isParryingOne = true; print("One"); }
-        else if (attackTwoDown) { isParryingTwo = true; print("Two"); }
+        if (attackOneDown) isParryingOne = true;
+        else if (attackTwoDown) isParryingTwo = true;
         anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
         parryTimer = stats.TimeBetweenParries;
     }
@@ -153,9 +163,74 @@ public class PlayerAttack : MonoBehaviour
     }
     #endregion
 
+    #region Charge
+    private bool isChargingOne = false;
+    private bool isChargingTwo = false;
+    public bool IsCharging => isChargingOne || isChargingTwo;
+    private float chargeTimer;
+
+    private void HandleCharge()
+    {
+        if (!chargeHeld && IsCharging)
+        {
+            isChargingOne = false;
+            isChargingTwo = false;
+            chargeTimer = 0;
+        }
+
+        if (IsParrying || IsAttacking) return;
+
+        if (!chargeHeld) return;
+
+        Charge();
+    }
+
+    private void Charge()
+    {
+        if (attackOneHeld && !isChargingTwo)
+        { 
+            if (heldAttackOne.Item1 == null) return;
+
+            if (!isChargingOne) isChargingOne = true;
+
+            if (chargeTimer > 0)
+            {
+                chargeTimer -= Time.fixedDeltaTime;
+
+                if (chargeTimer <= 0)
+                {
+                    chargeTimer = stats.ChargeRate;
+                    heldAttackOne.Item2++;
+                    print(heldAttackOne.Item1.name + ": " + heldAttackOne.Item2);
+                }
+            }
+            else if (chargeTimer <= 0) chargeTimer = stats.ChargeRate;
+        }
+        else if (attackTwoHeld && !isChargingOne)
+        {
+            if (heldAttackTwo.Item1 == null) return;
+
+            if (!isChargingTwo) isChargingTwo = true;
+
+            if (chargeTimer > 0)
+            {
+                chargeTimer -= Time.fixedDeltaTime;
+
+                if (chargeTimer <= 0)
+                {
+                    chargeTimer = stats.ChargeRate;
+                    heldAttackTwo.Item2++;
+                    print(heldAttackTwo.Item1.name + ": " + heldAttackTwo.Item2);
+                }
+            }
+            else if (chargeTimer <= 0) chargeTimer = stats.ChargeRate;
+        }
+    }
+    #endregion
+
     #region Attack
     private float attackTimer;
-    private bool isAttacking;
+    public bool IsAttacking { get; private set; }
     private void HandleAttack()
     {
         if (attackTimer > 0)
@@ -166,7 +241,7 @@ public class PlayerAttack : MonoBehaviour
 
         if (!attackDown) return;
 
-        if (!isAttacking && !IsParrying) ExecuteAttack();
+        if (!IsAttacking && !IsParrying && !IsCharging) ExecuteAttack();
 
         attackOneDown = false;
         attackTwoDown = false;
@@ -176,8 +251,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void ExecuteAttack()
     {
-        isAttacking = true;
-        anim.SetBool(ANIM_ATTACK_PARAM, isAttacking);
+        IsAttacking = true;
+        anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
         attackTimer = stats.TimeBetweenAttacks;
 
         if (attackOneDown)
@@ -202,8 +277,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void EndAttack()
     {
-        isAttacking = false;
-        anim.SetBool(ANIM_ATTACK_PARAM, isAttacking);
+        IsAttacking = false;
+        anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
     }
     #endregion
 }

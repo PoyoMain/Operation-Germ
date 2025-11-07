@@ -1,17 +1,26 @@
 using UnityEngine;
+using UnityEngine.Events;
 
+[RequireComponent(typeof(DamageFlash))]
 public class BossHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private int startHealth;
-    [SerializeField] private int invincibilityTime;
-    [SerializeField] private Collider2D hurtboxCollider;
+    [SerializeField] private float invincibilityTime;
 
     private int health;
     private float invincibleTimer;
+    private DamageFlash damageFlash;
 
     public int Health => health;
     public float InvincibilityTime => invincibilityTime;
     private bool IsInvincible => invincibleTimer > 0;
+
+    public UnityAction OnBossDefeated;
+
+    private void Awake()
+    {
+        TryGetComponent(out damageFlash);
+    }
 
     private void Start()
     {
@@ -23,8 +32,6 @@ public class BossHealth : MonoBehaviour, IDamageable
         if (IsInvincible)
         {
             invincibleTimer -= Time.deltaTime;
-
-            if (!IsInvincible) hurtboxCollider.enabled = true;
         }
     }
 
@@ -35,7 +42,6 @@ public class BossHealth : MonoBehaviour, IDamageable
             if (collision.CompareTag("Player") && !IsInvincible)
             {
                 Damage(damageComponent.Damage);
-                damageComponent.HitSomething();
             }
         }
     }
@@ -44,6 +50,8 @@ public class BossHealth : MonoBehaviour, IDamageable
     {
         health -= amount;
         invincibleTimer = invincibilityTime;
-        hurtboxCollider.enabled = false;
+        damageFlash.CallDamageFlash();
+
+        if (health <= 0) OnBossDefeated?.Invoke();
     }
 }

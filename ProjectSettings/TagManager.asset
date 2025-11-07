@@ -43,5 +43,17 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Environment
+    uniqueID: 1573955449
+    locked: 0
+  - name: Enemies
+    uniqueID: 585879429
+    locked: 0
+  - name: Player
+    uniqueID: 3311266389
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1470353907
+    locked: 0
   m_RenderingLayers:
   - Default

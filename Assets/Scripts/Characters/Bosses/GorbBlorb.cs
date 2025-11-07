@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class GorbBlorb : MonoBehaviour
 {
+    [Header("General Boss Settings")]
+    [SerializeField] private BossPart bossPart;
+
     [Header("Wait Settings")]
     [SerializeField] private float waitTime;
 
@@ -42,6 +45,7 @@ public class GorbBlorb : MonoBehaviour
     private Transform player;
     private Rigidbody2D rb;
     private Animator anim;
+    private BossHealth health;
     private bool isAttacking;
 
     #region Unity Methods
@@ -50,6 +54,17 @@ public class GorbBlorb : MonoBehaviour
         if (FindAnyObjectByType<PlayerMovement>() != null) player = FindAnyObjectByType<PlayerMovement>().transform;
         TryGetComponent(out rb);
         TryGetComponent(out anim);
+        TryGetComponent(out health);
+    }
+
+    private void OnEnable()
+    {
+        health.OnBossDefeated += BossDefeated;
+    }
+
+    private void OnDisable()
+    {
+        health.OnBossDefeated -= BossDefeated;
     }
 
     private void Start()
@@ -340,6 +355,11 @@ public class GorbBlorb : MonoBehaviour
         if (player.position.x < transform.position.x) eulers.y = 180;
         else if (player.position.x > transform.position.x) eulers.y = 0;
         transform.eulerAngles = eulers;
+    }
+
+    private void BossDefeated()
+    {
+        BossManager.Instance.DefeatBoss(bossPart);
     }
 
     public enum State
