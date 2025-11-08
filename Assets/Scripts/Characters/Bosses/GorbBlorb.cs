@@ -15,8 +15,10 @@ public class GorbBlorb : MonoBehaviour
     [SerializeField] private float timeBetweenPoisonLobs;
     [SerializeField] private ProjectileSO poisonLobData;
     [SerializeField] private Transform poisonLobFireTransform;
-    [SerializeField] private float lobLaunchAngle;
-    [SerializeField] private float lobLaunchForce;
+    [SerializeField] private float minLobLaunchAngle;
+    [SerializeField] private float maxLobLaunchAngle;
+    [SerializeField] private float minLobLaunchForce;
+    [SerializeField] private float maxLobLaunchForce;
 
     [Header("Slam Settings")]
     [SerializeField] private float jumpForce;
@@ -246,9 +248,11 @@ public class GorbBlorb : MonoBehaviour
     private void ShootPoisonLob()
     {
         IProjectile projectile = Instantiate(poisonLobData.EnemyProjectile, poisonLobFireTransform.position, Quaternion.identity).GetComponent<IProjectile>();
-        float angleRad = lobLaunchAngle * Mathf.Deg2Rad;
+        float angle = Random.Range(minLobLaunchAngle, maxLobLaunchAngle);
+        float angleRad = angle * Mathf.Deg2Rad;
         Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
-        projectile.Initialize(launchDirection, lobLaunchForce);
+        float launchForce = Random.Range(minLobLaunchForce, maxLobLaunchForce);
+        projectile.Initialize(launchDirection, launchForce);
     }
     #endregion
 
