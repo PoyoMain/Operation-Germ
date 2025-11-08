@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Private Veriables
     private Rigidbody2D rb;
     private Animator anim;
+    private PlayerAttack playerAttack;
     private Vector2 moveInput;
     private Vector2 velocity;
     private bool jumpDown;
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         TryGetComponent(out rb);
         TryGetComponent(out anim);
+        TryGetComponent(out playerAttack);
 
         cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
     }
@@ -79,7 +81,7 @@ public class PlayerMovement : MonoBehaviour
 
     #region Collision
     private float frameLeftGround = float.MinValue;
-    private bool grounded;
+    public bool IsGrounded { get; private set; }
 
     private void CheckCollisions()
     {
@@ -95,18 +97,18 @@ public class PlayerMovement : MonoBehaviour
         }
 
         // Landed on Ground
-        if (!grounded && groundHit)
+        if (!IsGrounded && groundHit)
         {
-            grounded = true;
+            IsGrounded = true;
             coyoteUsable = true;
             bufferedJumpUsable = true;
             endedJumpEarly = false;
         }
 
         //Left the Ground
-        else if (grounded && !groundHit)
+        else if (IsGrounded && !groundHit)
         {
-            grounded = false;
+            IsGrounded = false;
             frameLeftGround = time;
         }
 
@@ -124,13 +126,11 @@ public class PlayerMovement : MonoBehaviour
     private float timeJumpWasPressed;
 
     private bool HasBufferedJump => bufferedJumpUsable && time < timeJumpWasPressed + stats.JumpBuffer;
-    private bool CanUseCoyote => coyoteUsable && !grounded && time < frameLeftGround + stats.CoyoteTime;
-
-    private bool CrouchDown => moveInput.y < 0;
+    private bool CanUseCoyote => coyoteUsable && !IsGrounded && time < frameLeftGround + stats.CoyoteTime;
 
     private void HandleJump()
     {
-        if (!endedJumpEarly && !grounded && !jumpHeld && rb.linearVelocity.y >= 0)
+        if (!endedJumpEarly && !IsGrounded && !jumpHeld && rb.linearVelocity.y >= 0)
         {
             endedJumpEarly = true;
         }
@@ -139,7 +139,9 @@ public class PlayerMovement : MonoBehaviour
 
         if (!jumpToConsume && !HasBufferedJump) return;
 
-        if (grounded || CanUseCoyote) ExecuteJump();
+        if (playerAttack.IsParrying) return;
+
+        if (IsGrounded || CanUseCoyote) ExecuteJump();
 
         jumpToConsume = false;
     }
@@ -171,16 +173,23 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Horizontal
+    public bool IsMoving { get => moveInput.x != 0; private set => IsMoving = value; }
+
     private void HandleDirection()
     {
-        if (moveInput.x == 0)
+        if (playerAttack.IsCharging)
         {
-            var deceleration = grounded ? stats.GroundDeceleration : stats.AirDeceleration;
+            velocity.x = 0;
+            return;
+        }
+        else if (moveInput.x == 0 || playerAttack.IsParrying || playerAttack.IsAttacking)
+        {
+            var deceleration = IsGrounded ? stats.GroundDeceleration : stats.AirDeceleration;
             velocity.x = Mathf.MoveTowards(velocity.x, 0, deceleration * Time.fixedDeltaTime);
         }
         else
         {
-            var maxSpeed = grounded ? stats.MaxGroundSpeed : stats.MaxAirSpeed;
+            var maxSpeed = IsGrounded ? stats.MaxGroundSpeed : stats.MaxAirSpeed;
             velocity.x = Mathf.MoveTowards(velocity.x, moveInput.x * maxSpeed, stats.HorizontalAcceleration * Time.fixedDeltaTime);
         }
 
@@ -202,7 +211,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleGravity()
     {
-        if (grounded && velocity.y <= 0f)
+        if (IsGrounded && velocity.y <= 0f)
         {
             velocity.y = stats.GroundingForce;
         }
@@ -223,9 +232,9 @@ public class PlayerMovement : MonoBehaviour
     private void HandleAnimation()
     {
         anim.SetBool(ANIM_PARAM_MOVING, moveInput.x != 0);
-        anim.SetBool(ANIM_PARAM_GROUNDED, grounded);
+        anim.SetBool(ANIM_PARAM_GROUNDED, IsGrounded);
 
-        if (grounded && velocity.y <= 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, 0);
+        if (IsGrounded && velocity.y <= 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, 0);
         else if (velocity.y > 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, 1);
         else if (velocity.y < 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, -1);
     }

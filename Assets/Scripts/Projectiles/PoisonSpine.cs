@@ -14,6 +14,15 @@ public class PoisonSpine : MonoBehaviour, IProjectile
         TryGetComponent(out rb);
     }
 
+    private void FixedUpdate()
+    {
+        if (rb.linearVelocity.magnitude > 0.01f) // Only rotate if moving
+        {
+            Vector2 movementDirection = rb.linearVelocity;
+            float angle = Mathf.Atan2(movementDirection.y, movementDirection.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+    }
     public void Initialize(Vector2 direction, float power)
     {
         rb.linearVelocity = direction * power;

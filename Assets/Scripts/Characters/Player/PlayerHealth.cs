@@ -3,8 +3,7 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private int startHealth;
-    [SerializeField] private int invincibilityTime;
-    [SerializeField] private Collider2D hurtboxCollider;
+    [SerializeField] private float invincibilityTime;
 
     private int health;
     private float invincibleTimer;
@@ -29,8 +28,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         if (IsInvincible)
         {
             invincibleTimer -= Time.deltaTime;
-
-            if (!IsInvincible) hurtboxCollider.enabled = true;
         }
     }
 
@@ -41,7 +38,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
             if (collision.CompareTag("Enemy") && !IsInvincible && !playerAttack.IsParrying)
             {
                 Damage(damageComponent.Damage);
-                damageComponent.HitSomething();
             }
         }
     }
@@ -50,7 +46,5 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         health -= amount;
         invincibleTimer = invincibilityTime;
-        hurtboxCollider.enabled = false;
-        print("Damaged");
     }
 }

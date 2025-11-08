@@ -12,5 +12,10 @@ public struct PlayerAttackStats
 
     [Header("Attacking")]
     public float TimeBetweenAttacks;
+
+    [Header("Parrying")]
     public float TimeBetweenParries;
+
+    [Header("Charging")]
+    public float ChargeRate;
 }
