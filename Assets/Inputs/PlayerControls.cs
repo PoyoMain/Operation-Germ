@@ -138,7 +138,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Parry"",
+                    ""name"": ""Release"",
                     ""type"": ""Button"",
                     ""id"": ""572cdf2e-7397-4a79-84b4-4db4f73653e9"",
                     ""expectedControlType"": """",
@@ -241,7 +241,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Parry"",
+                    ""action"": ""Charge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -252,7 +252,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Charge"",
+                    ""action"": ""Release"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -784,7 +784,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         m_Gameplay_Dash = m_Gameplay.FindAction("Dash", throwIfNotFound: true);
         m_Gameplay_AttackOne = m_Gameplay.FindAction("AttackOne", throwIfNotFound: true);
         m_Gameplay_AttackTwo = m_Gameplay.FindAction("AttackTwo", throwIfNotFound: true);
-        m_Gameplay_Parry = m_Gameplay.FindAction("Parry", throwIfNotFound: true);
+        m_Gameplay_Release = m_Gameplay.FindAction("Release", throwIfNotFound: true);
         m_Gameplay_Charge = m_Gameplay.FindAction("Charge", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -884,7 +884,7 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
     private readonly InputAction m_Gameplay_Dash;
     private readonly InputAction m_Gameplay_AttackOne;
     private readonly InputAction m_Gameplay_AttackTwo;
-    private readonly InputAction m_Gameplay_Parry;
+    private readonly InputAction m_Gameplay_Release;
     private readonly InputAction m_Gameplay_Charge;
     /// <summary>
     /// Provides access to input actions defined in input action map "Gameplay".
@@ -918,9 +918,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @AttackTwo => m_Wrapper.m_Gameplay_AttackTwo;
         /// <summary>
-        /// Provides access to the underlying input action "Gameplay/Parry".
+        /// Provides access to the underlying input action "Gameplay/Release".
         /// </summary>
-        public InputAction @Parry => m_Wrapper.m_Gameplay_Parry;
+        public InputAction @Release => m_Wrapper.m_Gameplay_Release;
         /// <summary>
         /// Provides access to the underlying input action "Gameplay/Charge".
         /// </summary>
@@ -966,9 +966,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @AttackTwo.started += instance.OnAttackTwo;
             @AttackTwo.performed += instance.OnAttackTwo;
             @AttackTwo.canceled += instance.OnAttackTwo;
-            @Parry.started += instance.OnParry;
-            @Parry.performed += instance.OnParry;
-            @Parry.canceled += instance.OnParry;
+            @Release.started += instance.OnRelease;
+            @Release.performed += instance.OnRelease;
+            @Release.canceled += instance.OnRelease;
             @Charge.started += instance.OnCharge;
             @Charge.performed += instance.OnCharge;
             @Charge.canceled += instance.OnCharge;
@@ -998,9 +998,9 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
             @AttackTwo.started -= instance.OnAttackTwo;
             @AttackTwo.performed -= instance.OnAttackTwo;
             @AttackTwo.canceled -= instance.OnAttackTwo;
-            @Parry.started -= instance.OnParry;
-            @Parry.performed -= instance.OnParry;
-            @Parry.canceled -= instance.OnParry;
+            @Release.started -= instance.OnRelease;
+            @Release.performed -= instance.OnRelease;
+            @Release.canceled -= instance.OnRelease;
             @Charge.started -= instance.OnCharge;
             @Charge.performed -= instance.OnCharge;
             @Charge.canceled -= instance.OnCharge;
@@ -1275,12 +1275,12 @@ public partial class @PlayerControls: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAttackTwo(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Parry" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Release" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnParry(InputAction.CallbackContext context);
+        void OnRelease(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Charge" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>

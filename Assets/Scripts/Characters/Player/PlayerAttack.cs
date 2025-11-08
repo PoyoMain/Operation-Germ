@@ -21,10 +21,10 @@ public class PlayerAttack : MonoBehaviour
     private bool attackHeld;
     private bool attackOneHeld;
     private bool attackTwoHeld;
-    private bool parryDown;
+    private bool ReleaseDown;
     private bool chargeHeld;
     private float attackInputTimer;
-    private float parryInputTimer;
+    private float ReleaseInputTimer;
     private Animator anim;
     private PlayerMovement playerMovement;
     private (ProjectileSO, int) heldAttackOne = new();
@@ -45,8 +45,17 @@ public class PlayerAttack : MonoBehaviour
 
     private void GetInput()
     {
-        attackOneHeld = Controls.AttackOne.IsPressed();
-        attackTwoHeld = Controls.AttackTwo.IsPressed();
+        if (playerMovement.IsGrounded)
+        {
+            attackOneHeld = Controls.AttackOne.IsPressed();
+            attackTwoHeld = Controls.AttackTwo.IsPressed();
+        }
+        else
+        {
+            attackOneHeld = false;
+            attackTwoHeld = false;
+        }
+
         attackHeld = (attackOneHeld || attackTwoHeld);
         chargeHeld = Controls.Charge.IsPressed() && attackHeld;
 
@@ -61,17 +70,17 @@ public class PlayerAttack : MonoBehaviour
         attackDown = (attackOneDown || attackTwoDown);
         if (attackDown) attackInputTimer = stats.InputBufferTime;
 
-        if (!parryDown)
+        if (!ReleaseDown)
         {
-            parryDown = Controls.Parry.IsPressed() && attackDown;
+            ReleaseDown = Controls.Release.IsPressed() && attackDown;
         }
-        if (parryDown)  parryInputTimer = stats.InputBufferTime;
+        if (ReleaseDown)  ReleaseInputTimer = stats.InputBufferTime;
     }
 
     private void FixedUpdate()
     {
         HandleInputTimers();
-        HandleParry();
+        HandleRelease();
         HandleCharge();
         HandleAttack();
     }
@@ -88,56 +97,47 @@ public class PlayerAttack : MonoBehaviour
             }
         }
 
-        if (parryInputTimer > 0)
+        if (ReleaseInputTimer > 0)
         {
-            parryInputTimer -= Time.fixedDeltaTime;
-            if (parryInputTimer <= 0)
+            ReleaseInputTimer -= Time.fixedDeltaTime;
+            if (ReleaseInputTimer <= 0)
             {
-                parryDown = false;
+                ReleaseDown = false;
             }
         }
     }
 
-    #region Parry
-    private float parryTimer;
-    private bool isParryingOne;
-    private bool isParryingTwo;
-    public bool IsParrying => isParryingOne || isParryingTwo;
-
-    private void HandleParry()
+    #region Release
+    private void HandleRelease()
     {
-        if (parryTimer > 0)
-        {
-            parryTimer -= Time.fixedDeltaTime;
-            return;
-        }
+        if (!ReleaseDown) return;
 
-        if (!parryDown) return;
+        ExecuteRelease();
 
-        if (!IsParrying) ExecuteParry();
-
-        parryDown = false;
-        parryInputTimer = 0;
-    }
-
-    private void ExecuteParry()
-    {
-        if (attackOneDown) isParryingOne = true;
-        else if (attackTwoDown) isParryingTwo = true;
-        anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
-        parryTimer = stats.TimeBetweenParries;
-    }
-
-    private void EndParry()
-    {
-        isParryingOne = false;
-        isParryingTwo = false;
-        anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
-
+        ReleaseDown = false;
+        ReleaseInputTimer = 0;
         attackOneDown = false;
         attackTwoDown = false;
         attackDown = false;
         attackInputTimer = 0;
+    }
+
+    private void ExecuteRelease()
+    {
+        if (attackOneDown) 
+        {
+            if (heldAttackOne.Item1 == null) return;
+
+            heldAttackOne.Item1 = null;
+            heldAttackOne.Item2 = 0;
+        }
+        else if (attackTwoDown)
+        {
+            if (heldAttackTwo.Item1 == null) return;
+
+            heldAttackTwo.Item1 = null;
+            heldAttackTwo.Item2 = 0;
+        }
     }
     #endregion
 
@@ -245,21 +245,23 @@ public class PlayerAttack : MonoBehaviour
 
     #region Attack
     private float attackTimer;
+    private float attackCooldown;
     public bool IsAttacking { get; private set; }
     private bool CanUseAttackOne => heldAttackOne.Item1 != null && heldAttackOne.Item2 >= heldAttackOne.Item1.IdentifyAmount;
     private bool CanUseAttackTwo => heldAttackTwo.Item1 != null && heldAttackTwo.Item2 >= heldAttackTwo.Item1.IdentifyAmount;
     private void HandleAttack()
     {
-        anim.SetBool("attackHeld", attackHeld);
+        if (attackTimer > 0)
+        {
+            attackTimer -= Time.fixedDeltaTime;
+            return;
+        }
 
-        if (attackTimer > 0) attackTimer -= Time.fixedDeltaTime;
-
-        if (!attackHeld) return;
-        if (IsParrying || chargeHeld) return;
-        if (attackOneHeld && !CanUseAttackOne) return;
-        if (attackTwoHeld && !CanUseAttackTwo) return;
-
-        ExecuteAttack();
+        if (!attackDown) return;
+        if (IsAttacking) return;
+        if (attackOneDown && !CanUseAttackOne) ExecuteParry();
+        else if (attackTwoDown && !CanUseAttackTwo) ExecuteParry();
+        else if (!IsParrying && !chargeHeld) ExecuteAttack();
 
         attackOneDown = false;
         attackTwoDown = false;
@@ -269,35 +271,25 @@ public class PlayerAttack : MonoBehaviour
 
     private void ExecuteAttack()
     {
-        if (attackDown)
-        {
-            IsAttacking = true;
-            anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
-        }
+        IsAttacking = true;
+        anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
 
-        if (attackTimer <= 0)
-        {
-            if (attackOneHeld) attackTimer = heldAttackOne.Item1.PlayerCooldown;
-            if (attackTwoHeld) attackTimer = heldAttackTwo.Item1.PlayerCooldown;
-            anim.SetTrigger("Attack");
-            print("Attack");
-        }
-    }
-
-    private void Attack()
-    {
-        if (attackOneHeld)
+        if (attackOneDown)
         {
             if (!CanUseAttackOne) return;
+
+            attackCooldown = heldAttackOne.Item1.PlayerCooldown;
 
             IProjectile projectile = Instantiate(heldAttackOne.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
             float angleRad = heldAttackOne.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;
             Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
             projectile.Initialize(launchDirection, heldAttackOne.Item1.PlayerLaunchForce);
         }
-        else if (attackTwoHeld)
+        else if (attackTwoDown)
         {
             if (!CanUseAttackTwo) return;
+
+            attackCooldown = heldAttackTwo.Item1.PlayerCooldown;
 
             IProjectile projectile = Instantiate(heldAttackTwo.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
             float angleRad = heldAttackTwo.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;
@@ -309,7 +301,36 @@ public class PlayerAttack : MonoBehaviour
     private void EndAttack()
     {
         IsAttacking = false;
+        attackTimer = attackCooldown;
         anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
+    }
+    #endregion
+
+    #region Parry
+    private bool isParryingOne;
+    private bool isParryingTwo;
+    public bool IsParrying => isParryingOne || isParryingTwo;
+    private void ExecuteParry()
+    {
+        if (IsParrying) return;
+
+        if (attackOneDown) isParryingOne = true;
+        else if (attackTwoDown) isParryingTwo = true;
+        anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
+
+    }
+
+    private void EndParry()
+    {
+        Invoke(nameof(EndParryNextFrame), Time.fixedDeltaTime);
+    }
+
+    private void EndParryNextFrame()
+    {
+        isParryingOne = false;
+        isParryingTwo = false;
+        anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
+        print("End Parry");
     }
     #endregion
 }
