@@ -246,6 +246,8 @@ public class PlayerAttack : MonoBehaviour
     #region Attack
     private float attackTimer;
     public bool IsAttacking { get; private set; }
+    private bool CanUseAttackOne => heldAttackOne.Item1 != null && heldAttackOne.Item2 >= heldAttackOne.Item1.IdentifyAmount;
+    private bool CanUseAttackTwo => heldAttackTwo.Item1 != null && heldAttackTwo.Item2 >= heldAttackTwo.Item1.IdentifyAmount;
     private void HandleAttack()
     {
         anim.SetBool("attackHeld", attackHeld);
@@ -254,6 +256,8 @@ public class PlayerAttack : MonoBehaviour
 
         if (!attackHeld) return;
         if (IsParrying || chargeHeld) return;
+        if (attackOneHeld && !CanUseAttackOne) return;
+        if (attackTwoHeld && !CanUseAttackTwo) return;
 
         ExecuteAttack();
 
@@ -273,7 +277,8 @@ public class PlayerAttack : MonoBehaviour
 
         if (attackTimer <= 0)
         {
-            attackTimer = stats.TimeBetweenAttacks;
+            if (attackOneHeld) attackTimer = heldAttackOne.Item1.PlayerCooldown;
+            if (attackTwoHeld) attackTimer = heldAttackTwo.Item1.PlayerCooldown;
             anim.SetTrigger("Attack");
             print("Attack");
         }
@@ -283,7 +288,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackOneHeld)
         {
-            if (heldAttackOne.Item1 == null || heldAttackOne.Item2 < heldAttackOne.Item1.IdentifyAmount) return;
+            if (!CanUseAttackOne) return;
 
             IProjectile projectile = Instantiate(heldAttackOne.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
             float angleRad = heldAttackOne.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;
@@ -292,7 +297,7 @@ public class PlayerAttack : MonoBehaviour
         }
         else if (attackTwoHeld)
         {
-            if (heldAttackTwo.Item1 == null || heldAttackTwo.Item2 < heldAttackTwo.Item1.IdentifyAmount) return;
+            if (!CanUseAttackTwo) return;
 
             IProjectile projectile = Instantiate(heldAttackTwo.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
             float angleRad = heldAttackTwo.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;

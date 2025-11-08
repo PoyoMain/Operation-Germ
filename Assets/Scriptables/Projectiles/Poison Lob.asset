@@ -15,5 +15,6 @@ MonoBehaviour:
   identifyAmount: 0
   playerLaunchAngle: 35
   playerLaunchForce: 9
+  playerCooldown: 0.75
   enemyProjectile: {fileID: 1672236079810485589, guid: 9cd46f8cad41727409d31e986eca97bf, type: 3}
   playerProjectile: {fileID: 1672236079810485589, guid: 42c0cc1fac1fedb45bbcb814183cdbca, type: 3}

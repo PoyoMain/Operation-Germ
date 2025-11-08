@@ -4,14 +4,16 @@ using UnityEngine;
 public class ProjectileSO : ScriptableObject
 {
     [SerializeField] private int identifyAmount;
-    [SerializeField] private int playerLaunchAngle;
-    [SerializeField] private int playerLaunchForce;
+    [SerializeField] private float playerLaunchAngle;
+    [SerializeField] private float playerLaunchForce;
+    [SerializeField] private float playerCooldown;
     [SerializeField] private GameObject enemyProjectile;
     [SerializeField] private GameObject playerProjectile;
 
     public int IdentifyAmount => identifyAmount;
-    public int PlayerLaunchAngle => playerLaunchAngle;
-    public int PlayerLaunchForce => playerLaunchForce;
+    public float PlayerLaunchAngle => playerLaunchAngle;
+    public float PlayerLaunchForce => playerLaunchForce;
+    public float PlayerCooldown => playerCooldown;
     public GameObject EnemyProjectile => enemyProjectile;
     public GameObject PlayerProjectile => playerProjectile;
 }
