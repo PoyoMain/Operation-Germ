@@ -111,6 +111,7 @@ public class PlayerAttack : MonoBehaviour
     #region Release
     private void HandleRelease()
     {
+        if (playerMovement.IsInKnockback) return;
         if (!ReleaseDown) return;
 
         ExecuteRelease();
@@ -145,6 +146,19 @@ public class PlayerAttack : MonoBehaviour
     #region Collisions
     private void OnTriggerEnter2D(Collider2D collider)
     {
+        TriggerBehavior(collider);
+
+    }
+
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        TriggerBehavior(collider);
+    }
+
+    private void TriggerBehavior(Collider2D collider)
+    {
+        if (playerMovement.IsInKnockback) return;
+
         IProjectile projectile = collider.GetComponentInParent<IProjectile>();
         if (projectile != null)
         {
@@ -178,6 +192,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleCharge()
     {
+        if (playerMovement.IsInKnockback) return;
+
         if (!chargeHeld && IsCharging)
         {
             isChargingOne = false;
@@ -252,6 +268,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void HandleParry()
     {
+        if (playerMovement.IsInKnockback) return;
+
         if (parryTimer > 0)
         {
             parryTimer -= Time.fixedDeltaTime;
@@ -306,12 +324,9 @@ public class PlayerAttack : MonoBehaviour
         if (attackTimer > 0)
         {
             attackTimer -= Time.fixedDeltaTime;
-            return;
         }
 
-        if (!attackDown) return;
-        if (IsAttacking) return;
-        else if (!IsParrying && !chargeHeld) ExecuteAttack();
+        if (attackTimer <= 0 && attackDown && !IsAttacking && !playerMovement.IsInKnockback && !IsParrying && !chargeHeld) ExecuteAttack();
 
         attackOneDown = false;
         attackTwoDown = false;

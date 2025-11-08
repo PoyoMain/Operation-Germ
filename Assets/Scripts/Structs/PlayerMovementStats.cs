@@ -41,4 +41,8 @@ public struct PlayerMovementStats
     [Header("Dash")]
     public float DashPower;
     public float DashTime;
+
+    [Header("Knockback")]
+    public float KnockbackPower;
+    public float KnockbackTime;
 }

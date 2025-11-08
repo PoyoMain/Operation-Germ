@@ -18,6 +18,7 @@ public class PlayerMovement : MonoBehaviour
     private const int ROTATION_FACING_LEFT = 180;
     private const string ANIM_PARAM_MOVING = "IsMoving";
     private const string ANIM_PARAM_GROUNDED = "IsGrounded";
+    private const string ANIM_PARAM_KNOCKBACK = "InKnockback";
     private const string ANIM_PARAM_VERTICAL_VELOCITY = "VerticalVelocity";
 
 
@@ -71,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
     {
         CheckCollisions();
 
+        HandleKnockback();
         HandleJump();
         HandleDirection();
         HandleGravity();
@@ -130,6 +132,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleJump()
     {
+        if (IsInKnockback) return;
+
         if (!endedJumpEarly && !IsGrounded && !jumpHeld && rb.linearVelocity.y >= 0)
         {
             endedJumpEarly = true;
@@ -177,6 +181,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDirection()
     {
+        if (IsInKnockback) return;
+
         if (IsGrounded && (playerAttack.IsCharging || playerAttack.IsParrying || playerAttack.IsAttacking))
         {
             var deceleration = IsGrounded ? stats.GroundActionDeceleration : stats.AirActionDeceleration;
@@ -235,12 +241,29 @@ public class PlayerMovement : MonoBehaviour
     #region Animation
     private void HandleAnimation()
     {
+        anim.SetBool(ANIM_PARAM_KNOCKBACK, IsInKnockback);
         anim.SetBool(ANIM_PARAM_MOVING, moveInput.x != 0);
         anim.SetBool(ANIM_PARAM_GROUNDED, IsGrounded);
-
+        
         if (IsGrounded && velocity.y <= 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, 0);
         else if (velocity.y > 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, 1);
         else if (velocity.y < 0) anim.SetInteger(ANIM_PARAM_VERTICAL_VELOCITY, -1);
+    }
+    #endregion
+
+    #region Knockback
+    private float knockbackTimer;
+    public bool IsInKnockback => knockbackTimer > 0;
+
+    private void HandleKnockback()
+    {
+        if (knockbackTimer > 0) knockbackTimer -= Time.fixedDeltaTime;
+    }
+
+    public void ApplyKnockback()
+    {
+        velocity = (-transform.right + transform.up) * stats.KnockbackPower;
+        knockbackTimer = stats.KnockbackTime;
     }
     #endregion
 

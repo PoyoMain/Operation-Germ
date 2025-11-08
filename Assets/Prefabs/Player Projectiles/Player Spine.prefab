@@ -92,6 +92,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 2
+  dealKnockback: 1
 --- !u!1 &2310467202743860702
 GameObject:
   m_ObjectHideFlags: 0
