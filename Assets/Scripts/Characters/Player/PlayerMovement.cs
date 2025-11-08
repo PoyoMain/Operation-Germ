@@ -139,6 +139,8 @@ public class PlayerMovement : MonoBehaviour
 
         if (!jumpToConsume && !HasBufferedJump) return;
 
+        if (playerAttack.IsParrying) return;
+
         if (IsGrounded || CanUseCoyote) ExecuteJump();
 
         jumpToConsume = false;

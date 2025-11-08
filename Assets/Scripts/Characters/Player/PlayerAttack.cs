@@ -45,17 +45,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void GetInput()
     {
-        if (playerMovement.IsGrounded)
-        {
-            attackOneHeld = Controls.AttackOne.IsPressed();
-            attackTwoHeld = Controls.AttackTwo.IsPressed();
-        }
-        else
-        {
-            attackOneHeld = false;
-            attackTwoHeld = false;
-        }
-
+        attackOneHeld = Controls.AttackOne.IsPressed();
+        attackTwoHeld = Controls.AttackTwo.IsPressed();
         attackHeld = (attackOneHeld || attackTwoHeld);
         chargeHeld = Controls.Charge.IsPressed() && attackHeld;
 
@@ -142,6 +133,11 @@ public class PlayerAttack : MonoBehaviour
         isParryingOne = false;
         isParryingTwo = false;
         anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
+
+        attackOneDown = false;
+        attackTwoDown = false;
+        attackDown = false;
+        attackInputTimer = 0;
     }
     #endregion
 
@@ -252,15 +248,14 @@ public class PlayerAttack : MonoBehaviour
     public bool IsAttacking { get; private set; }
     private void HandleAttack()
     {
-        if (attackTimer > 0)
-        {
-            attackTimer -= Time.fixedDeltaTime;
-            return;
-        }
+        anim.SetBool("attackHeld", attackHeld);
 
-        if (!attackDown) return;
+        if (attackTimer > 0) attackTimer -= Time.fixedDeltaTime;
 
-        if (!IsAttacking && !IsParrying && !IsCharging) ExecuteAttack();
+        if (!attackHeld) return;
+        if (IsParrying || chargeHeld) return;
+
+        ExecuteAttack();
 
         attackOneDown = false;
         attackTwoDown = false;
@@ -270,11 +265,23 @@ public class PlayerAttack : MonoBehaviour
 
     private void ExecuteAttack()
     {
-        IsAttacking = true;
-        anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
-        attackTimer = stats.TimeBetweenAttacks;
+        if (attackDown)
+        {
+            IsAttacking = true;
+            anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
+        }
 
-        if (attackOneDown)
+        if (attackTimer <= 0)
+        {
+            attackTimer = stats.TimeBetweenAttacks;
+            anim.SetTrigger("Attack");
+            print("Attack");
+        }
+    }
+
+    private void Attack()
+    {
+        if (attackOneHeld)
         {
             if (heldAttackOne.Item1 == null || heldAttackOne.Item2 < heldAttackOne.Item1.IdentifyAmount) return;
 
@@ -283,7 +290,7 @@ public class PlayerAttack : MonoBehaviour
             Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
             projectile.Initialize(launchDirection, heldAttackOne.Item1.PlayerLaunchForce);
         }
-        else if (attackTwoDown)
+        else if (attackTwoHeld)
         {
             if (heldAttackTwo.Item1 == null || heldAttackTwo.Item2 < heldAttackTwo.Item1.IdentifyAmount) return;
 
