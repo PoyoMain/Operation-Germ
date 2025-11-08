@@ -39,7 +39,7 @@ public class BossHealth : MonoBehaviour, IDamageable
     {
         if (collision.TryGetComponent(out DamageComponent damageComponent))
         {
-            if (collision.CompareTag("Player") && !IsInvincible)
+            if (!IsInvincible)
             {
                 Damage(damageComponent.Damage);
             }

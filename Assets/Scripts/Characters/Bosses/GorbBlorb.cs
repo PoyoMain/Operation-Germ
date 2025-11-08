@@ -22,6 +22,10 @@ public class GorbBlorb : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float jumpAngle;
     [SerializeField] private float slamForce;
+    [SerializeField] private ProjectileSO slamProjectileData;
+    [SerializeField] private Transform slamProjectileSpawnPointFront;
+    [SerializeField] private Transform slamProjectileSpawnPointBack;
+    [SerializeField] private float slamProjectileLaunchForce;
 
     [Header("Poison Spine Settings")]
     [SerializeField] private int numberOfSpinesToShoot;
@@ -280,10 +284,20 @@ public class GorbBlorb : MonoBehaviour
 
         while (rb.linearVelocity.y < -0.1f) yield return null;
 
+        SpawnSlamProjectiles();
         anim.SetBool(ANIM_IS_ATTACKING__PARAM, false);
         EndAttack();
         ChangeState(State.Waiting);
         yield break;
+    }
+
+    private void SpawnSlamProjectiles()
+    {
+        IProjectile projectile = Instantiate(slamProjectileData.EnemyProjectile, slamProjectileSpawnPointFront.position, Quaternion.identity).GetComponent<IProjectile>();
+        projectile.Initialize(transform.right, slamProjectileLaunchForce);
+
+        projectile = Instantiate(slamProjectileData.EnemyProjectile, slamProjectileSpawnPointBack.position, Quaternion.identity).GetComponent<IProjectile>();
+        projectile.Initialize(-transform.right, slamProjectileLaunchForce);
     }
     #endregion
 

@@ -177,12 +177,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDirection()
     {
-        if (playerAttack.IsCharging)
+        if (IsGrounded && (playerAttack.IsCharging || playerAttack.IsParrying || playerAttack.IsAttacking))
         {
-            velocity.x = 0;
+            var deceleration = IsGrounded ? stats.GroundActionDeceleration : stats.AirActionDeceleration;
+            velocity.x = Mathf.MoveTowards(velocity.x, 0, deceleration * Time.fixedDeltaTime);
             return;
         }
-        else if (moveInput.x == 0 || playerAttack.IsParrying || playerAttack.IsAttacking)
+
+        if (moveInput.x == 0)
         {
             var deceleration = IsGrounded ? stats.GroundDeceleration : stats.AirDeceleration;
             velocity.x = Mathf.MoveTowards(velocity.x, 0, deceleration * Time.fixedDeltaTime);
@@ -192,6 +194,8 @@ public class PlayerMovement : MonoBehaviour
             var maxSpeed = IsGrounded ? stats.MaxGroundSpeed : stats.MaxAirSpeed;
             velocity.x = Mathf.MoveTowards(velocity.x, moveInput.x * maxSpeed, stats.HorizontalAcceleration * Time.fixedDeltaTime);
         }
+
+        if (playerAttack.IsCharging || playerAttack.IsParrying || playerAttack.IsAttacking) return;
 
         // Rotate GameObject based on movement input
         if (moveInput.x > 0 && transform.localEulerAngles.y != ROTATION_FACING_RIGHT)

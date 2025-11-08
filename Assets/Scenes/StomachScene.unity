@@ -711,6 +711,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 298302161}
   m_CullTransparentMesh: 1
+--- !u!1 &310639680
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310639681}
+  m_Layer: 10
+  m_Name: SlamSpawnFront
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &310639681
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310639680}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.75, y: -1.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1004180679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &376319973
 GameObject:
   m_ObjectHideFlags: 0
@@ -1683,6 +1714,7 @@ GameObject:
   - component: {fileID: 859305039}
   - component: {fileID: 859305041}
   - component: {fileID: 859305040}
+  - component: {fileID: 859305042}
   m_Layer: 9
   m_Name: Player
   m_TagString: Untagged
@@ -1723,6 +1755,8 @@ MonoBehaviour:
     HorizontalAcceleration: 120
     GroundDeceleration: 80
     AirDeceleration: 80
+    GroundActionDeceleration: 80
+    AirActionDeceleration: 0
     GroundingForce: -1.5
     GrounderDistance: 0.07
     PlatformDistance: 0.1
@@ -1795,7 +1829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a7cd1f4928b3e4caf7309b00389f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 100
+  startHealth: 20
   invincibilityTime: 1
 --- !u!95 &859305040
 Animator:
@@ -1841,6 +1875,20 @@ MonoBehaviour:
     TimeBetweenParries: 0.2
     ChargeRate: 2
   attackSpawnTransform: {fileID: 472348762}
+--- !u!114 &859305042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859305033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87fea3e7f846c454a820a6faac573527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashTime: 0.25
 --- !u!1 &1003367371
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,6 +2054,8 @@ Transform:
   m_Children:
   - {fileID: 1838625770}
   - {fileID: 1600770225}
+  - {fileID: 310639681}
+  - {fileID: 2000176436}
   m_Father: {fileID: 1589923541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1026284450
@@ -2263,6 +2313,10 @@ MonoBehaviour:
   jumpForce: 11
   jumpAngle: 60
   slamForce: 8
+  slamProjectileData: {fileID: 11400000, guid: 7ad819869b5d82e4da4eb42e3771404c, type: 2}
+  slamProjectileSpawnPointFront: {fileID: 310639681}
+  slamProjectileSpawnPointBack: {fileID: 2000176436}
+  slamProjectileLaunchForce: 8
   numberOfSpinesToShoot: 3
   timeBetweenPoisonSpines: 0.5
   poisonSpineData: {fileID: 11400000, guid: 1330a085278a9924ba8f22de0fc12e8c, type: 2}
@@ -3397,7 +3451,7 @@ Transform:
   m_GameObject: {fileID: 1838625769}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.53, y: 1.2, z: 0}
+  m_LocalPosition: {x: -1.07, y: 2.41, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3608,7 +3662,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 552b32e2f49778b41a8fc0b2d4d5d4d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3640,6 +3694,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2000176435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2000176436}
+  m_Layer: 10
+  m_Name: SlamSpawnBack
+  m_TagString: Enemy
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2000176436
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2000176435}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.63, y: -1.01, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1004180679}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2007067054
 GameObject:
   m_ObjectHideFlags: 0
