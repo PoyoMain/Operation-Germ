@@ -19,18 +19,10 @@ public class PoisonLob : MonoBehaviour, IProjectile
 
     private void FixedUpdate()
     {
-        if (rb.linearVelocity.magnitude > 0.01f) // Only rotate if moving
+        if (rb.linearVelocity.magnitude > 0.01f)
         {
-            // Calculate the direction of movement from the current velocity
             Vector2 direction = rb.linearVelocity;
-
-            // Calculate the angle in degrees
-            // Mathf.Atan2 returns the angle in radians between the x-axis and a 2D vector
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
-            // Apply the rotation to the transform
-            // Quaternion.Euler creates a rotation from Euler angles (around the Z-axis for 2D)
-            // Add the offset if needed so the sprite's "forward" direction aligns with the arc
             transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
 
             if (direction.x < 0) sRend.flipY = true;

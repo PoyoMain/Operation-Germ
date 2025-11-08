@@ -21,6 +21,8 @@ public struct PlayerMovementStats
     public float HorizontalAcceleration;
     public float GroundDeceleration;
     public float AirDeceleration;
+    public float GroundActionDeceleration;
+    public float AirActionDeceleration;
     public float GroundingForce;
     public float GrounderDistance;
     public float PlatformDistance;

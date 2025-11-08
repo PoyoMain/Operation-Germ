@@ -82,6 +82,7 @@ public class PlayerAttack : MonoBehaviour
         HandleInputTimers();
         HandleRelease();
         HandleCharge();
+        HandleParry();
         HandleAttack();
     }
 
@@ -243,6 +244,57 @@ public class PlayerAttack : MonoBehaviour
     }
     #endregion
 
+    #region Parry
+    private float parryTimer;
+    private bool isParryingOne;
+    private bool isParryingTwo;
+    public bool IsParrying => isParryingOne || isParryingTwo;
+
+    private void HandleParry()
+    {
+        if (parryTimer > 0)
+        {
+            parryTimer -= Time.fixedDeltaTime;
+            return;
+        }
+
+        if (!attackDown) return;
+        if (IsAttacking) return;
+        if (attackOneDown && CanUseAttackOne) return;
+        else if (attackTwoDown && CanUseAttackTwo) return;
+
+        ExecuteParry();
+
+        attackOneDown = false;
+        attackTwoDown = false;
+        attackDown = false;
+        attackInputTimer = 0;
+    }
+
+    private void ExecuteParry()
+    {
+        if (IsParrying) return;
+
+        if (attackOneDown) isParryingOne = true;
+        else if (attackTwoDown) isParryingTwo = true;
+        anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
+
+    }
+
+    private void EndParry()
+    {
+        Invoke(nameof(EndParryNextFrame), Time.fixedDeltaTime);
+    }
+
+    private void EndParryNextFrame()
+    {
+        parryTimer = stats.TimeBetweenParries;
+        isParryingOne = false;
+        isParryingTwo = false;
+        anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
+    }
+    #endregion
+
     #region Attack
     private float attackTimer;
     private float attackCooldown;
@@ -259,8 +311,6 @@ public class PlayerAttack : MonoBehaviour
 
         if (!attackDown) return;
         if (IsAttacking) return;
-        if (attackOneDown && !CanUseAttackOne) ExecuteParry();
-        else if (attackTwoDown && !CanUseAttackTwo) ExecuteParry();
         else if (!IsParrying && !chargeHeld) ExecuteAttack();
 
         attackOneDown = false;
@@ -303,34 +353,6 @@ public class PlayerAttack : MonoBehaviour
         IsAttacking = false;
         attackTimer = attackCooldown;
         anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
-    }
-    #endregion
-
-    #region Parry
-    private bool isParryingOne;
-    private bool isParryingTwo;
-    public bool IsParrying => isParryingOne || isParryingTwo;
-    private void ExecuteParry()
-    {
-        if (IsParrying) return;
-
-        if (attackOneDown) isParryingOne = true;
-        else if (attackTwoDown) isParryingTwo = true;
-        anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
-
-    }
-
-    private void EndParry()
-    {
-        Invoke(nameof(EndParryNextFrame), Time.fixedDeltaTime);
-    }
-
-    private void EndParryNextFrame()
-    {
-        isParryingOne = false;
-        isParryingTwo = false;
-        anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
-        print("End Parry");
     }
     #endregion
 }
