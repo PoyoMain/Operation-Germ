@@ -1888,7 +1888,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &859305034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2695,10 +2695,12 @@ MonoBehaviour:
   timeBetweenPoisonLobs: 1
   poisonLobData: {fileID: 11400000, guid: 12fdbbc4e97243e40823076d6ecf3348, type: 2}
   poisonLobFireTransform: {fileID: 1838625770}
-  lobLaunchAngle: 45
-  lobLaunchForce: 8
-  jumpForce: 16
-  jumpAngle: 55
+  minLobLaunchAngle: 25
+  maxLobLaunchAngle: 65
+  minLobLaunchForce: 5
+  maxLobLaunchForce: 15
+  jumpForce: 15
+  jumpAngle: 65
   slamForce: 20
   slamProjectileData: {fileID: 11400000, guid: 7ad819869b5d82e4da4eb42e3771404c, type: 2}
   slamProjectileSpawnPointFront: {fileID: 310639681}
@@ -2708,7 +2710,7 @@ MonoBehaviour:
   timeBetweenPoisonSpines: 0.5
   poisonSpineData: {fileID: 11400000, guid: 1330a085278a9924ba8f22de0fc12e8c, type: 2}
   poisonSpineSpawnPoint: {fileID: 1600770225}
-  spineLaunchForce: 20
+  spineLaunchForce: 15
 --- !u!50 &1589923543
 Rigidbody2D:
   serializedVersion: 5

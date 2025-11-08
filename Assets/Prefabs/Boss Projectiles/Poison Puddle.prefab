@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1099670740508950493}
   - component: {fileID: 7009792346642980248}
+  - component: {fileID: 7217568344954201597}
   m_Layer: 13
   m_Name: Poison Puddle
   m_TagString: Untagged
@@ -61,6 +62,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7217568344954201597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4441014841914799530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c64c53a92665e44bfdffd9b0371885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 5
 --- !u!1 &5048804632902930083
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
-  dealKnockback: 1
+  dealKnockback: 0
 --- !u!50 &8727145186684892774
 Rigidbody2D:
   serializedVersion: 5
