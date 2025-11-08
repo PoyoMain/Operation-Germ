@@ -24,6 +24,7 @@ public class PlayerMovement : MonoBehaviour
     // Private Veriables
     private Rigidbody2D rb;
     private Animator anim;
+    private PlayerAttack playerAttack;
     private Vector2 moveInput;
     private Vector2 velocity;
     private bool jumpDown;
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
     {
         TryGetComponent(out rb);
         TryGetComponent(out anim);
+        TryGetComponent(out playerAttack);
 
         cachedQueryStartInColliders = Physics2D.queriesStartInColliders;
     }
@@ -169,11 +171,16 @@ public class PlayerMovement : MonoBehaviour
     #endregion
 
     #region Horizontal
-    public bool IsMoving { get => moveInput.x == 0; private set => IsMoving = value; }
+    public bool IsMoving { get => moveInput.x != 0; private set => IsMoving = value; }
 
     private void HandleDirection()
     {
-        if (moveInput.x == 0)
+        if (playerAttack.IsCharging)
+        {
+            velocity.x = 0;
+            return;
+        }
+        else if (moveInput.x == 0 || playerAttack.IsParrying || playerAttack.IsAttacking)
         {
             var deceleration = IsGrounded ? stats.GroundDeceleration : stats.AirDeceleration;
             velocity.x = Mathf.MoveTowards(velocity.x, 0, deceleration * Time.fixedDeltaTime);

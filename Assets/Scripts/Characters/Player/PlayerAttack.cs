@@ -13,6 +13,7 @@ public class PlayerAttack : MonoBehaviour
 
     private const string ANIM_ATTACK_PARAM = "IsAttacking";
     private const string ANIM_PARRY_PARAM = "IsParrying";
+    private const string ANIM_CHARGE_PARAM = "IsCharging";
 
     private bool attackDown;
     private bool attackOneDown;
@@ -44,8 +45,17 @@ public class PlayerAttack : MonoBehaviour
 
     private void GetInput()
     {
-        attackOneHeld = Controls.AttackOne.IsPressed();
-        attackTwoHeld = Controls.AttackTwo.IsPressed();
+        if (playerMovement.IsGrounded)
+        {
+            attackOneHeld = Controls.AttackOne.IsPressed();
+            attackTwoHeld = Controls.AttackTwo.IsPressed();
+        }
+        else
+        {
+            attackOneHeld = false;
+            attackTwoHeld = false;
+        }
+
         attackHeld = (attackOneHeld || attackTwoHeld);
         chargeHeld = Controls.Charge.IsPressed() && attackHeld;
 
@@ -176,6 +186,7 @@ public class PlayerAttack : MonoBehaviour
             isChargingOne = false;
             isChargingTwo = false;
             chargeTimer = 0;
+            anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
         }
 
         if (IsParrying || IsAttacking) return;
@@ -191,7 +202,11 @@ public class PlayerAttack : MonoBehaviour
         { 
             if (heldAttackOne.Item1 == null) return;
 
-            if (!isChargingOne) isChargingOne = true;
+            if (!isChargingOne)
+            {
+                isChargingOne = true;
+                anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
+            }
 
             if (chargeTimer > 0)
             {
@@ -210,7 +225,11 @@ public class PlayerAttack : MonoBehaviour
         {
             if (heldAttackTwo.Item1 == null) return;
 
-            if (!isChargingTwo) isChargingTwo = true;
+            if (!isChargingTwo)
+            {
+                isChargingTwo = true;
+                anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
+            }
 
             if (chargeTimer > 0)
             {
