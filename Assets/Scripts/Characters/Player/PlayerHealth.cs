@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private int health;
     private float invincibleTimer;
     private PlayerAttack playerAttack;
+    private DamageFlash damageFlash;
 
     public int Health => health;
     public float InvincibilityTime => invincibilityTime;
@@ -16,6 +17,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     private void Awake()
     {
         TryGetComponent(out playerAttack);
+        TryGetComponent(out damageFlash);
     }
 
     private void Start()
@@ -35,7 +37,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         if (collision.TryGetComponent(out DamageComponent damageComponent))
         {
-            if (collision.CompareTag("Enemy") && !IsInvincible && !playerAttack.IsParrying)
+            if (!IsInvincible && !playerAttack.IsParrying)
             {
                 Damage(damageComponent.Damage);
             }
@@ -46,5 +48,6 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     {
         health -= amount;
         invincibleTimer = invincibilityTime;
+        damageFlash.CallDamageFlash();
     }
 }
