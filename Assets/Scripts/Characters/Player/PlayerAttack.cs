@@ -84,6 +84,7 @@ public class PlayerAttack : MonoBehaviour
         HandleCharge();
         HandleParry();
         HandleAttack();
+        HandleDraining();
     }
 
     private void HandleInputTimers()
@@ -218,6 +219,7 @@ public class PlayerAttack : MonoBehaviour
             if (!isChargingOne)
             {
                 isChargingOne = true;
+                drainTimerOne = 0;
                 anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
             }
 
@@ -241,6 +243,7 @@ public class PlayerAttack : MonoBehaviour
             if (!isChargingTwo)
             {
                 isChargingTwo = true;
+                drainTimerTwo = 0;
                 anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
             }
 
@@ -368,6 +371,45 @@ public class PlayerAttack : MonoBehaviour
         IsAttacking = false;
         attackTimer = attackCooldown;
         anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
+    }
+    #endregion
+
+    #region Drain
+    private float drainTimerOne;
+    private float drainTimerTwo;
+    private void HandleDraining()
+    {
+        if (!isChargingOne && heldAttackOne.Item1 != null && heldAttackOne.Item2 < heldAttackOne.Item1.IdentifyAmount && heldAttackOne.Item2 > 0)
+        {
+            if (drainTimerOne > 0)
+            {
+                drainTimerOne -= Time.fixedDeltaTime;
+
+                if (drainTimerOne <= 0)
+                {
+                    heldAttackOne.Item2++;
+                    drainTimerOne = stats.DrainRate;
+                    print(heldAttackOne.Item1.name + ": " + heldAttackOne.Item2);
+                }
+            }
+            else drainTimerOne = stats.DrainRate;
+        }
+
+        if (!isChargingTwo && heldAttackTwo.Item1 != null && heldAttackTwo.Item2 < heldAttackTwo.Item1.IdentifyAmount && heldAttackTwo.Item2 > 0)
+        {
+            if (drainTimerTwo > 0)
+            {
+                drainTimerTwo -= Time.fixedDeltaTime;
+
+                if (drainTimerTwo <= 0)
+                {
+                    heldAttackTwo.Item2++;
+                    drainTimerTwo = stats.DrainRate;
+                    print(heldAttackTwo.Item1.name + ": " + heldAttackTwo.Item2);
+                }
+            }
+            else drainTimerTwo = stats.DrainRate;
+        }
     }
     #endregion
 }
