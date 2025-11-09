@@ -629,7 +629,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 986415857}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c88f5cead0c0b2a4eb05b5900433f8d1, type: 3}
   m_Name: 
@@ -638,7 +638,7 @@ MonoBehaviour:
   m_AssetsPPU: 64
   m_RefResolutionX: 1920
   m_RefResolutionY: 1080
-  m_CropFrame: 1
+  m_CropFrame: 3
   m_GridSnapping: 0
   m_FilterMode: 0
   m_UpscaleRT: 0
@@ -1851,6 +1851,8 @@ MonoBehaviour:
   bossPart: 4
   waitTime: 2
   CreepOrbData: {fileID: 0}
+  minCreepOrbsToSpawn: 0
+  maxCreepOrbsToSpawn: 0
   RingOrbProjectileData: {fileID: 0}
   MindWaveData: {fileID: 0}
 --- !u!95 &2109577918
