@@ -18,4 +18,7 @@ public struct PlayerAttackStats
 
     [Header("Charging")]
     public float ChargeRate;
+
+    [Header("Draining")]
+    public float DrainRate;
 }
