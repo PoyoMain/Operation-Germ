@@ -387,7 +387,7 @@ public class PlayerAttack : MonoBehaviour
 
                 if (drainTimerOne <= 0)
                 {
-                    heldAttackOne.Item2++;
+                    heldAttackOne.Item2--;
                     drainTimerOne = stats.DrainRate;
                     print(heldAttackOne.Item1.name + ": " + heldAttackOne.Item2);
                 }
@@ -403,7 +403,7 @@ public class PlayerAttack : MonoBehaviour
 
                 if (drainTimerTwo <= 0)
                 {
-                    heldAttackTwo.Item2++;
+                    heldAttackTwo.Item2--;
                     drainTimerTwo = stats.DrainRate;
                     print(heldAttackTwo.Item1.name + ": " + heldAttackTwo.Item2);
                 }
