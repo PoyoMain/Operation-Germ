@@ -11,6 +11,8 @@ public class Bimbly : MonoBehaviour
 
     [Header("Creep Orb Settings")]
     [SerializeField] private ProjectileSO CreepOrbData;
+    [SerializeField] private int minCreepOrbsToSpawn;
+    [SerializeField] private int maxCreepOrbsToSpawn;
 
     [Header("RingOrbs Settings")]
     [SerializeField] private ProjectileSO RingOrbProjectileData;
@@ -191,7 +193,8 @@ public class Bimbly : MonoBehaviour
 
     private IEnumerator CreepOrbCoroutine()
     {
-        
+        int numberToSpawn = Random.Range(minCreepOrbsToSpawn, maxCreepOrbsToSpawn + 1);
+
         yield break;
     }
 

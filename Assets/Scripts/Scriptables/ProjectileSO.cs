@@ -7,6 +7,7 @@ public class ProjectileSO : ScriptableObject
     [SerializeField] private float playerLaunchAngle;
     [SerializeField] private float playerLaunchForce;
     [SerializeField] private float playerCooldown;
+    [SerializeField] private Sprite iconSprite;
     [SerializeField] private GameObject enemyProjectile;
     [SerializeField] private GameObject playerProjectile;
 
@@ -14,6 +15,7 @@ public class ProjectileSO : ScriptableObject
     public float PlayerLaunchAngle => playerLaunchAngle;
     public float PlayerLaunchForce => playerLaunchForce;
     public float PlayerCooldown => playerCooldown;
+    public Sprite IconSprite => iconSprite;
     public GameObject EnemyProjectile => enemyProjectile;
     public GameObject PlayerProjectile => playerProjectile;
 }

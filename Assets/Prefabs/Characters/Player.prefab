@@ -532,6 +532,12 @@ MonoBehaviour:
     ChargeRate: 2
     DrainRate: 8
   attackSpawnTransform: {fileID: 4006388121315016009}
+  projectileOneRegisteredEventSO: {fileID: 11400000, guid: 18206bc720fcfde429d681fd83435169, type: 2}
+  projectileTwoRegisteredEventSO: {fileID: 11400000, guid: c64c222873d600b41b319d64a5668fb8, type: 2}
+  projectileOnePercentUpdatedEventSO: {fileID: 11400000, guid: 98485243b00f86f4ea7fbdc60d8acc11, type: 2}
+  projectileTwoPercentUpdatedEventSO: {fileID: 11400000, guid: 65095adb7bcad154f9eb71de2f3b8016, type: 2}
+  projectileOneReleasedEventSO: {fileID: 11400000, guid: 550ca9f678b2ce5499c3fc18ec5316cc, type: 2}
+  projectileTwoReleasedEventSO: {fileID: 11400000, guid: 045fef38c70cfec4da9a98f5458ed53d, type: 2}
 --- !u!95 &8549887729817095356
 Animator:
   serializedVersion: 7

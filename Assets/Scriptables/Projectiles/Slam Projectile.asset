@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358def4896bb2054ea7ede45965f0adc, type: 3}
   m_Name: Slam Projectile
   m_EditorClassIdentifier: 
-  identifyAmount: 0
+  identifyAmount: 5
   playerLaunchAngle: 0
   playerLaunchForce: 9
   playerCooldown: 0.25
+  iconSprite: {fileID: 21300000, guid: d6ab27307cbc0ca49b8ee7379482b768, type: 3}
   enemyProjectile: {fileID: 1672236079810485589, guid: 28947cec0f7f5a24cbb3d5cc70c03f01, type: 3}
   playerProjectile: {fileID: 1672236079810485589, guid: 6471ce6ae4111594d83dbe3485371ada, type: 3}
