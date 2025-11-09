@@ -11,6 +11,14 @@ public class PlayerAttack : MonoBehaviour
     [Header("Components")]
     [SerializeField] private Transform attackSpawnTransform;
 
+    [Header("Broadcast Events")]
+    [SerializeField] private ProjectileEventSO projectileOneRegisteredEventSO;
+    [SerializeField] private ProjectileEventSO projectileTwoRegisteredEventSO;
+    [SerializeField] private FloatEventSO projectileOnePercentUpdatedEventSO;
+    [SerializeField] private FloatEventSO projectileTwoPercentUpdatedEventSO;
+    [SerializeField] private VoidEventSO projectileOneReleasedEventSO;
+    [SerializeField] private VoidEventSO projectileTwoReleasedEventSO;
+
     private const string ANIM_ATTACK_PARAM = "IsAttacking";
     private const string ANIM_PARRY_PARAM = "IsParrying";
     private const string ANIM_CHARGE_PARAM = "IsCharging";
@@ -133,6 +141,7 @@ public class PlayerAttack : MonoBehaviour
 
             heldAttackOne.Item1 = null;
             heldAttackOne.Item2 = 0;
+            projectileOneReleasedEventSO.RaiseEvent();
         }
         else if (attackTwoDown)
         {
@@ -140,6 +149,7 @@ public class PlayerAttack : MonoBehaviour
 
             heldAttackTwo.Item1 = null;
             heldAttackTwo.Item2 = 0;
+            projectileTwoReleasedEventSO.RaiseEvent();
         }
     }
     #endregion
@@ -161,26 +171,31 @@ public class PlayerAttack : MonoBehaviour
         if (playerMovement.IsInKnockback) return;
 
         IProjectile projectile = collider.GetComponentInParent<IProjectile>();
-        if (projectile != null)
+        if (projectile == null) return;
+
+        if (isParryingOne)
         {
-            if (isParryingOne)
+            if (heldAttackOne.Item1 == projectile.ProjectileData) heldAttackOne.Item2++;
+            else
             {
-                if (heldAttackOne.Item1 == projectile.ProjectileData) heldAttackOne.Item2++;
-                else
-                {
-                    heldAttackOne.Item1 = projectile.ProjectileData;
-                    heldAttackOne.Item2 = 1;
-                }
+                heldAttackOne.Item1 = projectile.ProjectileData;
+                heldAttackOne.Item2 = 1;
+                projectileOneRegisteredEventSO.RaiseEvent(heldAttackOne.Item1);
             }
-            else if (isParryingTwo)
+
+            projectileOnePercentUpdatedEventSO.RaiseEvent(heldAttackOne.Item2 / heldAttackOne.Item1.IdentifyAmount);
+        }
+        else if (isParryingTwo)
+        {
+            if (heldAttackTwo.Item1 == projectile.ProjectileData) heldAttackTwo.Item2++;
+            else
             {
-                if (heldAttackTwo.Item1 == projectile.ProjectileData) heldAttackTwo.Item2++;
-                else
-                {
-                    heldAttackTwo.Item1 = projectile.ProjectileData;
-                    heldAttackTwo.Item2 = 1;
-                }
+                heldAttackTwo.Item1 = projectile.ProjectileData;
+                heldAttackTwo.Item2 = 1;
+                projectileTwoRegisteredEventSO.RaiseEvent(heldAttackTwo.Item1);
             }
+
+            projectileTwoPercentUpdatedEventSO.RaiseEvent(heldAttackTwo.Item2 / heldAttackTwo.Item1.IdentifyAmount);
         }
     }
     #endregion
@@ -231,6 +246,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     chargeTimer = stats.ChargeRate;
                     heldAttackOne.Item2++;
+                    projectileOnePercentUpdatedEventSO.RaiseEvent((float)heldAttackOne.Item2 / heldAttackOne.Item1.IdentifyAmount);
                     print(heldAttackOne.Item1.name + ": " + heldAttackOne.Item2);
                 }
             }
@@ -255,6 +271,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     chargeTimer = stats.ChargeRate;
                     heldAttackTwo.Item2++;
+                    projectileTwoPercentUpdatedEventSO.RaiseEvent((float)heldAttackTwo.Item2 / heldAttackTwo.Item1.IdentifyAmount);
                     print(heldAttackTwo.Item1.name + ": " + heldAttackTwo.Item2);
                 }
             }
@@ -281,10 +298,11 @@ public class PlayerAttack : MonoBehaviour
 
         if (!attackDown) return;
         if (IsAttacking) return;
+        if (IsCharging) return;
         if (attackOneDown && CanUseAttackOne) return;
         else if (attackTwoDown && CanUseAttackTwo) return;
 
-        ExecuteParry();
+        /*if (!playerMovement.IsInKnockback && !IsParrying && !chargeHeld) */ExecuteParry();
 
         attackOneDown = false;
         attackTwoDown = false;
@@ -379,7 +397,7 @@ public class PlayerAttack : MonoBehaviour
     private float drainTimerTwo;
     private void HandleDraining()
     {
-        if (!isChargingOne && heldAttackOne.Item1 != null && heldAttackOne.Item2 < heldAttackOne.Item1.IdentifyAmount && heldAttackOne.Item2 > 0)
+        if (!isChargingOne && heldAttackOne.Item1 != null && heldAttackOne.Item2 < heldAttackOne.Item1.IdentifyAmount && heldAttackOne.Item2 > 1)
         {
             if (drainTimerOne > 0)
             {
@@ -389,13 +407,14 @@ public class PlayerAttack : MonoBehaviour
                 {
                     heldAttackOne.Item2--;
                     drainTimerOne = stats.DrainRate;
+                    projectileOnePercentUpdatedEventSO.RaiseEvent((float)heldAttackOne.Item2 / heldAttackOne.Item1.IdentifyAmount);
                     print(heldAttackOne.Item1.name + ": " + heldAttackOne.Item2);
                 }
             }
             else drainTimerOne = stats.DrainRate;
         }
 
-        if (!isChargingTwo && heldAttackTwo.Item1 != null && heldAttackTwo.Item2 < heldAttackTwo.Item1.IdentifyAmount && heldAttackTwo.Item2 > 0)
+        if (!isChargingTwo && heldAttackTwo.Item1 != null && heldAttackTwo.Item2 < heldAttackTwo.Item1.IdentifyAmount && heldAttackTwo.Item2 > 1)
         {
             if (drainTimerTwo > 0)
             {
@@ -405,6 +424,7 @@ public class PlayerAttack : MonoBehaviour
                 {
                     heldAttackTwo.Item2--;
                     drainTimerTwo = stats.DrainRate;
+                    projectileTwoPercentUpdatedEventSO.RaiseEvent((float)heldAttackTwo.Item2 / heldAttackTwo.Item1.IdentifyAmount);
                     print(heldAttackTwo.Item1.name + ": " + heldAttackTwo.Item2);
                 }
             }
