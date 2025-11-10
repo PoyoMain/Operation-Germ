@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a75e9628295f82b4099a0ac1120a72ac
+guid: dbbb28700cc2bb346bf3b82020bed343
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6547922726801233950
-    second: Brain_Base-export-1.png_0
+      213: -8848224955150686515
+    second: Mech_Hand_Correct_Orientation_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -49,8 +49,8 @@ TextureImporter:
   spriteMode: 1
   spriteExtrude: 0
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.25}
   spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Brain_Base-export-1.png_0
+      name: Mech_Hand_Correct_Orientation_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 4
-        width: 176
-        height: 242
+        x: 136
+        y: 110
+        width: 240
+        height: 293
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2e72e4ce8fa1125a0800000000000000
-      internalID: -6547922726801233950
+      spriteID: dc62f7f784ac43580800000000000000
+      internalID: -8848224955150686515
       vertices: []
       indices: 
       edges: []
@@ -139,7 +139,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Brain_Base-export-1.png_0: -6547922726801233950
+      Mech_Hand_Correct_Orientation_0: -8848224955150686515
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
