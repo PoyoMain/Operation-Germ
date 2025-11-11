@@ -10,7 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 9124638228738026255}
   - component: {fileID: 4638593484632265961}
-  m_Layer: 11
+  - component: {fileID: 8929148169837053833}
+  m_Layer: 13
   m_Name: Hitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -67,7 +68,21 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 1
+--- !u!114 &8929148169837053833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6047928541703175429}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ee5c0fc3729ab34eaccd64768be83c6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 1
+  dealKnockback: 1
 --- !u!1 &6462827778340201332
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8471118681372743528}
   - component: {fileID: 5806425456298224981}
-  m_Layer: 20
+  m_Layer: 21
   m_Name: Sprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,8 +181,9 @@ GameObject:
   - component: {fileID: 4163316719486311377}
   - component: {fileID: 6582609759372046341}
   - component: {fileID: 3690217057953345272}
-  m_Layer: 20
-  m_Name: RingOrbSingular
+  - component: {fileID: 7085804075307096677}
+  m_Layer: 21
+  m_Name: Creep Orb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,6 +256,23 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &7085804075307096677
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6760402911400442710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e68a270c7a2b19e438b19bf916f5bb11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectileDataReference: {fileID: 11400000, guid: ccfca8325672d7b48a150bdc53f70e5b, type: 2}
+  trackTarget: 0
+  timeToMove: 0.4
+  timeBetweenMoves: 1
+  timesToMoveToPlayer: 3
 --- !u!1 &6907899478970244093
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,7 +283,7 @@ GameObject:
   m_Component:
   - component: {fileID: 597158338727626305}
   - component: {fileID: 8009192794925162243}
-  m_Layer: 20
+  m_Layer: 21
   m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -302,9 +335,9 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 1

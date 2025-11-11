@@ -35,7 +35,6 @@ public class HeldMoveIcon : MonoBehaviour
     {
         SetIconVisibility(true);
         SetIconSprite(projectile.IconSprite);
-        SetFillAmount(1 / projectile.IdentifyAmount);
     }
 
     private void ReleaseProjectile()

@@ -29,7 +29,7 @@ public class MindWave : MonoBehaviour, IProjectile
     {
         Transform trackTransform;
         if (trackTarget == TrackTarget.Player) trackTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        else trackTransform = GameObject.FindGameObjectWithTag("Enemy Boss").transform;
+        else trackTransform = GameObject.FindGameObjectWithTag("EnemyBoss").transform;
 
         Vector2 direction = (trackTransform.position - transform.position).normalized;
         rb.linearVelocity = direction * power;

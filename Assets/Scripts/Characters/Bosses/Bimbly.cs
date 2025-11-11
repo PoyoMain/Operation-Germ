@@ -16,6 +16,7 @@ public class Bimbly : MonoBehaviour
 
     [Header("RingOrbs Settings")]
     [SerializeField] private ProjectileSO RingOrbProjectileData;
+    [SerializeField] private float ringOrbMoveSpeed;
     [SerializeField, Range(0, 1)] private float chanceToDoRingOrbs;
 
     [Header("Mind Wave Settings")]
@@ -28,6 +29,9 @@ public class Bimbly : MonoBehaviour
     [SerializeField] private Transform teleportPositionLeft;
     [SerializeField] private Transform teleportPositionRight;
     [SerializeField] private Transform teleportPositionMiddle;
+
+    [Header("Listen Events")]
+    [SerializeField] private VoidEventSO neuronHitEventSO;
 
     private const string ANIM_PARAM_IS_ATTACKING = "IsAttacking";
     private const string ANIM_PARAM_CHOSEN_ATTACK = "ChosenAttack";
@@ -51,18 +55,19 @@ public class Bimbly : MonoBehaviour
     private void OnEnable()
     {
         health.OnBossDefeated += BossDefeated;
+        neuronHitEventSO.OnEventRaised += OnNeuronHit;
     }
 
     private void OnDisable()
     {
         health.OnBossDefeated -= BossDefeated;
+        neuronHitEventSO.OnEventRaised -= OnNeuronHit;
     }
 
     private void Start()
     {
-        //mindWaveTimer = mindWaveTime;
-        //teleportTimer = teleportTime;
-        CreepOrbsStart();
+        mindWaveTimer = mindWaveTime;
+        teleportTimer = teleportTime;
     }
 
     private void FixedUpdate()
@@ -82,11 +87,25 @@ public class Bimbly : MonoBehaviour
     #region Creep Orbs
     private void CreepOrbsStart()
     {
-        isAttacking = true;
-        anim.SetInteger(ANIM_PARAM_CHOSEN_ATTACK, CREEP_ORB_ATTACK_INDEX);
-        anim.SetBool(ANIM_PARAM_IS_ATTACKING, isAttacking);
+        StartCoroutine(CreepOrbStartCoroutine());
     }
 
+    private IEnumerator CreepOrbStartCoroutine()
+    {
+        isAttacking = true;
+        StartTeleportation(teleportToMiddle: true);
+        while (isTeleporting) yield return null;
+        yield return new WaitForSeconds(1);
+        
+        anim.SetInteger(ANIM_PARAM_CHOSEN_ATTACK, CREEP_ORB_ATTACK_INDEX);
+        anim.SetBool(ANIM_PARAM_IS_ATTACKING, isAttacking);
+        yield break;
+    }
+
+    private void ActivateCreepOrbs()
+    {
+        StartCoroutine(CreepOrbCoroutine());
+    }
 
     private IEnumerator CreepOrbCoroutine()
     {
@@ -107,11 +126,6 @@ public class Bimbly : MonoBehaviour
         yield break;
     }
 
-    private void ActivateCreepOrbs()
-    {
-        StartCoroutine(CreepOrbCoroutine());
-    }
-
     private void ShootCreepOrb()
     {
         IProjectile projectile = Instantiate(creepOrbData.EnemyProjectile, projectileSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
@@ -122,29 +136,25 @@ public class Bimbly : MonoBehaviour
     #region Ring Orbs
     private void RingOrbsStart()
     {
-        StartCoroutine(RingOrbsCoroutine());
+        StartCoroutine(RingOrbsStartCoroutine());
     }
 
-    private void RingOrbsUpdate()
+    private IEnumerator RingOrbsStartCoroutine()
     {
+        isAttacking = true;
+        StartTeleportation(teleportToMiddle: true);
+        while (isTeleporting) yield return null;
+        yield return new WaitForSeconds(1);
 
-
-    }
-
-    private void RingOrbsEnd()
-    {
-        
-    }
-
-    private IEnumerator RingOrbsCoroutine()
-    {
-       
+        anim.SetInteger(ANIM_PARAM_CHOSEN_ATTACK, RING_ORB_ATTACK_INDEX);
+        anim.SetBool(ANIM_PARAM_IS_ATTACKING, isAttacking);
         yield break;
     }
 
     private void SpawnRingOrbsProjectiles()
     {
-        
+        IProjectile projectile = Instantiate(RingOrbProjectileData.EnemyProjectile, projectileSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
+        projectile.Initialize(Vector2.zero, ringOrbMoveSpeed);
     }
     #endregion
 
@@ -201,7 +211,11 @@ public class Bimbly : MonoBehaviour
 
         if (teleportToMiddle)
         {
-            if (teleportLocation == Location.Middle) return;
+            if (teleportLocation == Location.Middle)
+            {
+                isTeleporting = false;
+                return;
+            }
 
             teleportLocation = Location.Middle;
             anim.SetBool("IsTeleporting", isTeleporting);
@@ -218,7 +232,23 @@ public class Bimbly : MonoBehaviour
                 teleportLocation = Location.Left;
                 anim.SetBool("IsTeleporting", isTeleporting);
             }
+            else
+            {
+                int choice = Random.Range(0, 2);
+                if (choice == 0)
+                {
+                    teleportLocation = Location.Right;
+                    anim.SetBool("IsTeleporting", isTeleporting);
+                }
+                else
+                {
+                    teleportLocation = Location.Left;
+                    anim.SetBool("IsTeleporting", isTeleporting);
+                }
+            }
         }
+
+        anim.SetBool("IsInMiddle", teleportLocation == Location.Middle);
     }
 
     private void Teleport()

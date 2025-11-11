@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   identifyAmount: 5
   playerLaunchAngle: 0
-  playerLaunchForce: 0
+  playerLaunchForce: 23
   playerCooldown: 1
-  iconSprite: {fileID: -1883807894, guid: 49527ebf73dc28c4e9fdf59e2c426bc6, type: 3}
+  iconSprite: {fileID: 1353967454, guid: ff88e8a5d0ed8f74e83a5454f1a21af0, type: 3}
   enemyProjectile: {fileID: 6760402911400442710, guid: 04de9ebf6407dbc40b819d35b3208096, type: 3}
-  playerProjectile: {fileID: 1214602532376072480, guid: ca896022f472d924eb3ecf6371aef99d, type: 3}
+  playerProjectile: {fileID: 6760402911400442710, guid: f6ec14b350b6c814c8b6fd0302391663, type: 3}

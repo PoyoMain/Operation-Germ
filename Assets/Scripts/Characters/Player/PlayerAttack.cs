@@ -183,7 +183,7 @@ public class PlayerAttack : MonoBehaviour
                 projectileOneRegisteredEventSO.RaiseEvent(heldAttackOne.Item1);
             }
 
-            projectileOnePercentUpdatedEventSO.RaiseEvent(heldAttackOne.Item2 / heldAttackOne.Item1.IdentifyAmount);
+            projectileOnePercentUpdatedEventSO.RaiseEvent((float)heldAttackOne.Item2 / heldAttackOne.Item1.IdentifyAmount);
         }
         else if (isParryingTwo)
         {
@@ -195,7 +195,7 @@ public class PlayerAttack : MonoBehaviour
                 projectileTwoRegisteredEventSO.RaiseEvent(heldAttackTwo.Item1);
             }
 
-            projectileTwoPercentUpdatedEventSO.RaiseEvent(heldAttackTwo.Item2 / heldAttackTwo.Item1.IdentifyAmount);
+            projectileTwoPercentUpdatedEventSO.RaiseEvent((float)heldAttackTwo.Item2 / heldAttackTwo.Item1.IdentifyAmount);
         }
     }
     #endregion

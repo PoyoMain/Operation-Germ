@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileDataReference: {fileID: 11400000, guid: f40fdd25898ed3b4291dde0993d0dc04, type: 2}
-  trackTarget: 0
+  trackTarget: 1
 --- !u!1 &1409313979207738280
 GameObject:
   m_ObjectHideFlags: 0

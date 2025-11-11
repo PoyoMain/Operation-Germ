@@ -146,6 +146,7 @@ public class BimblyHand : MonoBehaviour
         if (hit)
         {
             Vector2 slamPos = hit.point;
+            slamPos.y -= 0.02f;
 
             Tweener tween = transform.DOMoveY(slamPos.y, 0.5f).SetEase(Ease.InExpo);
             bool halfwayDone = false;

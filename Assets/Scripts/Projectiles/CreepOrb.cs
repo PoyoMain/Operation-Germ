@@ -68,8 +68,24 @@ public class CreepOrb : MonoBehaviour, IProjectile
     public void Initialize(Vector2 _, float power)
     {
         if (trackTarget == TrackTarget.Player) trackTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        else trackTransform = GameObject.FindGameObjectWithTag("Enemy Boss").transform;
+        else
+        {
+            GameObject[] targetOptions = GameObject.FindGameObjectsWithTag("EnemyBoss");
 
+            GameObject closestTarget = targetOptions[0];
+            float distanceToClosestTarget = Vector2.Distance(transform.position, closestTarget.transform.position);
+            foreach (GameObject option in targetOptions)
+            {
+                float distance = Vector2.Distance(transform.position, option.transform.position);
+                if (distance < distanceToClosestTarget)
+                {
+                    distanceToClosestTarget = distance;
+                    closestTarget = option;
+                }
+            }
+
+            trackTransform = closestTarget.transform;
+        }
         this.power = power;
         inBetweenMoveTimer = timeBetweenMoves;
     }
