@@ -272,7 +272,7 @@ MonoBehaviour:
   trackTarget: 1
   timeToMove: 0.4
   timeBetweenMoves: 1
-  timesToMoveToPlayer: 2
+  timesToMoveToPlayer: 1
 --- !u!1 &6907899478970244093
 GameObject:
   m_ObjectHideFlags: 0

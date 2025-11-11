@@ -423,9 +423,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 5
   originPoint: {fileID: 7678184771511600575}
-  idleAttackTime: 20
-  trackingAttackTime: 7
-  chanceToHitNeuronWhenTracking: 0.2
+  idleAttackTime: 10
+  trackingAttackTime: 4
+  chanceToHitNeuronWhenTracking: 0.8
   slamForce: 30
   slamStartingPoint: {fileID: 1008569274167505245}
   hitLayers:

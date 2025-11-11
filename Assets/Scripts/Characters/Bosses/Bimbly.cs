@@ -40,6 +40,7 @@ public class Bimbly : MonoBehaviour
     private const int RING_ORB_ATTACK_INDEX = 3;
 
     private Animator anim;
+    private SpriteRenderer sRend;
     private BossHealth health;
     private bool isAttacking;
     private bool isTeleporting;
@@ -49,6 +50,7 @@ public class Bimbly : MonoBehaviour
     private void Awake()
     {
         TryGetComponent(out anim);
+        sRend = GetComponentInChildren<SpriteRenderer>();
         TryGetComponent(out health);
     }
 
@@ -265,6 +267,15 @@ public class Bimbly : MonoBehaviour
             Location.Middle => transform.position = teleportPositionMiddle.position,
             _ => throw new System.NotImplementedException(),
         };
+
+        if (teleportLocation == Location.Left)
+        {
+            sRend.flipX = true;
+        }
+        else if (teleportLocation == Location.Right)
+        {
+            sRend.flipX = false;
+        }
 
         mindWaveTimer = mindWaveTime;
         isTeleporting = false;
