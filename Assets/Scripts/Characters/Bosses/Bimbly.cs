@@ -7,16 +7,16 @@ public class Bimbly : MonoBehaviour
     [SerializeField] private BossPart bossPart;
     [SerializeField] private Transform projectileSpawnPoint;
 
-    [Header("Wait Settings")]
-    [SerializeField] private float waitTime;
-
     [Header("Creep Orb Settings")]
-    [SerializeField] private ProjectileSO CreepOrbData;
+    [SerializeField] private ProjectileSO creepOrbData;
     [SerializeField] private int minCreepOrbsToSpawn;
     [SerializeField] private int maxCreepOrbsToSpawn;
+    [SerializeField] private float timeBetweenCreepOrbs;
+    [SerializeField] private float creepOrbMoveSpeed;
 
     [Header("RingOrbs Settings")]
     [SerializeField] private ProjectileSO RingOrbProjectileData;
+    [SerializeField, Range(0, 1)] private float chanceToDoRingOrbs;
 
     [Header("Mind Wave Settings")]
     [SerializeField] private ProjectileSO mindWaveData;
@@ -25,6 +25,9 @@ public class Bimbly : MonoBehaviour
 
     [Header("Teleport Settings")]
     [SerializeField] private float teleportTime;
+    [SerializeField] private Transform teleportPositionLeft;
+    [SerializeField] private Transform teleportPositionRight;
+    [SerializeField] private Transform teleportPositionMiddle;
 
     private const string ANIM_PARAM_IS_ATTACKING = "IsAttacking";
     private const string ANIM_PARAM_CHOSEN_ATTACK = "ChosenAttack";
@@ -36,6 +39,7 @@ public class Bimbly : MonoBehaviour
     private BossHealth health;
     private bool isAttacking;
     private bool isTeleporting;
+    private Location teleportLocation;
 
     #region Unity Methods
     private void Awake()
@@ -56,45 +60,62 @@ public class Bimbly : MonoBehaviour
 
     private void Start()
     {
-        mindWaveTimer = mindWaveTime;
-        teleportTimer = teleportTime;
+        //mindWaveTimer = mindWaveTime;
+        //teleportTimer = teleportTime;
+        CreepOrbsStart();
     }
 
     private void FixedUpdate()
     {
         MindWavesUpdate();
+        TeleportUpdate();
     }
     #endregion
+
+    private void OnNeuronHit()
+    {
+        float choice = Random.Range(0f, 1f);
+        if (choice <= chanceToDoRingOrbs) RingOrbsStart();
+        else CreepOrbsStart();
+    }
 
     #region Creep Orbs
     private void CreepOrbsStart()
     {
-        StartCoroutine(CreepOrbCoroutine());
+        isAttacking = true;
+        anim.SetInteger(ANIM_PARAM_CHOSEN_ATTACK, CREEP_ORB_ATTACK_INDEX);
+        anim.SetBool(ANIM_PARAM_IS_ATTACKING, isAttacking);
     }
 
-    private void CreepOrbsEnd()
-    {
-        
-    }
 
     private IEnumerator CreepOrbCoroutine()
     {
-        /// Set isattacking to true
-        /// Set mind wave timer to 0
-        /// If not in attack position, teleport
-        /// Play animation
-        /// Animation event determines when isattacking is set to false
-        /// Wait a bit
-        /// Teleport back to original position
-        isAttacking = true;
         int numberToSpawn = Random.Range(minCreepOrbsToSpawn, maxCreepOrbsToSpawn + 1);
+        int numberSpawned = 0;
 
+        while (numberSpawned < numberToSpawn)
+        {
+            ShootCreepOrb();
+            numberSpawned++;
+
+            if (numberSpawned != numberToSpawn) yield return new WaitForSeconds(timeBetweenCreepOrbs);
+            
+            yield return null;
+        }
+
+        EndAttack();
         yield break;
+    }
+
+    private void ActivateCreepOrbs()
+    {
+        StartCoroutine(CreepOrbCoroutine());
     }
 
     private void ShootCreepOrb()
     {
-        
+        IProjectile projectile = Instantiate(creepOrbData.EnemyProjectile, projectileSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
+        projectile.Initialize(Vector2.zero, creepOrbMoveSpeed);
     }
     #endregion
 
@@ -138,7 +159,7 @@ public class Bimbly : MonoBehaviour
 
     private void MindWavesUpdate()
     {
-        if (mindWaveTimer > 0 && !isAttacking)
+        if (mindWaveTimer > 0 && !isAttacking && !isTeleporting)
         {
             mindWaveTimer -= Time.fixedDeltaTime;
 
@@ -162,29 +183,62 @@ public class Bimbly : MonoBehaviour
     
     private void TeleportUpdate()
     {
-        if (teleportTimer > 0 && !isAttacking)
+        if (teleportTimer > 0 && !isAttacking && !isTeleporting)
         {
             teleportTimer -= Time.fixedDeltaTime;
 
             if (teleportTimer <= 0)
             {
                 teleportTimer = teleportTime;
-                Teleport();
+                StartTeleportation(teleportToMiddle: false);
+            }
+        }
+    }
+
+    private void StartTeleportation(bool teleportToMiddle)
+    {
+        isTeleporting = true;
+
+        if (teleportToMiddle)
+        {
+            if (teleportLocation == Location.Middle) return;
+
+            teleportLocation = Location.Middle;
+            anim.SetBool("IsTeleporting", isTeleporting);
+        }
+        else
+        {
+            if (teleportLocation == Location.Left)
+            {
+                teleportLocation = Location.Right;
+                anim.SetBool("IsTeleporting", isTeleporting);
+            }
+            else if (teleportLocation == Location.Right)
+            {
+                teleportLocation = Location.Left;
+                anim.SetBool("IsTeleporting", isTeleporting);
             }
         }
     }
 
     private void Teleport()
     {
-        StartCoroutine(TeleportCoroutine());
+        Invoke(nameof(Reappear), 1);
     }
 
-    private IEnumerator TeleportCoroutine()
+    private void Reappear()
     {
-        isTeleporting = true;
+        transform.position = teleportLocation switch
+        {
+            Location.Left => transform.position = teleportPositionLeft.position,
+            Location.Right => transform.position = teleportPositionRight.position,
+            Location.Middle => transform.position = teleportPositionMiddle.position,
+            _ => throw new System.NotImplementedException(),
+        };
 
+        mindWaveTimer = mindWaveTime;
         isTeleporting = false;
-        yield break;
+        anim.SetBool("IsTeleporting", isTeleporting);
     }
     #endregion
 
@@ -198,5 +252,12 @@ public class Bimbly : MonoBehaviour
     private void BossDefeated()
     {
         BossManager.Instance.DefeatBoss(bossPart);
+    }
+
+    public enum Location
+    {
+        Left,
+        Right,
+        Middle
     }
 }

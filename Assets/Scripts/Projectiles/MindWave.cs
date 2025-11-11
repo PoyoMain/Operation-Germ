@@ -27,9 +27,11 @@ public class MindWave : MonoBehaviour, IProjectile
     }
     public void Initialize(Vector2 _, float power)
     {
-        Transform player = GameObject.FindGameObjectWithTag("Player").transform;
+        Transform trackTransform;
+        if (trackTarget == TrackTarget.Player) trackTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        else trackTransform = GameObject.FindGameObjectWithTag("Enemy Boss").transform;
 
-        Vector2 direction = (player.position - transform.position).normalized;
+        Vector2 direction = (trackTransform.position - transform.position).normalized;
         rb.linearVelocity = direction * power;
     }
 
@@ -56,11 +58,5 @@ public class MindWave : MonoBehaviour, IProjectile
     public void Destroy()
     {
         Destroy(gameObject);
-    }
-
-    private enum TrackTarget
-    {
-        Player,
-        Enemy,
     }
 }

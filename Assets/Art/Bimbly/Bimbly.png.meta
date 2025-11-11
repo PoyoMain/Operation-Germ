@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: cdde7e3e60fc6a04b972dfd9cef9129b
+guid: e6e1024914a589246933f78e9baddabe
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2302418958601274459
-    second: Brain_Base-export_0
+      213: -653710650054683395
+    second: Bimbly-export_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Brain_Base-export_0
+      name: Bimbly-export_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: b54cd8718d5d3ff10800000000000000
-      internalID: 2302418958601274459
+      spriteID: df4d99590ad8de6f0800000000000000
+      internalID: -653710650054683395
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Brain_Base-export_0: 2302418958601274459
+      Bimbly-export_0: -653710650054683395
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

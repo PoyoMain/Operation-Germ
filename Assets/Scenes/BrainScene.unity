@@ -639,6 +639,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aee71be6890b64242988074784d630ac, type: 3}
+--- !u!1 &257719245
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 257719246}
+  m_Layer: 0
+  m_Name: TeleportLocationLeft
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &257719246
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 257719245}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -15, y: -4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901859458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &288439219
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,7 +681,7 @@ GameObject:
   - component: {fileID: 288439222}
   - component: {fileID: 288439221}
   - component: {fileID: 288439220}
-  m_Layer: 17
+  m_Layer: 24
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -773,6 +804,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1651103399}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &377118138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 377118139}
+  m_Layer: 0
+  m_Name: TeleportLocationRight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &377118139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 377118138}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 15, y: -4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901859458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &460436003
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,7 +846,7 @@ GameObject:
   - component: {fileID: 460436006}
   - component: {fileID: 460436005}
   - component: {fileID: 460436004}
-  m_Layer: 17
+  m_Layer: 24
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1035,6 +1097,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 451a52a5c9707f742bddfa9e9f13c3ec, type: 3}
+--- !u!1 &718405016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 718405017}
+  m_Layer: 0
+  m_Name: TeleportLocationMiddle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &718405017
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 718405016}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1901859458}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &846358414
 GameObject:
   m_ObjectHideFlags: 0
@@ -2124,7 +2217,7 @@ GameObject:
   - component: {fileID: 1620274993}
   - component: {fileID: 1620274992}
   - component: {fileID: 1620274991}
-  m_Layer: 17
+  m_Layer: 24
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2287,6 +2380,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1651103399}
+  - component: {fileID: 1651103400}
   m_Layer: 0
   m_Name: Platforms
   m_TagString: Untagged
@@ -2312,6 +2406,28 @@ Transform:
   - {fileID: 288439222}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1651103400
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1651103398}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1766694572
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2546,40 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 1
   dealKnockback: 1
+--- !u!1 &1901859457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901859458}
+  m_Layer: 0
+  m_Name: BossTeleportLocations
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1901859458
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901859457}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 257719246}
+  - {fileID: 718405017}
+  - {fileID: 377118139}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1906783357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2641,7 +2791,7 @@ SpriteRenderer:
   m_SortingLayerID: 585879429
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: cdde7e3e60fc6a04b972dfd9cef9129b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e6e1024914a589246933f78e9baddabe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2843,7 +2993,7 @@ GameObject:
   - component: {fileID: 2109577918}
   m_Layer: 10
   m_Name: Bimbly
-  m_TagString: Untagged
+  m_TagString: EnemyBoss
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2910,15 +3060,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bossPart: 4
   projectileSpawnPoint: {fileID: 514211841}
-  waitTime: 2
-  CreepOrbData: {fileID: 0}
-  minCreepOrbsToSpawn: 0
-  maxCreepOrbsToSpawn: 0
-  RingOrbProjectileData: {fileID: 0}
+  creepOrbData: {fileID: 11400000, guid: ccfca8325672d7b48a150bdc53f70e5b, type: 2}
+  minCreepOrbsToSpawn: 2
+  maxCreepOrbsToSpawn: 3
+  timeBetweenCreepOrbs: 4
+  creepOrbMoveSpeed: 23
+  RingOrbProjectileData: {fileID: 11400000, guid: 9b827a550bd577143b43338ab48eaa10, type: 2}
+  chanceToDoRingOrbs: 0
   mindWaveData: {fileID: 11400000, guid: f40fdd25898ed3b4291dde0993d0dc04, type: 2}
-  mindWaveTime: 5
+  mindWaveTime: 4
   mindWaveShootForce: 8
-  teleportTime: 0
+  teleportTime: 10
+  teleportPositionLeft: {fileID: 257719246}
+  teleportPositionRight: {fileID: 377118139}
+  teleportPositionMiddle: {fileID: 718405017}
 --- !u!95 &2109577918
 Animator:
   serializedVersion: 7
@@ -3023,3 +3178,4 @@ SceneRoots:
   - {fileID: 1651103399}
   - {fileID: 1908634628}
   - {fileID: 193758071}
+  - {fileID: 1901859458}

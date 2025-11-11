@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358def4896bb2054ea7ede45965f0adc, type: 3}
+  m_Name: Ring Orbs
+  m_EditorClassIdentifier: 
+  identifyAmount: 5
+  playerLaunchAngle: 0
+  playerLaunchForce: 9
+  playerCooldown: 0.5
+  iconSprite: {fileID: -1883807894, guid: 49527ebf73dc28c4e9fdf59e2c426bc6, type: 3}
+  enemyProjectile: {fileID: 1214602532376072480, guid: e4e23a794f64a4a4f8fea766a2391eb0, type: 3}
+  playerProjectile: {fileID: 1214602532376072480, guid: ca896022f472d924eb3ecf6371aef99d, type: 3}

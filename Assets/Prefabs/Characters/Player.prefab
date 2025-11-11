@@ -467,7 +467,7 @@ MonoBehaviour:
       m_Bits: 131072
     GroundLayers:
       serializedVersion: 2
-      m_Bits: 131072
+      m_Bits: 16908288
     SnapInput: 1
     VerticalDeadZoneThreshold: 0.7
     HorizontalDeadZoneThreshold: 0.4

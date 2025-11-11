@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - EnemyBoss
   layers:
   - Default
   - TransparentFX
@@ -31,7 +32,7 @@ TagManager:
   - EnemyProjectile
   - 
   - EnemyOnlyInteractLayer
-  - 
+  - PlayerOnlyInteractFloor
   - 
   - 
   - 
