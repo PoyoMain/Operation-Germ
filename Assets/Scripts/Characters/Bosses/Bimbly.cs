@@ -5,6 +5,7 @@ public class Bimbly : MonoBehaviour
 {
     [Header("General Boss Settings")]
     [SerializeField] private BossPart bossPart;
+    [SerializeField] private Transform projectileSpawnPoint;
 
     [Header("Wait Settings")]
     [SerializeField] private float waitTime;
@@ -18,20 +19,23 @@ public class Bimbly : MonoBehaviour
     [SerializeField] private ProjectileSO RingOrbProjectileData;
 
     [Header("Mind Wave Settings")]
-    [SerializeField] private ProjectileSO MindWaveData;
+    [SerializeField] private ProjectileSO mindWaveData;
+    [SerializeField] private float mindWaveTime;
+    [SerializeField] private float mindWaveShootForce;
 
-    private const string ANIM_IS_ATTACKING__PARAM = "IsAttacking";
-    private const string ANIM_CHOSEN_ATTACK_PARAM = "ChosenAttack";
-    private const int CREEP_ORB_ATTACK_INDEX = 1;
-    private const int RING_ORB_ATTACK_INDEX = 2;
-    private const int MIND_WAVE_ATTACK_INDEX = 3;
+    [Header("Teleport Settings")]
+    [SerializeField] private float teleportTime;
 
-    private float waitTimer;
-    private State state = State.Idle;
-    private State previousState;
+    private const string ANIM_PARAM_IS_ATTACKING = "IsAttacking";
+    private const string ANIM_PARAM_CHOSEN_ATTACK = "ChosenAttack";
+    private const int MIND_WAVE_ATTACK_INDEX = 1;
+    private const int CREEP_ORB_ATTACK_INDEX = 2;
+    private const int RING_ORB_ATTACK_INDEX = 3;
+
     private Animator anim;
     private BossHealth health;
     private bool isAttacking;
+    private bool isTeleporting;
 
     #region Unity Methods
     private void Awake()
@@ -52,126 +56,13 @@ public class Bimbly : MonoBehaviour
 
     private void Start()
     {
-        ChangeState(State.Waiting);
+        mindWaveTimer = mindWaveTime;
+        teleportTimer = teleportTime;
     }
 
     private void FixedUpdate()
     {
-        OnStateUpdate();
-    }
-    #endregion
-
-    #region State Management
-    private void ChangeState(State newState)
-    {
-        previousState = state;
-
-        // On Phase End
-        switch (state)
-        {
-            case State.Idle:
-                break;
-            case State.Waiting:
-                WaitEnd();
-                break;
-            case State.CreepOrbs:
-                CreepOrbsEnd();
-                break;
-            case State.RingOrbs:
-                RingOrbsEnd();
-                break;
-            case State.MindWaves:
-                MindWavesEnd();
-                break;
-        }
-
-        // On Phase Start
-        switch (newState)
-        {
-            case State.Idle:
-                break;
-            case State.Waiting:
-                WaitStart();
-                break;
-            case State.CreepOrbs:
-                CreepOrbsStart();
-                break;
-            case State.RingOrbs:
-                RingOrbsStart();
-                break;
-            case State.MindWaves:
-                MindWavesStart();
-                break;
-        }
-
-        state = newState;
-    }
-
-    private void OnStateUpdate()
-    {
-        switch (state)
-        {
-            case State.Idle:
-                break;
-            case State.Waiting:
-                WaitUpdate();
-                break;
-            case State.CreepOrbs:
-                CreepOrbsUpdate();
-                break;
-            case State.RingOrbs:
-                RingOrbsUpdate();
-                break;
-            case State.MindWaves:
-                MindWavesUpdate();
-                break;
-        }
-    }
-    #endregion
-
-    #region Decision
-    public void MakeDecision()
-    {
-        switch (previousState)
-        {
-            case State.Idle:
-                ChangeState(State.CreepOrbs);
-                break;
-            case State.Waiting:
-                break;
-            case State.CreepOrbs:
-                //ChangeState(State.RingOrbs);
-                ChangeState(State.CreepOrbs);
-                break;
-            case State.RingOrbs:
-                ChangeState(State.MindWaves);
-                break;
-            case State.MindWaves:
-                ChangeState(State.CreepOrbs);
-                break;
-        }
-    }
-    #endregion
-
-    #region Waiting
-    private void WaitStart()
-    {
-        waitTimer = waitTime;
-    }
-
-    private void WaitUpdate()
-    {
-        if (waitTimer > 0)
-        {
-            waitTimer -= Time.fixedDeltaTime;
-
-            if (waitTimer <= 0) MakeDecision();
-        }
-    }
-
-    private void WaitEnd()
-    {
-
+        MindWavesUpdate();
     }
     #endregion
 
@@ -181,11 +72,6 @@ public class Bimbly : MonoBehaviour
         StartCoroutine(CreepOrbCoroutine());
     }
 
-    private void CreepOrbsUpdate()
-    {
-
-    }
-
     private void CreepOrbsEnd()
     {
         
@@ -193,6 +79,14 @@ public class Bimbly : MonoBehaviour
 
     private IEnumerator CreepOrbCoroutine()
     {
+        /// Set isattacking to true
+        /// Set mind wave timer to 0
+        /// If not in attack position, teleport
+        /// Play animation
+        /// Animation event determines when isattacking is set to false
+        /// Wait a bit
+        /// Teleport back to original position
+        isAttacking = true;
         int numberToSpawn = Random.Range(minCreepOrbsToSpawn, maxCreepOrbsToSpawn + 1);
 
         yield break;
@@ -234,52 +128,75 @@ public class Bimbly : MonoBehaviour
     #endregion
 
     #region Mind Waves
+    private float mindWaveTimer;
     private void MindWavesStart()
     {
-        StartCoroutine(MindWavesCoroutine());
+        isAttacking = true;
+        anim.SetInteger(ANIM_PARAM_CHOSEN_ATTACK, MIND_WAVE_ATTACK_INDEX);
+        anim.SetBool(ANIM_PARAM_IS_ATTACKING, isAttacking);
     }
 
     private void MindWavesUpdate()
     {
+        if (mindWaveTimer > 0 && !isAttacking)
+        {
+            mindWaveTimer -= Time.fixedDeltaTime;
 
-
-    }
-
-    private void MindWavesEnd()
-    {
-        
-    }
-
-    private IEnumerator MindWavesCoroutine()
-    {
-        
-        yield break;
+            if (mindWaveTimer <= 0)
+            {
+                MindWavesStart();
+                mindWaveTimer = mindWaveTime;
+            }
+        }
     }
 
     private void ShootMindWaves()
     {
-        
+        IProjectile projectile = Instantiate(mindWaveData.EnemyProjectile, projectileSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
+        projectile.Initialize(transform.right, mindWaveShootForce);
+    }
+    #endregion
+
+    #region Teleport
+    private float teleportTimer;
+    
+    private void TeleportUpdate()
+    {
+        if (teleportTimer > 0 && !isAttacking)
+        {
+            teleportTimer -= Time.fixedDeltaTime;
+
+            if (teleportTimer <= 0)
+            {
+                teleportTimer = teleportTime;
+                Teleport();
+            }
+        }
+    }
+
+    private void Teleport()
+    {
+        StartCoroutine(TeleportCoroutine());
+    }
+
+    private IEnumerator TeleportCoroutine()
+    {
+        isTeleporting = true;
+
+        isTeleporting = false;
+        yield break;
     }
     #endregion
 
     private void EndAttack()
     {
         isAttacking = false;
-        anim.SetBool(ANIM_IS_ATTACKING__PARAM, isAttacking);
-        anim.SetInteger(ANIM_CHOSEN_ATTACK_PARAM, 0);
+        anim.SetBool(ANIM_PARAM_IS_ATTACKING, isAttacking);
+        anim.SetInteger(ANIM_PARAM_CHOSEN_ATTACK, 0);
     }
 
     private void BossDefeated()
     {
         BossManager.Instance.DefeatBoss(bossPart);
-    }
-
-    public enum State
-    {
-        Idle,
-        Waiting,
-        CreepOrbs,
-        RingOrbs,
-        MindWaves
     }
 }

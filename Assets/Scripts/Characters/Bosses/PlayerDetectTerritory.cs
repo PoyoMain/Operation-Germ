@@ -8,7 +8,7 @@ public class PlayerDetectTerritory : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.transform.parent.CompareTag("Player"))
         {
             PlayerDetected = true;
             PlayerTransform = collider.transform.parent;
@@ -17,7 +17,7 @@ public class PlayerDetectTerritory : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collider)
     {
-        if (collider.CompareTag("Player"))
+        if (collider.transform.parent.CompareTag("Player"))
         {
             PlayerDetected = false;
             PlayerTransform = collider.transform.parent;

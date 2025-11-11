@@ -49,8 +49,6 @@ public class PoisonLob : MonoBehaviour, IProjectile
 
     public void OnHit(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Enemy")) return;
-
         if (collision.collider.CompareTag("Ground"))
         {
             Instantiate(poisonPuddlePrefab, collision.GetContact(0).point, Quaternion.identity);
@@ -61,8 +59,6 @@ public class PoisonLob : MonoBehaviour, IProjectile
 
     public void OnHit(Collider2D collider)
     {
-        if (collider.CompareTag("Enemy")) return;
-
         Destroy();
     }
 

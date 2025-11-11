@@ -589,12 +589,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: IsGrounded
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: VerticalVelocity
     m_Type: 3
     m_DefaultFloat: 0
@@ -602,6 +596,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: IsAttacking
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: IsGrounded
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -1226,12 +1226,12 @@ AnimatorStateMachine:
   - {fileID: 4783295840823386233}
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -1474784951934030151}
-    second: []
   - first: {fileID: -7674015087628906696}
     second:
     - {fileID: -93482347301640394}
   - first: {fileID: -2753776563794979279}
+    second: []
+  - first: {fileID: -1474784951934030151}
     second: []
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 890, y: -380, z: 0}
