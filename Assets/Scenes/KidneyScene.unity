@@ -679,6 +679,7 @@ MonoBehaviour:
   - {fileID: -824857419363774264, guid: 843fcdc6b475ac744ba2e8896ed098e9, type: 3}
   startHealth: 100
   invincibilityTime: 0.1
+  dizzyInverval: 0
 --- !u!114 &957811350
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,6 +1010,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1572263065}
+  - component: {fileID: 1572263069}
+  - component: {fileID: 1572263068}
+  - component: {fileID: 1572263067}
+  - component: {fileID: 1572263066}
+  - component: {fileID: 1572263070}
   m_Layer: 0
   m_Name: Jean
   m_TagString: Untagged
@@ -1032,6 +1038,106 @@ Transform:
   - {fileID: 377049523}
   m_Father: {fileID: 303772648}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1572263066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572263064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06452f0559ffccc4386efc27c64dc56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHealth: 100
+  invincibilityTime: 0.1
+--- !u!114 &1572263067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572263064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87fea3e7f846c454a820a6faac573527, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashColor: {r: 1, g: 1, b: 1, a: 1}
+  flashTime: 0.25
+--- !u!50 &1572263068
+Rigidbody2D:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572263064}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &1572263069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572263064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c94860ebad85550408ed089df63aa86c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armorHealth: {fileID: 957811349}
+  armorHitboxParent: {fileID: 126863251}
+  hitboxParent: {fileID: 0}
+  throwRate: 0
+  throwRateNoArmor: 0
+  kidneyStoneProjectileData: {fileID: 0}
+  minThrowAngle: 0
+  maxThrowAngle: 0
+  minThrowForce: 0
+  maxThrowForce: 0
+  throwSpawnPoint: {fileID: 0}
+--- !u!95 &1572263070
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1572263064}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1588181513
 GameObject:
   m_ObjectHideFlags: 0

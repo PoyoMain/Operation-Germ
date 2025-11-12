@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(DamageFlash))]
 public class StagedEnemyHealth : MonoBehaviour
@@ -6,6 +7,10 @@ public class StagedEnemyHealth : MonoBehaviour
     [SerializeField] private Sprite[] healthSprites;
     [SerializeField] private int startHealth;
     [SerializeField] private float invincibilityTime;
+    [SerializeField] private int dizzyInverval;
+
+    public UnityAction onDizzyStageStarted;                                                       
+    public UnityAction onHealthDepleted;                                                       
 
     private int health;
     private float invincibleTimer;
@@ -51,6 +56,9 @@ public class StagedEnemyHealth : MonoBehaviour
         health -= amount;
         invincibleTimer = invincibilityTime;
         damageFlash.CallDamageFlash();
+
+        if (health <= 0) onHealthDepleted.Invoke();
+
         UpdateHealthSprite();
     }
 
@@ -62,6 +70,9 @@ public class StagedEnemyHealth : MonoBehaviour
 
         int spriteIndex = healthSprites.Length - Mathf.CeilToInt(healthPercentage * (healthSprites.Length - 1));
 
+        if (sRend.sprite == healthSprites[spriteIndex]) return;
+
         sRend.sprite = healthSprites[spriteIndex];
+        if (spriteIndex % dizzyInverval == 0) onDizzyStageStarted.Invoke();
     }
 }
