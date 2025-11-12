@@ -9,9 +9,10 @@ public class FireMissile : MonoBehaviour, IProjectile
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private float missileLifeTime;
+    [SerializeField] private TrackTarget trackTarget; 
 
     private Rigidbody2D rigidBody;
-    private Transform player;
+    private Transform trackTransform;
     
     public void Destroy()
     {
@@ -20,7 +21,14 @@ public class FireMissile : MonoBehaviour, IProjectile
 
     public void Initialize(Vector2 direction, float power)
     {
-        
+        if(trackTarget == TrackTarget.Player)
+        {
+            trackTransform = FindAnyObjectByType<PlayerMovement>().transform;
+        }
+        else if(trackTarget == TrackTarget.Enemy)
+        {
+            trackTransform = FindAnyObjectByType<HeartBurn>().transform;
+        }
     }
 
     public void OnHit(Collision2D collision)
@@ -50,11 +58,9 @@ public class FireMissile : MonoBehaviour, IProjectile
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
-        if (player == null)
-        {
-            player = FindAnyObjectByType<PlayerMovement>().transform;
-        }
+        
         rigidBody = GetComponent<Rigidbody2D>();
+        
 
         Destroy(gameObject, missileLifeTime);
     }
@@ -63,7 +69,7 @@ public class FireMissile : MonoBehaviour, IProjectile
     void FixedUpdate()
     {
         rigidBody.linearVelocity = transform.up * moveSpeed * Time.fixedDeltaTime * 10f;
-        Vector2 direction = (player.position -transform.position).normalized;
+        Vector2 direction = (trackTransform.position -transform.position).normalized;
         float rotationSteer = Vector3.Cross(transform.up, direction).z;
         rigidBody.angularVelocity = rotationSteer * rotateSpeed *10f;
 

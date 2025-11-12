@@ -36,6 +36,8 @@ public class HeartBurn : MonoBehaviour
         
         animator = GetComponent<Animator>();
         StartCoroutine(AttackRoutine());
+        //SpawnFireMissile();
+        //SpawnFireBall();
 
     }
 
@@ -65,25 +67,31 @@ public class HeartBurn : MonoBehaviour
     IEnumerator FireBall()
     {
         isAtacking = true;
+        animator.SetInteger("AttackNum", 0);
         SpawnFireBall();
         yield return new WaitForSeconds(fireBallWaitTime);
         isAtacking = false;
+        animator.SetBool("IsAttacking", false);
     }
 
     IEnumerator FireLog()
     {
         isAtacking = true;
+        animator.SetInteger("AttackNum", 1);
         SpawnFireLog();
         yield return new WaitForSeconds(fireLogWaitTime);  
         isAtacking = false;
+        animator.SetBool("IsAttacking", false);
     }
 
     IEnumerator FireMissile() 
     {
         isAtacking = true;
+        animator.SetInteger("AttackNum", 2);
         SpawnFireMissile();
         yield return new WaitForSeconds(fireMissileWaitTime);
         isAtacking = false;
+        animator.SetBool("IsAttacking", false);
     }
     
     public void SpawnFireBall()
@@ -110,15 +118,15 @@ public class HeartBurn : MonoBehaviour
             {
                 case 0:
                     IProjectile projectile0 = Instantiate(fireMissileData.EnemyProjectile, topFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
-                    
+                    projectile0.Initialize(direction, 0);
                     break;
                 case 1:
                     IProjectile projectile1 = Instantiate(fireMissileData.EnemyProjectile, midFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
-                    
+                    projectile1.Initialize(direction, 0);
                     break;
                 case 2:
                     IProjectile projectile2 = Instantiate(fireMissileData.EnemyProjectile, botFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
-                    
+                    projectile2.Initialize(direction, 0);
                     break;
             }
         }
