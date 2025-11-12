@@ -925,7 +925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06452f0559ffccc4386efc27c64dc56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 10000
+  startHealth: 100
   invincibilityTime: 0
 --- !u!95 &7184798984610269006
 Animator:
