@@ -40,15 +40,11 @@ public class PoisonSpine : MonoBehaviour, IProjectile
 
     public void OnHit(Collision2D collision)
     {
-        if (collision.collider.CompareTag("Enemy")) return;
-
         Destroy();
     }
 
     public void OnHit(Collider2D collider)
     {
-        if (collider.CompareTag("Enemy")) return;
-
         Destroy();
     }
 

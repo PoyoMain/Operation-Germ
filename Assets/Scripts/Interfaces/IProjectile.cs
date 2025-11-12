@@ -8,3 +8,9 @@ public interface IProjectile
     void OnHit(Collider2D collider);
     void Destroy();
 }
+
+public enum TrackTarget
+{
+    Player,
+    Enemy,
+}

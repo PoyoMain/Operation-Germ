@@ -1,0 +1,665 @@
+fileFormatVersion: 2
+guid: e34e9debfd2e149439c89e60c7d6df2e
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4168785798103905427
+    second: Electrical_Release_Bimbly_Shock_0
+  - first:
+      213: 4443175571244602030
+    second: Electrical_Release_Bimbly_Shock_1
+  - first:
+      213: 3126832484791130559
+    second: Electrical_Release_Bimbly_Shock_2
+  - first:
+      213: -6837429679653480761
+    second: Electrical_Release_Bimbly_Shock_3
+  - first:
+      213: 2345669621577246633
+    second: Electrical_Release_Bimbly_Shock_4
+  - first:
+      213: -3668479311440047025
+    second: Electrical_Release_Bimbly_Shock_5
+  - first:
+      213: 6876027488585359238
+    second: Electrical_Release_Bimbly_Shock_6
+  - first:
+      213: -7574345376674714760
+    second: Electrical_Release_Bimbly_Shock_7
+  - first:
+      213: -8894235120552240089
+    second: Electrical_Release_Bimbly_Shock_8
+  - first:
+      213: -5955567896501075142
+    second: Electrical_Release_Bimbly_Shock_9
+  - first:
+      213: 355531672731761871
+    second: Electrical_Release_Bimbly_Shock_10
+  - first:
+      213: -666244323334050015
+    second: Electrical_Release_Bimbly_Shock_11
+  - first:
+      213: 184519089503383539
+    second: Electrical_Release_Bimbly_Shock_12
+  - first:
+      213: -16235399395655926
+    second: Electrical_Release_Bimbly_Shock_13
+  - first:
+      213: -7005519803285554799
+    second: Electrical_Release_Bimbly_Shock_14
+  - first:
+      213: -2469137950123643016
+    second: Electrical_Release_Bimbly_Shock_15
+  - first:
+      213: -5640037049953100319
+    second: Electrical_Release_Bimbly_Shock_16
+  - first:
+      213: 1864301874395243252
+    second: Electrical_Release_Bimbly_Shock_17
+  - first:
+      213: 8277177533283143801
+    second: Electrical_Release_Bimbly_Shock_18
+  - first:
+      213: -2905138182669163678
+    second: Electrical_Release_Bimbly_Shock_19
+  - first:
+      213: -1889020418811707155
+    second: Electrical_Release_Bimbly_Shock_20
+  - first:
+      213: 1659039738026894441
+    second: Electrical_Release_Bimbly_Shock_21
+  - first:
+      213: -8488207619901676505
+    second: Electrical_Release_Bimbly_Shock_22
+  - first:
+      213: 6371538319372821946
+    second: Electrical_Release_Bimbly_Shock_23
+  - first:
+      213: 5102528417183960833
+    second: Electrical_Release_Bimbly_Shock_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4096
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6bc25f576f7526c0800000000000000
+      internalID: -4168785798103905427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_1
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 4096
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea25abe14a459ad30800000000000000
+      internalID: 4443175571244602030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_2
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 4096
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb99028049db46b20800000000000000
+      internalID: 3126832484791130559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_3
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 4096
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c69a8fbee19c11a0800000000000000
+      internalID: -6837429679653480761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 3072
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a7698ac71e7d8020800000000000000
+      internalID: 2345669621577246633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 3072
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f441fbfa081f61dc0800000000000000
+      internalID: -3668479311440047025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_6
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 3072
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68f93f2f19e8c6f50800000000000000
+      internalID: 6876027488585359238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_7
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 3072
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87b6e21b20582e690800000000000000
+      internalID: -7574345376674714760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2048
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72c1ea21844519480800000000000000
+      internalID: -8894235120552240089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_9
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 2048
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3345555d82995da0800000000000000
+      internalID: -5955567896501075142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_10
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 2048
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fccb3933c2a1fe400800000000000000
+      internalID: 355531672731761871
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_11
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 2048
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12fad0e515601c6f0800000000000000
+      internalID: -666244323334050015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1024
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ffa020622b8f8200800000000000000
+      internalID: 184519089503383539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_13
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 1024
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0f3c328df156cff0800000000000000
+      internalID: -16235399395655926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_14
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 1024
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19933321bd467ce90800000000000000
+      internalID: -7005519803285554799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_15
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 1024
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87fa17dcd1cdbbdd0800000000000000
+      internalID: -2469137950123643016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1edd08d6f209ab1b0800000000000000
+      internalID: -5640037049953100319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_17
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f26c616da45fd910800000000000000
+      internalID: 1864301874395243252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_18
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 0
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9709f26bc117ed270800000000000000
+      internalID: 8277177533283143801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Electrical_Release_Bimbly_Shock_19
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 0
+        width: 512
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 263a4960730eea7d0800000000000000
+      internalID: -2905138182669163678
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 0afc32c52af25f042ab30b54e6434606
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Electrical_Release_Bimbly_Shock_0: -4168785798103905427
+      Electrical_Release_Bimbly_Shock_1: 4443175571244602030
+      Electrical_Release_Bimbly_Shock_10: 355531672731761871
+      Electrical_Release_Bimbly_Shock_11: -666244323334050015
+      Electrical_Release_Bimbly_Shock_12: 184519089503383539
+      Electrical_Release_Bimbly_Shock_13: -16235399395655926
+      Electrical_Release_Bimbly_Shock_14: -7005519803285554799
+      Electrical_Release_Bimbly_Shock_15: -2469137950123643016
+      Electrical_Release_Bimbly_Shock_16: -5640037049953100319
+      Electrical_Release_Bimbly_Shock_17: 1864301874395243252
+      Electrical_Release_Bimbly_Shock_18: 8277177533283143801
+      Electrical_Release_Bimbly_Shock_19: -2905138182669163678
+      Electrical_Release_Bimbly_Shock_2: 3126832484791130559
+      Electrical_Release_Bimbly_Shock_3: -6837429679653480761
+      Electrical_Release_Bimbly_Shock_4: 2345669621577246633
+      Electrical_Release_Bimbly_Shock_5: -3668479311440047025
+      Electrical_Release_Bimbly_Shock_6: 6876027488585359238
+      Electrical_Release_Bimbly_Shock_7: -7574345376674714760
+      Electrical_Release_Bimbly_Shock_8: -8894235120552240089
+      Electrical_Release_Bimbly_Shock_9: -5955567896501075142
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
