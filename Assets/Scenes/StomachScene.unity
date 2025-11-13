@@ -934,7 +934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3f18fb54df64ad469f111377cd9c75b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bossesToUnlockFinalBoss: 4
+  bossesToUnlockFinalBoss: 3
 --- !u!4 &1026284452
 Transform:
   m_ObjectHideFlags: 0
