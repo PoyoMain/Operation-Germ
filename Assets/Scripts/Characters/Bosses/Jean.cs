@@ -11,6 +11,7 @@ public class Jean : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private GameObject hitboxParent;
+    [SerializeField] private GameObject hurtboxParent;
 
     [Header("Throw Stats")]
     [SerializeField] private float throwRate;
@@ -21,6 +22,9 @@ public class Jean : MonoBehaviour
     [SerializeField] private float minThrowForce;
     [SerializeField] private float maxThrowForce;
     [SerializeField] private Transform throwSpawnPoint;
+
+    [Header("Dizzy Stats")]
+    [SerializeField] private float dizzyTime;
 
     private const string ANIM_PARAM_DIZZY = "IsDizzy";
     private const string ANIM_PARAM_REMOVE_ARMOR = "ArmorRemoved";
@@ -45,6 +49,11 @@ public class Jean : MonoBehaviour
         armorHealth.onHealthDepleted -= RemoveArmor;
     }
 
+    private void FixedUpdate()
+    {
+        HandleThrowTimer();
+    }
+
     #region Dizzy
     private bool isDizzy;
     private void StartDizzyPhase()
@@ -55,6 +64,9 @@ public class Jean : MonoBehaviour
 
         armorHitboxParent.SetActive(false);
         hitboxParent.SetActive(true);
+        hurtboxParent.SetActive(true);
+
+        Invoke(nameof(EndDizzyPhase), dizzyTime);
     }
 
     private void EndDizzyPhase()
@@ -64,6 +76,7 @@ public class Jean : MonoBehaviour
 
         armorHitboxParent.SetActive(true);
         hitboxParent.SetActive(false);
+        hurtboxParent.SetActive(false);
     }
     #endregion
 
@@ -75,8 +88,9 @@ public class Jean : MonoBehaviour
         anim.SetBool(ANIM_PARAM_REMOVE_ARMOR, armorRemoved);
         anim.SetBool(ANIM_PARAM_THROW, false);
 
-        armorHitboxParent.SetActive(true);
-        hitboxParent.SetActive(false);
+        armorHitboxParent.SetActive(false);
+        hitboxParent.SetActive(true);
+        hurtboxParent.SetActive(true);
     }
     #endregion
 
@@ -97,18 +111,21 @@ public class Jean : MonoBehaviour
                 anim.SetBool(ANIM_PARAM_THROW, true);
             }
         }
+        else throwTimer = armorRemoved ? throwRateNoArmor : throwRate;
     }
 
     private void Throw()
     {
         float angle = Random.Range(minThrowAngle, maxThrowAngle);
         float angleRad = angle * Mathf.Deg2Rad;
-        Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
+        Vector2 launchDirection = (-transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
 
         float force = Random.Range(minThrowForce, maxThrowForce);
 
         IProjectile projectile = Instantiate(kidneyStoneProjectileData.EnemyProjectile, throwSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
         projectile.Initialize(launchDirection, force);
+
+        EndThrow();
     }
 
     private void EndThrow()
