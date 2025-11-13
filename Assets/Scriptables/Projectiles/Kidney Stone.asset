@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Kidney Stone
   m_EditorClassIdentifier: 
   identifyAmount: 0
-  playerLaunchAngle: 35
-  playerLaunchForce: 20
+  playerLaunchAngle: 25
+  playerLaunchForce: 13
   playerCooldown: 0.3
   iconSprite: {fileID: 0}
   enemyProjectile: {fileID: 5862303897956789992, guid: 3ab783b5865f38644b66183878631555, type: 3}

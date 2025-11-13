@@ -23,6 +23,11 @@ public class Jean : MonoBehaviour
     [SerializeField] private float maxThrowForce;
     [SerializeField] private Transform throwSpawnPoint;
 
+    [Header("Spike Stats")]
+    [SerializeField] private SpikeSpawner spikeSpawner;
+    [SerializeField] private float spikeRate;
+    [SerializeField] private float spikeRateNoArmor;
+
     [Header("Dizzy Stats")]
     [SerializeField] private float dizzyTime;
 
@@ -52,6 +57,7 @@ public class Jean : MonoBehaviour
     private void FixedUpdate()
     {
         HandleThrowTimer();
+        HandleSpikeTimer();
     }
 
     #region Dizzy
@@ -131,6 +137,25 @@ public class Jean : MonoBehaviour
     private void EndThrow()
     {
         anim.SetBool(ANIM_PARAM_THROW, false);
+    }
+    #endregion
+
+    #region Spikes
+    private float spikeTimer;
+
+    private void HandleSpikeTimer()
+    {
+        if (spikeTimer > 0)
+        {
+            spikeTimer -= Time.fixedDeltaTime;
+
+            if (spikeTimer <= 0)
+            {
+                spikeTimer = armorRemoved ? spikeRateNoArmor : spikeRate;
+                spikeSpawner.StartSpikeSpawn();
+            }
+        }
+        else spikeTimer = armorRemoved ? spikeRateNoArmor : spikeRate;
     }
     #endregion
 }
