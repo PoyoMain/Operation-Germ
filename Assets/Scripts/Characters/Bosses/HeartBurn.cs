@@ -35,10 +35,10 @@ public class HeartBurn : MonoBehaviour
     {
         
         animator = GetComponent<Animator>();
-        StartCoroutine(AttackRoutine());
-        //SpawnFireMissile();
+        //StartCoroutine(AttackRoutine());
+        SpawnFireMissile();
         //SpawnFireBall();
-
+        //SpawnFireLog();
     }
 
     IEnumerator AttackRoutine()

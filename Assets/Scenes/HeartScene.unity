@@ -488,7 +488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossPart: 1
-  waitTime: 4
+  waitTime: 3
   fireBallLaunchForce: 5
   topFaceTransform: {fileID: 175939775}
   fireBallData: {fileID: 11400000, guid: 7757fcf764fdf5344b8d77a32198e33d, type: 2}

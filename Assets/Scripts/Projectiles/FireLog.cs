@@ -8,6 +8,7 @@ public class FireLog : MonoBehaviour, IProjectile
     public ProjectileSO ProjectileData => projectileDataReference;
 
     [SerializeField] private GameObject log;
+    [SerializeField] private GameObject log02;
     [SerializeField] private Transform center;
     [SerializeField] private float spinSpeed;
     private Rigidbody2D rigidBody;
@@ -60,5 +61,6 @@ public class FireLog : MonoBehaviour, IProjectile
     {
         //Rotate the log around the pivot
         log.transform.Rotate(0f, 0f, spinSpeed * Time.deltaTime);
+        log02.transform.Rotate(0f, 0f, spinSpeed * Time.deltaTime);
     }
 }

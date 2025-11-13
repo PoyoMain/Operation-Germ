@@ -134,9 +134,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDataReference: {fileID: 11400000, guid: 1fc3cc64c850f864dbd5cf7475dfb48b, type: 2}
   minDistance: 2
-  moveSpeed: 30
-  rotateSpeed: 60
+  moveSpeed: 20
+  rotateSpeed: 45
   missileLifeTime: 8
+  trackTarget: 0
+  maxLooseTime: 4
 --- !u!50 &8463148284448593444
 Rigidbody2D:
   serializedVersion: 5
@@ -145,7 +147,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2955387006759933215}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0

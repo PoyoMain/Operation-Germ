@@ -9,8 +9,10 @@ public class FireMissile : MonoBehaviour, IProjectile
     [SerializeField] private float moveSpeed;
     [SerializeField] private float rotateSpeed;
     [SerializeField] private float missileLifeTime;
-    [SerializeField] private TrackTarget trackTarget; 
+    [SerializeField] private TrackTarget trackTarget;
+    [SerializeField] private float maxLooseTime;
 
+    private float looseTimer;
     private Rigidbody2D rigidBody;
     private Transform trackTransform;
     
@@ -62,16 +64,21 @@ public class FireMissile : MonoBehaviour, IProjectile
         rigidBody = GetComponent<Rigidbody2D>();
         
 
-        Destroy(gameObject, missileLifeTime);
+        
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        looseTimer += Time.deltaTime;
         rigidBody.linearVelocity = transform.up * moveSpeed * Time.fixedDeltaTime * 10f;
-        Vector2 direction = (trackTransform.position -transform.position).normalized;
-        float rotationSteer = Vector3.Cross(transform.up, direction).z;
-        rigidBody.angularVelocity = rotationSteer * rotateSpeed *10f;
+        if(looseTimer < maxLooseTime)
+        {
+            Vector2 direction = (trackTransform.position - transform.position).normalized;
+            float rotationSteer = Vector3.Cross(transform.up, direction).z;
+            rigidBody.angularVelocity = rotationSteer * rotateSpeed * 10f;
+        }
+        
 
     }
 
