@@ -5,6 +5,9 @@ using Random = UnityEngine.Random;
 [RequireComponent(typeof(Animator))]
 public class Jean : MonoBehaviour
 {
+    [Header("General Settings")]
+    [SerializeField] private BossPart bossPart;
+
     [Header("Armor")]
     [SerializeField] private StagedEnemyHealth armorHealth;
     [SerializeField] private GameObject armorHitboxParent;
@@ -36,22 +39,26 @@ public class Jean : MonoBehaviour
     private const string ANIM_PARAM_THROW = "IsThrowing";
 
     private Animator anim;
+    private BossHealth health;
 
     private void Awake()
     {
         TryGetComponent(out anim);
+        TryGetComponent(out health);
     }
 
     private void OnEnable()
     {
         armorHealth.onDizzyStageStarted += StartDizzyPhase;
         armorHealth.onHealthDepleted += RemoveArmor;
+        health.OnBossDefeated += BossDefeated;
     }
 
     private void OnDisable()
     {
         armorHealth.onDizzyStageStarted -= StartDizzyPhase;
         armorHealth.onHealthDepleted -= RemoveArmor;
+        health.OnBossDefeated -= BossDefeated;
     }
 
     private void FixedUpdate()
@@ -156,6 +163,13 @@ public class Jean : MonoBehaviour
             }
         }
         else spikeTimer = armorRemoved ? spikeRateNoArmor : spikeRate;
+    }
+    #endregion
+
+    #region General Methods
+    private void BossDefeated()
+    {
+        BossManager.Instance.DefeatBoss(bossPart);
     }
     #endregion
 }

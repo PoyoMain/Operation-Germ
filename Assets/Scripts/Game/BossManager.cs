@@ -57,6 +57,6 @@ public enum BossPart
     Stomach,
     Heart,
     Lungs,
-    Kidneys,
+    Kidney,
     Brain
 }
