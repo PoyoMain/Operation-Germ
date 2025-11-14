@@ -16,6 +16,8 @@ MonoBehaviour:
   playerLaunchAngle: 0
   playerLaunchForce: 20
   playerCooldown: 0.5
-  iconSprite: {fileID: -1883807894, guid: 49527ebf73dc28c4e9fdf59e2c426bc6, type: 3}
+  iconSpriteEnemy: {fileID: 680771266, guid: 21267bf7292f2f74d8ed462356f3fc41, type: 3}
+  iconSpritePlayer: {fileID: -1883807894, guid: 49527ebf73dc28c4e9fdf59e2c426bc6, type: 3}
+  iconEnemyBorder: {fileID: 21300000, guid: 8a48f6a7dd0da284c952544899e2fefe, type: 3}
   enemyProjectile: {fileID: 3100243797675743405, guid: c445c8c485cd16f4e965f814c0ba0b45, type: 3}
   playerProjectile: {fileID: 3100243797675743405, guid: 1086374472cace646836a04bd5dbff47, type: 3}

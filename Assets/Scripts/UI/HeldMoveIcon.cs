@@ -1,16 +1,30 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Image))]
 public class HeldMoveIcon : MonoBehaviour
 {
     [Header("Image Components")]
     [SerializeField] private Image iconImageBG;
     [SerializeField] private Image iconImageFill;
 
+    [Header("No Projectile Sprite")]
+    [SerializeField] private Sprite emptySprite;
+
     [Header("Listen Events")]
     [SerializeField] private ProjectileEventSO projectileRegisteredEventSO;
     [SerializeField] private FloatEventSO projectilePercentageUpdatedEventSO;
     [SerializeField] private VoidEventSO projectileReleasedEventSO;
+
+    private Image image;
+    private ProjectileSO heldMove;
+
+    private bool IsFilled => iconImageFill.fillAmount >= 1;
+
+    private void Awake()
+    {
+        TryGetComponent(out image);
+    }
 
     private void OnEnable()
     {
@@ -33,13 +47,16 @@ public class HeldMoveIcon : MonoBehaviour
 
     private void RegisterProjectile(ProjectileSO projectile)
     {
+        heldMove = projectile;
+
         SetIconVisibility(true);
-        SetIconSprite(projectile.IconSprite);
+        SetIconSprite(projectile.IconSpriteEnemy);
     }
 
     private void ReleaseProjectile()
     {
         SetIconVisibility(false);
+        image.sprite = emptySprite;
     }
 
     private void SetIconVisibility(bool value)
@@ -47,13 +64,19 @@ public class HeldMoveIcon : MonoBehaviour
         iconImageBG.enabled = iconImageFill.enabled = value;
     }
 
-    private void SetIconSprite(Sprite sprite)
+    private void SetIconSprite(Sprite newSprite)
     {
-        iconImageBG.sprite = iconImageFill.sprite = sprite;
+        iconImageBG.sprite = iconImageFill.sprite = newSprite;
     }
 
     private void SetFillAmount(float amount)
     {
         iconImageFill.fillAmount = amount;
+
+        if (IsFilled)
+        {
+            SetIconSprite(heldMove.IconSpritePlayer);
+            image.sprite = heldMove.IconEnemyBorder;
+        }
     }
 }
