@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private Transform attackSpawnTransform;
+    [SerializeField] private CanvasGroup heldMoveIconOne;
+    [SerializeField] private CanvasGroup heldMoveIconTwo;
 
     [Header("Broadcast Events")]
     [SerializeField] private ProjectileEventSO projectileOneRegisteredEventSO;
@@ -214,6 +216,8 @@ public class PlayerAttack : MonoBehaviour
         {
             isChargingOne = false;
             isChargingTwo = false;
+            heldMoveIconOne.alpha = 0;
+            heldMoveIconTwo.alpha = 0;
             chargeTimer = 0;
             anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
         }
@@ -234,6 +238,8 @@ public class PlayerAttack : MonoBehaviour
             if (!isChargingOne)
             {
                 isChargingOne = true;
+                heldMoveIconOne.alpha = 1;
+                heldMoveIconTwo.alpha = 0;
                 drainTimerOne = 0;
                 anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
             }
@@ -259,6 +265,8 @@ public class PlayerAttack : MonoBehaviour
             if (!isChargingTwo)
             {
                 isChargingTwo = true;
+                heldMoveIconOne.alpha = 0;
+                heldMoveIconTwo.alpha = 1;
                 drainTimerTwo = 0;
                 anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
             }
@@ -357,9 +365,6 @@ public class PlayerAttack : MonoBehaviour
 
     private void ExecuteAttack()
     {
-        IsAttacking = true;
-        anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
-
         if (attackOneDown)
         {
             if (!CanUseAttackOne) return;
@@ -382,6 +387,9 @@ public class PlayerAttack : MonoBehaviour
             Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
             projectile.Initialize(launchDirection, heldAttackTwo.Item1.PlayerLaunchForce);
         }
+
+        IsAttacking = true;
+        anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
     }
 
     private void EndAttack()

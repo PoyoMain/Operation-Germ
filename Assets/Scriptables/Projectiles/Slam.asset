@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 358def4896bb2054ea7ede45965f0adc, type: 3}
-  m_Name: Slam Projectile
+  m_Name: Slam
   m_EditorClassIdentifier: 
   identifyAmount: 5
   playerLaunchAngle: 0

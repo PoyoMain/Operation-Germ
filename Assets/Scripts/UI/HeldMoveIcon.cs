@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +8,7 @@ public class HeldMoveIcon : MonoBehaviour
     [Header("Image Components")]
     [SerializeField] private Image iconImageBG;
     [SerializeField] private Image iconImageFill;
+    [SerializeField] private TextMeshProUGUI moveNameTextBox;
 
     [Header("No Projectile Sprite")]
     [SerializeField] private Sprite emptySprite;
@@ -57,6 +59,7 @@ public class HeldMoveIcon : MonoBehaviour
     {
         SetIconVisibility(false);
         image.sprite = emptySprite;
+        moveNameTextBox.text = "Parry";
     }
 
     private void SetIconVisibility(bool value)
@@ -77,6 +80,7 @@ public class HeldMoveIcon : MonoBehaviour
         {
             SetIconSprite(heldMove.IconSpritePlayer);
             image.sprite = heldMove.IconEnemyBorder;
+            moveNameTextBox.text = heldMove.name;
         }
     }
 }
