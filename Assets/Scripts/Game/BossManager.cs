@@ -37,7 +37,9 @@ public class BossManager : MonoBehaviour
     public void DefeatBoss(BossPart bossPart)
     {
         bosses.Add(bossPart, true);
-        SceneManager.LoadScene("StageSelectScene");
+
+        if (BossesDefeated == BossesNeededForFinalBoss + 1) SceneManager.LoadScene("WinScene");
+        else SceneManager.LoadScene("StageSelectScene");
     }
 
     public void ResetBosses()
