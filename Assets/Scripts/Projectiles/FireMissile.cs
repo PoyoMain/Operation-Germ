@@ -14,7 +14,7 @@ public class FireMissile : MonoBehaviour, IProjectile
 
     private float looseTimer;
     private Rigidbody2D rigidBody;
-    private Transform trackTransform;
+    [SerializeField]private Transform trackTransform;
     
     public void Destroy()
     {
@@ -29,7 +29,12 @@ public class FireMissile : MonoBehaviour, IProjectile
         }
         else if(trackTarget == TrackTarget.Enemy)
         {
+            Debug.Log("enemy");
             trackTransform = FindAnyObjectByType<HeartBurn>().transform;
+            if(trackTransform == null)
+            {
+                Debug.Log("Found Enemy");
+            }
         }
     }
 
