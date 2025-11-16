@@ -139,6 +139,7 @@ MonoBehaviour:
   missileLifeTime: 8
   trackTarget: 0
   maxLooseTime: 4
+  trackTransform: {fileID: 0}
 --- !u!50 &8463148284448593444
 Rigidbody2D:
   serializedVersion: 5
@@ -311,8 +312,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 0.5481836, b: 0, a: 1}
+  m_Sprite: {fileID: 7399311953836894025, guid: cc14a3a106564b14bb311ad411adeab5, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
