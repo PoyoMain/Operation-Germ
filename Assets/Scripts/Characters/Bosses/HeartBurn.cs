@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.Burst.CompilerServices;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ public class HeartBurn : MonoBehaviour
     [Header("General Boss Settings")]
     [SerializeField] private BossPart bossPart;
     [SerializeField] private float waitTime;
+    [SerializeField] private float timeBetweenMoves;
 
 
     [Header("FireBall Settings")]
@@ -29,16 +31,32 @@ public class HeartBurn : MonoBehaviour
 
 
     private Animator animator;
-    private bool isAtacking = false;
+    private float timerBetweenMoves;
+    private bool isAttacking = false;
+    private bool canAttack;
 
     private void Awake()
     {
         
         animator = GetComponent<Animator>();
-        //StartCoroutine(AttackRoutine());
-        SpawnFireMissile();
+        timerBetweenMoves = timeBetweenMoves;
+        StartCoroutine(AttackRoutine());
+
+        //SpawnFireMissile();
         //SpawnFireBall();
         //SpawnFireLog();
+    }
+
+    private void FixedUpdate()
+    {
+        if (timerBetweenMoves >= 0)
+        {
+            timerBetweenMoves -= Time.fixedDeltaTime;
+            if(timerBetweenMoves < 0)
+            {
+                canAttack = true;
+            }
+        }
     }
 
     IEnumerator AttackRoutine()
@@ -47,24 +65,20 @@ public class HeartBurn : MonoBehaviour
 
         while (true)
         {
-            if (!isAtacking) 
+            if (!isAttacking && canAttack) 
             {
+                
                 int randomAttack = Random.Range(0, 3);
-                switch (randomAttack)
-                {
-                    case 0:
-                        StartCoroutine(FireBall()); break;
-                    case 1:
-                        StartCoroutine(FireLog()); break;
-                    case 2:
-                        StartCoroutine(FireMissile()); break;
-                }
+                animator.SetInteger("AttackNum", randomAttack);
+                animator.SetBool("IsAttacking", true);
+                isAttacking= true;
+                canAttack= false;
             }
             yield return new WaitForSeconds(waitTime);
         }
     }
 
-    IEnumerator FireBall()
+    /*IEnumerator FireBall()
     {
         isAtacking = true;
         animator.SetInteger("AttackNum", 0);
@@ -92,7 +106,7 @@ public class HeartBurn : MonoBehaviour
         yield return new WaitForSeconds(fireMissileWaitTime);
         isAtacking = false;
         animator.SetBool("IsAttacking", false);
-    }
+    }*/
     
     public void SpawnFireBall()
     {
@@ -130,6 +144,13 @@ public class HeartBurn : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void OnAttackFinish()
+    {
+        animator.SetBool("IsAttacking", false);
+        isAttacking = false;
+        timerBetweenMoves = timeBetweenMoves;
     }
 
 }
