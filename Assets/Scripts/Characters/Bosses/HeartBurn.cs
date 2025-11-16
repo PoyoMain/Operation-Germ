@@ -61,7 +61,7 @@ public class HeartBurn : MonoBehaviour
 
     IEnumerator AttackRoutine()
     {
-        yield return new WaitForSeconds(2f);
+        
 
         while (true)
         {
@@ -149,6 +149,7 @@ public class HeartBurn : MonoBehaviour
     public void OnAttackFinish()
     {
         animator.SetBool("IsAttacking", false);
+        animator.SetInteger("AttackNum", -1);
         isAttacking = false;
         timerBetweenMoves = timeBetweenMoves;
     }
