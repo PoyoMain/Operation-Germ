@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private Transform attackSpawnTransform;
+    [SerializeField] private CanvasGroup heldMoveIconOne;
+    [SerializeField] private CanvasGroup heldMoveIconTwo;
 
     [Header("Broadcast Events")]
     [SerializeField] private ProjectileEventSO projectileOneRegisteredEventSO;
@@ -35,8 +37,8 @@ public class PlayerAttack : MonoBehaviour
     private float ReleaseInputTimer;
     private Animator anim;
     private PlayerMovement playerMovement;
-    private (ProjectileSO, int) heldAttackOne = new();
-    private (ProjectileSO, int) heldAttackTwo = new();
+    private (ProjectileSO, int) HeldAttackOne { get => MoveManager.Instance.HeldAttackOne; set => MoveManager.Instance.HeldAttackOne = value; }
+    private (ProjectileSO, int) HeldAttackTwo { get => MoveManager.Instance.HeldAttackTwo; set => MoveManager.Instance.HeldAttackTwo = value; }
 
     private PlayerControls.GameplayActions Controls => inputReader.Controls;
 
@@ -137,18 +139,16 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackOneDown) 
         {
-            if (heldAttackOne.Item1 == null) return;
+            if (HeldAttackOne.Item1 == null) return;
 
-            heldAttackOne.Item1 = null;
-            heldAttackOne.Item2 = 0;
+            HeldAttackOne = (null, 0);
             projectileOneReleasedEventSO.RaiseEvent();
         }
         else if (attackTwoDown)
         {
-            if (heldAttackTwo.Item1 == null) return;
+            if (HeldAttackTwo.Item1 == null) return;
 
-            heldAttackTwo.Item1 = null;
-            heldAttackTwo.Item2 = 0;
+            HeldAttackTwo = (null, 0);
             projectileTwoReleasedEventSO.RaiseEvent();
         }
     }
@@ -175,27 +175,25 @@ public class PlayerAttack : MonoBehaviour
 
         if (isParryingOne)
         {
-            if (heldAttackOne.Item1 == projectile.ProjectileData) heldAttackOne.Item2++;
+            if (HeldAttackOne.Item1 == projectile.ProjectileData) HeldAttackOne = (HeldAttackOne.Item1, HeldAttackOne.Item2 + 1);
             else
             {
-                heldAttackOne.Item1 = projectile.ProjectileData;
-                heldAttackOne.Item2 = 1;
-                projectileOneRegisteredEventSO.RaiseEvent(heldAttackOne.Item1);
+                HeldAttackOne = (projectile.ProjectileData, 1);
+                projectileOneRegisteredEventSO.RaiseEvent(HeldAttackOne.Item1);
             }
 
-            projectileOnePercentUpdatedEventSO.RaiseEvent((float)heldAttackOne.Item2 / heldAttackOne.Item1.IdentifyAmount);
+            projectileOnePercentUpdatedEventSO.RaiseEvent((float)HeldAttackOne.Item2 / HeldAttackOne.Item1.IdentifyAmount);
         }
         else if (isParryingTwo)
         {
-            if (heldAttackTwo.Item1 == projectile.ProjectileData) heldAttackTwo.Item2++;
+            if (HeldAttackTwo.Item1 == projectile.ProjectileData) HeldAttackTwo = (HeldAttackTwo.Item1, HeldAttackTwo.Item2 + 1);
             else
             {
-                heldAttackTwo.Item1 = projectile.ProjectileData;
-                heldAttackTwo.Item2 = 1;
-                projectileTwoRegisteredEventSO.RaiseEvent(heldAttackTwo.Item1);
+                HeldAttackTwo = (projectile.ProjectileData, 1);
+                projectileTwoRegisteredEventSO.RaiseEvent(HeldAttackTwo.Item1);
             }
 
-            projectileTwoPercentUpdatedEventSO.RaiseEvent((float)heldAttackTwo.Item2 / heldAttackTwo.Item1.IdentifyAmount);
+            projectileTwoPercentUpdatedEventSO.RaiseEvent((float)HeldAttackTwo.Item2 / HeldAttackTwo.Item1.IdentifyAmount);
         }
     }
     #endregion
@@ -214,6 +212,8 @@ public class PlayerAttack : MonoBehaviour
         {
             isChargingOne = false;
             isChargingTwo = false;
+            heldMoveIconOne.alpha = 0;
+            heldMoveIconTwo.alpha = 0;
             chargeTimer = 0;
             anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
         }
@@ -229,11 +229,13 @@ public class PlayerAttack : MonoBehaviour
     {
         if (attackOneHeld && !isChargingTwo)
         { 
-            if (heldAttackOne.Item1 == null) return;
+            if (HeldAttackOne.Item1 == null) return;
 
             if (!isChargingOne)
             {
                 isChargingOne = true;
+                heldMoveIconOne.alpha = 1;
+                heldMoveIconTwo.alpha = 0;
                 drainTimerOne = 0;
                 anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
             }
@@ -245,20 +247,22 @@ public class PlayerAttack : MonoBehaviour
                 if (chargeTimer <= 0)
                 {
                     chargeTimer = stats.ChargeRate;
-                    heldAttackOne.Item2++;
-                    projectileOnePercentUpdatedEventSO.RaiseEvent((float)heldAttackOne.Item2 / heldAttackOne.Item1.IdentifyAmount);
-                    print(heldAttackOne.Item1.name + ": " + heldAttackOne.Item2);
+                    HeldAttackOne = (HeldAttackOne.Item1, HeldAttackOne.Item2 + 1);
+                    projectileOnePercentUpdatedEventSO.RaiseEvent((float)HeldAttackOne.Item2 / HeldAttackOne.Item1.IdentifyAmount);
+                    print(HeldAttackOne.Item1.name + ": " + HeldAttackOne.Item2);
                 }
             }
             else if (chargeTimer <= 0) chargeTimer = stats.ChargeRate;
         }
         else if (attackTwoHeld && !isChargingOne)
         {
-            if (heldAttackTwo.Item1 == null) return;
+            if (HeldAttackTwo.Item1 == null) return;
 
             if (!isChargingTwo)
             {
                 isChargingTwo = true;
+                heldMoveIconOne.alpha = 0;
+                heldMoveIconTwo.alpha = 1;
                 drainTimerTwo = 0;
                 anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
             }
@@ -270,9 +274,9 @@ public class PlayerAttack : MonoBehaviour
                 if (chargeTimer <= 0)
                 {
                     chargeTimer = stats.ChargeRate;
-                    heldAttackTwo.Item2++;
-                    projectileTwoPercentUpdatedEventSO.RaiseEvent((float)heldAttackTwo.Item2 / heldAttackTwo.Item1.IdentifyAmount);
-                    print(heldAttackTwo.Item1.name + ": " + heldAttackTwo.Item2);
+                    HeldAttackTwo = (HeldAttackTwo.Item1, HeldAttackTwo.Item2 + 1);
+                    projectileTwoPercentUpdatedEventSO.RaiseEvent((float)HeldAttackTwo.Item2 / HeldAttackTwo.Item1.IdentifyAmount);
+                    print(HeldAttackTwo.Item1.name + ": " + HeldAttackTwo.Item2);
                 }
             }
             else if (chargeTimer <= 0) chargeTimer = stats.ChargeRate;
@@ -338,8 +342,8 @@ public class PlayerAttack : MonoBehaviour
     private float attackTimer;
     private float attackCooldown;
     public bool IsAttacking { get; private set; }
-    private bool CanUseAttackOne => heldAttackOne.Item1 != null && heldAttackOne.Item2 >= heldAttackOne.Item1.IdentifyAmount;
-    private bool CanUseAttackTwo => heldAttackTwo.Item1 != null && heldAttackTwo.Item2 >= heldAttackTwo.Item1.IdentifyAmount;
+    private bool CanUseAttackOne => HeldAttackOne.Item1 != null && HeldAttackOne.Item2 >= HeldAttackOne.Item1.IdentifyAmount;
+    private bool CanUseAttackTwo => HeldAttackTwo.Item1 != null && HeldAttackTwo.Item2 >= HeldAttackTwo.Item1.IdentifyAmount;
     private void HandleAttack()
     {
         if (attackTimer > 0)
@@ -357,31 +361,31 @@ public class PlayerAttack : MonoBehaviour
 
     private void ExecuteAttack()
     {
-        IsAttacking = true;
-        anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
-
         if (attackOneDown)
         {
             if (!CanUseAttackOne) return;
 
-            attackCooldown = heldAttackOne.Item1.PlayerCooldown;
+            attackCooldown = HeldAttackOne.Item1.PlayerCooldown;
 
-            IProjectile projectile = Instantiate(heldAttackOne.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
-            float angleRad = heldAttackOne.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;
+            IProjectile projectile = Instantiate(HeldAttackOne.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
+            float angleRad = HeldAttackOne.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;
             Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
-            projectile.Initialize(launchDirection, heldAttackOne.Item1.PlayerLaunchForce);
+            projectile.Initialize(launchDirection, HeldAttackOne.Item1.PlayerLaunchForce);
         }
         else if (attackTwoDown)
         {
             if (!CanUseAttackTwo) return;
 
-            attackCooldown = heldAttackTwo.Item1.PlayerCooldown;
+            attackCooldown = HeldAttackTwo.Item1.PlayerCooldown;
 
-            IProjectile projectile = Instantiate(heldAttackTwo.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
-            float angleRad = heldAttackTwo.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;
+            IProjectile projectile = Instantiate(HeldAttackTwo.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
+            float angleRad = HeldAttackTwo.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;
             Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
-            projectile.Initialize(launchDirection, heldAttackTwo.Item1.PlayerLaunchForce);
+            projectile.Initialize(launchDirection, HeldAttackTwo.Item1.PlayerLaunchForce);
         }
+
+        IsAttacking = true;
+        anim.SetBool(ANIM_ATTACK_PARAM, IsAttacking);
     }
 
     private void EndAttack()
@@ -397,7 +401,7 @@ public class PlayerAttack : MonoBehaviour
     private float drainTimerTwo;
     private void HandleDraining()
     {
-        if (!isChargingOne && heldAttackOne.Item1 != null && heldAttackOne.Item2 < heldAttackOne.Item1.IdentifyAmount && heldAttackOne.Item2 > 1)
+        if (!isChargingOne && HeldAttackOne.Item1 != null && HeldAttackOne.Item2 < HeldAttackOne.Item1.IdentifyAmount && HeldAttackOne.Item2 > 1)
         {
             if (drainTimerOne > 0)
             {
@@ -405,16 +409,16 @@ public class PlayerAttack : MonoBehaviour
 
                 if (drainTimerOne <= 0)
                 {
-                    heldAttackOne.Item2--;
+                    HeldAttackOne = (HeldAttackOne.Item1, HeldAttackOne.Item2 - 1);
                     drainTimerOne = stats.DrainRate;
-                    projectileOnePercentUpdatedEventSO.RaiseEvent((float)heldAttackOne.Item2 / heldAttackOne.Item1.IdentifyAmount);
-                    print(heldAttackOne.Item1.name + ": " + heldAttackOne.Item2);
+                    projectileOnePercentUpdatedEventSO.RaiseEvent((float)HeldAttackOne.Item2 / HeldAttackOne.Item1.IdentifyAmount);
+                    print(HeldAttackOne.Item1.name + ": " + HeldAttackOne.Item2);
                 }
             }
             else drainTimerOne = stats.DrainRate;
         }
 
-        if (!isChargingTwo && heldAttackTwo.Item1 != null && heldAttackTwo.Item2 < heldAttackTwo.Item1.IdentifyAmount && heldAttackTwo.Item2 > 1)
+        if (!isChargingTwo && HeldAttackTwo.Item1 != null && HeldAttackTwo.Item2 < HeldAttackTwo.Item1.IdentifyAmount && HeldAttackTwo.Item2 > 1)
         {
             if (drainTimerTwo > 0)
             {
@@ -422,10 +426,10 @@ public class PlayerAttack : MonoBehaviour
 
                 if (drainTimerTwo <= 0)
                 {
-                    heldAttackTwo.Item2--;
+                    HeldAttackTwo = (HeldAttackTwo.Item1, HeldAttackTwo.Item2 - 1);
                     drainTimerTwo = stats.DrainRate;
-                    projectileTwoPercentUpdatedEventSO.RaiseEvent((float)heldAttackTwo.Item2 / heldAttackTwo.Item1.IdentifyAmount);
-                    print(heldAttackTwo.Item1.name + ": " + heldAttackTwo.Item2);
+                    projectileTwoPercentUpdatedEventSO.RaiseEvent((float)HeldAttackTwo.Item2 / HeldAttackTwo.Item1.IdentifyAmount);
+                    print(HeldAttackTwo.Item1.name + ": " + HeldAttackTwo.Item2);
                 }
             }
             else drainTimerTwo = stats.DrainRate;

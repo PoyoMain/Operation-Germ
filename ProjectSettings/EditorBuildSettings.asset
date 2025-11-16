@@ -15,14 +15,8 @@ EditorBuildSettings:
     path: Assets/Scenes/BrainScene.unity
     guid: e51eb5cdb0648b34cafbb489402fe1de
   - enabled: 1
-    path: Assets/Scenes/HeartScene.unity
-    guid: 29c6f14d69a8030469afa1dd23807205
-  - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
-    guid: 64cd91e9a534b1f419b290d23574a11d
-  - enabled: 1
-    path: Assets/Scenes/CreditsScene.unity
-    guid: 01bbed6898e4f3746b73cce35b69ae5d
+    path: Assets/Scenes/KidneyScene.unity
+    guid: 01909846daa792049a85d25ca4388579
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 6f0a9f6d3331ccd42855f7d5da56fd38, type: 3}
   m_UseUCBPForAssetBundles: 0
