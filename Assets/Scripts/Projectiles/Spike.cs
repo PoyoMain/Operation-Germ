@@ -5,7 +5,7 @@ public class Spike : MonoBehaviour, IProjectile
 {
     [SerializeField] private ProjectileSO projectileData;
 
-    public ProjectileSO ProjectileData => throw new System.NotImplementedException();
+    public ProjectileSO ProjectileData => projectileData;
 
     private Rigidbody2D rb;
     private Animator anim;
