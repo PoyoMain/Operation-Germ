@@ -69,7 +69,7 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void Damage(int amount)
     {
         health -= amount;
-        invincibleTimer = invincibilityTime;
+        ApplyInvincibility();
         if (damageFlash) damageFlash.CallDamageFlash();
         if (damageFlicker) damageFlicker.StartDamageFlicker();
 
@@ -83,5 +83,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         {
             playerDeathEventSO.RaiseEvent();
         }
+    }
+
+    public void ApplyInvincibility()
+    {
+        invincibleTimer = invincibilityTime;
     }
 }
