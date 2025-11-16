@@ -37,6 +37,7 @@ public class PlayerAttack : MonoBehaviour
     private float ReleaseInputTimer;
     private Animator anim;
     private PlayerMovement playerMovement;
+    private PlayerHealth playerHealth;
     private (ProjectileSO, int) HeldAttackOne { get => MoveManager.Instance.HeldAttackOne; set => MoveManager.Instance.HeldAttackOne = value; }
     private (ProjectileSO, int) HeldAttackTwo { get => MoveManager.Instance.HeldAttackTwo; set => MoveManager.Instance.HeldAttackTwo = value; }
 
@@ -46,6 +47,7 @@ public class PlayerAttack : MonoBehaviour
     {
         TryGetComponent(out anim);
         TryGetComponent(out playerMovement);
+        TryGetComponent(out playerHealth);
     }
 
     private void Update()
@@ -172,6 +174,7 @@ public class PlayerAttack : MonoBehaviour
 
         IProjectile projectile = collider.GetComponentInParent<IProjectile>();
         if (projectile == null) return;
+        if (parryActive == false) return;
 
         if (isParryingOne)
         {
@@ -183,6 +186,8 @@ public class PlayerAttack : MonoBehaviour
             }
 
             projectileOnePercentUpdatedEventSO.RaiseEvent((float)HeldAttackOne.Item2 / HeldAttackOne.Item1.IdentifyAmount);
+            playerHealth.ApplyInvincibility();
+            parryActive = false;
         }
         else if (isParryingTwo)
         {
@@ -194,6 +199,8 @@ public class PlayerAttack : MonoBehaviour
             }
 
             projectileTwoPercentUpdatedEventSO.RaiseEvent((float)HeldAttackTwo.Item2 / HeldAttackTwo.Item1.IdentifyAmount);
+            playerHealth.ApplyInvincibility();
+            parryActive = false;
         }
     }
     #endregion
@@ -288,6 +295,7 @@ public class PlayerAttack : MonoBehaviour
     private float parryTimer;
     private bool isParryingOne;
     private bool isParryingTwo;
+    private bool parryActive;
     public bool IsParrying => isParryingOne || isParryingTwo;
 
     private void HandleParry()
@@ -317,7 +325,7 @@ public class PlayerAttack : MonoBehaviour
     private void ExecuteParry()
     {
         if (IsParrying) return;
-
+        parryActive = true;
         if (attackOneDown) isParryingOne = true;
         else if (attackTwoDown) isParryingTwo = true;
         anim.SetBool(ANIM_PARRY_PARAM, IsParrying);
@@ -367,7 +375,7 @@ public class PlayerAttack : MonoBehaviour
 
             attackCooldown = HeldAttackOne.Item1.PlayerCooldown;
 
-            IProjectile projectile = Instantiate(HeldAttackOne.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
+            IProjectile projectile = Instantiate(HeldAttackOne.Item1.PlayerProjectile, attackSpawnTransform.position, HeldAttackOne.Item1.PlayerProjectile.transform.rotation).GetComponent<IProjectile>();
             float angleRad = HeldAttackOne.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;
             Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
             projectile.Initialize(launchDirection, HeldAttackOne.Item1.PlayerLaunchForce);
@@ -378,7 +386,7 @@ public class PlayerAttack : MonoBehaviour
 
             attackCooldown = HeldAttackTwo.Item1.PlayerCooldown;
 
-            IProjectile projectile = Instantiate(HeldAttackTwo.Item1.PlayerProjectile, attackSpawnTransform.position, Quaternion.identity).GetComponent<IProjectile>();
+            IProjectile projectile = Instantiate(HeldAttackTwo.Item1.PlayerProjectile, attackSpawnTransform.position, HeldAttackTwo.Item1.PlayerProjectile.transform.rotation).GetComponent<IProjectile>();
             float angleRad = HeldAttackTwo.Item1.PlayerLaunchAngle * Mathf.Deg2Rad;
             Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
             projectile.Initialize(launchDirection, HeldAttackTwo.Item1.PlayerLaunchForce);

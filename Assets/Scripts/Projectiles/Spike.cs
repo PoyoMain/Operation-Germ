@@ -9,6 +9,7 @@ public class Spike : MonoBehaviour, IProjectile
 
     private Rigidbody2D rb;
     private Animator anim;
+    private SpriteRenderer sRend;
     private bool readyToFire;
     private Vector2 launchDirection;
     private float launchPower;
@@ -17,6 +18,13 @@ public class Spike : MonoBehaviour, IProjectile
     {
         TryGetComponent(out rb);
         TryGetComponent(out anim);
+        sRend = GetComponentInChildren<SpriteRenderer>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (rb.linearVelocity.x < 0) sRend.flipY = true;
+        else sRend.flipY = false;
     }
 
     public void Initialize(Vector2 direction, float power)
@@ -32,19 +40,19 @@ public class Spike : MonoBehaviour, IProjectile
         anim.SetBool("ReadyToFire", readyToFire);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (!readyToFire) return;
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    if (!readyToFire) return;
 
-        OnHit(collision);
-    }
+    //    OnHit(collision);
+    //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!readyToFire) return;
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    if (!readyToFire) return;
 
-        OnHit(collision);
-    }
+    //    OnHit(collision);
+    //}
 
     public void OnHit(Collision2D collision)
     {
