@@ -24,8 +24,17 @@ public class BossButton : MonoBehaviour
 
     private void Start()
     {
-        if (bossPart == BossPart.Brain && BossManager.Instance.BossesDefeated < BossManager.Instance.BossesNeededForFinalBoss) button.interactable = false;
-        if (BossManager.Instance.IsBossDefeated(bossPart)) button.interactable = false;
+        if (BossManager.Instance.BossesDefeated < BossManager.Instance.BossesNeededForFinalBoss)
+        {
+            if (bossPart == BossPart.Brain) gameObject.SetActive(false);
+            else if (BossManager.Instance.IsBossDefeated(bossPart)) button.interactable = false;
+            else button.interactable = true;
+        }
+        else
+        {
+            if (bossPart == BossPart.Brain) button.interactable = true;
+            else gameObject.SetActive(false);
+        }        
     }
 
     private void GoToScene()

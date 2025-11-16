@@ -5,6 +5,10 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     [SerializeField] private int startHealth;
     [SerializeField] private float invincibilityTime;
 
+    [Header("Broadcast Events")]
+    [SerializeField] private FloatEventSO playerDamagedEventSO;
+    [SerializeField] private VoidEventSO playerDeathEventSO;
+
     private int health;
     private float invincibleTimer;
     private PlayerAttack playerAttack;
@@ -68,5 +72,16 @@ public class PlayerHealth : MonoBehaviour, IDamageable
         invincibleTimer = invincibilityTime;
         if (damageFlash) damageFlash.CallDamageFlash();
         if (damageFlicker) damageFlicker.StartDamageFlicker();
+
+        
+
+        if (health > 0)
+        {
+            playerDamagedEventSO.RaiseEvent((float)health / startHealth);
+        }
+        else
+        {
+            playerDeathEventSO.RaiseEvent();
+        }
     }
 }
