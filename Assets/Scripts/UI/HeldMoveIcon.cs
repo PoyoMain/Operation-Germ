@@ -5,6 +5,9 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Image))]
 public class HeldMoveIcon : MonoBehaviour
 {
+    [Header("General Settings")]
+    [SerializeField] private bool attackOne;
+
     [Header("Image Components")]
     [SerializeField] private Image iconImageBG;
     [SerializeField] private Image iconImageFill;
@@ -44,7 +47,24 @@ public class HeldMoveIcon : MonoBehaviour
 
     private void Start()
     {
-        ReleaseProjectile();
+        if (attackOne && MoveManager.Instance.HeldAttackOne.Item1 != null)
+        {
+            (ProjectileSO, int) move = MoveManager.Instance.HeldAttackOne;
+
+            RegisterProjectile(move.Item1);
+            SetFillAmount((float)move.Item2 / move.Item1.IdentifyAmount);
+        }
+        else if (!attackOne && MoveManager.Instance.HeldAttackTwo.Item1 != null)
+        {
+            (ProjectileSO, int) move = MoveManager.Instance.HeldAttackTwo;
+
+            RegisterProjectile(move.Item1);
+            SetFillAmount((float)move.Item2 / move.Item1.IdentifyAmount);
+        }
+        else
+        {
+            ReleaseProjectile();
+        } 
     }
 
     private void RegisterProjectile(ProjectileSO projectile)
