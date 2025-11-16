@@ -687,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05a7cd1f4928b3e4caf7309b00389f0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 20
+  startHealth: 10
   invincibilityTime: 1
   playerDamagedEventSO: {fileID: 11400000, guid: 60d18a636b0d83f4faf66e350e11920e, type: 2}
   playerDeathEventSO: {fileID: 11400000, guid: 6df7854d34cd4964a8f5875c244a2daf, type: 2}

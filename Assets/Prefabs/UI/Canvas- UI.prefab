@@ -257,6 +257,7 @@ GameObject:
   - component: {fileID: 3843186772573503748}
   - component: {fileID: 814226447269332533}
   - component: {fileID: 6091835398772836080}
+  - component: {fileID: 5478255411926229084}
   m_Layer: 5
   m_Name: Canvas- UI
   m_TagString: Untagged
@@ -347,6 +348,21 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5478255411926229084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4542633171504478447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1bbde230adc69804b8b7dbbbcf07254e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 8646047980921104950}
+  playerDamagedEventSO: {fileID: 11400000, guid: 60d18a636b0d83f4faf66e350e11920e, type: 2}
+  playerDeathEventSO: {fileID: 11400000, guid: 6df7854d34cd4964a8f5875c244a2daf, type: 2}
 --- !u!1 &4872479271051300394
 GameObject:
   m_ObjectHideFlags: 0
