@@ -840,6 +840,8 @@ MonoBehaviour:
   fireLogWaitTime: 2
   botFaceTransform: {fileID: 1627371471}
   fireMissileData: {fileID: 11400000, guid: 1fc3cc64c850f864dbd5cf7475dfb48b, type: 2}
+  fireMissileData1: {fileID: 11400000, guid: fc227fc509af6e04db0ed13447a49e49, type: 2}
+  fireMissileData2: {fileID: 11400000, guid: 7096bab7246aa3441a23748a037d5885, type: 2}
   numMissiles: 3
   fireMissileWaitTime: 1
 --- !u!95 &864931598

@@ -11,9 +11,11 @@ public class FireBall : MonoBehaviour, IProjectile
     private float explosionRadius;
     private int numBounces;
     private Rigidbody2D rigidBody;
+    private Animator anim;
     void Awake()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -21,7 +23,9 @@ public class FireBall : MonoBehaviour, IProjectile
     {
         if(rigidBody.linearVelocity.sqrMagnitude > 0.01f)
         {
-            transform.right = rigidBody.linearVelocity;
+            Vector2 direction = rigidBody.linearVelocity;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
         }
     }
 
@@ -55,6 +59,7 @@ public class FireBall : MonoBehaviour, IProjectile
 
         if (collision.collider.CompareTag("Ground"))
         {
+            anim.SetBool("HitFloor", true);
             numBounces++;
             if(numBounces == 3)
             {
@@ -71,6 +76,11 @@ public class FireBall : MonoBehaviour, IProjectile
         
 
         Destroy();
+    }
+
+    public void ResetBounceAnim()
+    {
+        anim.SetBool("HitFloor", false);
     }
 
     public void OnHit(Collider2D collider)
