@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358def4896bb2054ea7ede45965f0adc, type: 3}
+  m_Name: Spike
+  m_EditorClassIdentifier: 
+  identifyAmount: 5
+  playerLaunchAngle: 0
+  playerLaunchForce: 20
+  playerCooldown: 1
+  iconSpriteEnemy: {fileID: 21300000, guid: b2a1fc4e7163b314bae1768ba6d1dcd3, type: 3}
+  iconSpritePlayer: {fileID: 21300000, guid: b2a1fc4e7163b314bae1768ba6d1dcd3, type: 3}
+  iconEnemyBorder: {fileID: 21300000, guid: a9d39361da7e8674b85061d1c83e1c25, type: 3}
+  enemyProjectile: {fileID: 7204094008410972964, guid: 09d3021acc4163642a57574249265872, type: 3}
+  playerProjectile: {fileID: 7204094008410972964, guid: 665693afd2fb048498aff7bd624cb94e, type: 3}

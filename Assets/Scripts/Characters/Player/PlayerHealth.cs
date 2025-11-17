@@ -3,39 +3,65 @@ using UnityEngine;
 public class PlayerHealth : MonoBehaviour, IDamageable
 {
     [SerializeField] private int startHealth;
-    [SerializeField] private int invincibilityTime;
-    [SerializeField] private Collider2D hurtboxCollider;
+    [SerializeField] private float invincibilityTime;
+
+    [Header("Broadcast Events")]
+    [SerializeField] private FloatEventSO playerDamagedEventSO;
+    [SerializeField] private VoidEventSO playerDeathEventSO;
 
     private int health;
     private float invincibleTimer;
+    private PlayerAttack playerAttack;
+    private PlayerMovement playerMovement;
+    private DamageFlash damageFlash;
+    private DamageFlicker damageFlicker;
 
     public int Health => health;
     public float InvincibilityTime => invincibilityTime;
     private bool IsInvincible => invincibleTimer > 0;
+
+    private void Awake()
+    {
+        TryGetComponent(out playerAttack);
+        TryGetComponent(out playerMovement);
+        TryGetComponent(out damageFlash);
+        TryGetComponent(out damageFlicker);
+    }
 
     private void Start()
     {
         health = startHealth;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (IsInvincible)
         {
-            invincibleTimer -= Time.deltaTime;
+            invincibleTimer -= Time.fixedDeltaTime;
 
-            if (!IsInvincible) hurtboxCollider.enabled = true;
+            if (!IsInvincible) damageFlicker.EndDamageFlicker();
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collision.TryGetComponent(out DamageComponent damageComponent))
+        TriggerBehavior(collider);
+    }
+
+    private void OnTriggerStay2D(Collider2D collider)
+    {
+        TriggerBehavior(collider);
+    }
+
+    private void TriggerBehavior(Collider2D collider)
+    {
+        if (collider.TryGetComponent(out DamageComponent damageComponent))
         {
-            if (collision.CompareTag("Enemy") && !IsInvincible)
+            if (!IsInvincible && !playerAttack.IsParrying)
             {
                 Damage(damageComponent.Damage);
-                damageComponent.HitSomething();
+
+                if (damageComponent.DealsKnockback) playerMovement.ApplyKnockback();
             }
         }
     }
@@ -43,7 +69,24 @@ public class PlayerHealth : MonoBehaviour, IDamageable
     public void Damage(int amount)
     {
         health -= amount;
+        ApplyInvincibility();
+        if (damageFlash) damageFlash.CallDamageFlash();
+        if (damageFlicker) damageFlicker.StartDamageFlicker();
+
+        
+
+        if (health > 0)
+        {
+            playerDamagedEventSO.RaiseEvent((float)health / startHealth);
+        }
+        else
+        {
+            playerDeathEventSO.RaiseEvent();
+        }
+    }
+
+    public void ApplyInvincibility()
+    {
         invincibleTimer = invincibilityTime;
-        hurtboxCollider.enabled = false;
     }
 }

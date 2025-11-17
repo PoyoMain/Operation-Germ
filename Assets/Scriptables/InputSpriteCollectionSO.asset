@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb1bc677060e9e4a8f8f5daba1de6d9, type: 3}
+  m_Name: InputSpriteCollectionSO
+  m_EditorClassIdentifier: 
+  actionSprites:
+  - actionReference: {fileID: -5094077560359113836, guid: 6f0a9f6d3331ccd42855f7d5da56fd38, type: 3}
+    sprite: {fileID: 21300000, guid: 77e6d4382e2aadd4f90b7e0bee27d0ff, type: 3}
+    inputType: 0
+  - actionReference: {fileID: -5094077560359113836, guid: 6f0a9f6d3331ccd42855f7d5da56fd38, type: 3}
+    sprite: {fileID: 21300000, guid: ee219aef537dd454394262f9fc0e39df, type: 3}
+    inputType: 1
+  - actionReference: {fileID: 8152173355856475922, guid: 6f0a9f6d3331ccd42855f7d5da56fd38, type: 3}
+    sprite: {fileID: 21300000, guid: a53b2a9c43726c948ad6434a2e9ddf17, type: 3}
+    inputType: 0
+  - actionReference: {fileID: 8152173355856475922, guid: 6f0a9f6d3331ccd42855f7d5da56fd38, type: 3}
+    sprite: {fileID: 21300000, guid: 712c4872b4248464ebc1028b8f732cd0, type: 3}
+    inputType: 1
+  - actionReference: {fileID: -2832072977700011949, guid: 6f0a9f6d3331ccd42855f7d5da56fd38, type: 3}
+    sprite: {fileID: 21300000, guid: a153353b48ac5db4390c030c4b14791b, type: 3}
+    inputType: 0
+  - actionReference: {fileID: -2832072977700011949, guid: 6f0a9f6d3331ccd42855f7d5da56fd38, type: 3}
+    sprite: {fileID: 21300000, guid: 8173cfa55ead64645a632bd5b4eac0ed, type: 3}
+    inputType: 1
+  - actionReference: {fileID: -101107693282052874, guid: 6f0a9f6d3331ccd42855f7d5da56fd38, type: 3}
+    sprite: {fileID: 21300000, guid: 848992086a06076498ca7a34eab9cfb2, type: 3}
+    inputType: 0
+  - actionReference: {fileID: -101107693282052874, guid: 6f0a9f6d3331ccd42855f7d5da56fd38, type: 3}
+    sprite: {fileID: 21300000, guid: b6099cca0f3ac634b86fa71c89877b7e, type: 3}
+    inputType: 1

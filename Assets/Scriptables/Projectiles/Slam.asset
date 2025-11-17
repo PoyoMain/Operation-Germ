@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358def4896bb2054ea7ede45965f0adc, type: 3}
+  m_Name: Slam
+  m_EditorClassIdentifier: 
+  identifyAmount: 5
+  playerLaunchAngle: 0
+  playerLaunchForce: 9
+  playerCooldown: 0.4
+  iconSpriteEnemy: {fileID: 21300000, guid: 529abf966de5c2445816f57645a4520b, type: 3}
+  iconSpritePlayer: {fileID: 21300000, guid: d6ab27307cbc0ca49b8ee7379482b768, type: 3}
+  iconEnemyBorder: {fileID: 21300000, guid: 8a48f6a7dd0da284c952544899e2fefe, type: 3}
+  enemyProjectile: {fileID: 1672236079810485589, guid: 28947cec0f7f5a24cbb3d5cc70c03f01, type: 3}
+  playerProjectile: {fileID: 1672236079810485589, guid: 6471ce6ae4111594d83dbe3485371ada, type: 3}

@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - Ground
+  - EnemyBoss
+  - ExplodeSound
+  - MissileSound
+  - BallHitSound
   layers:
   - Default
   - TransparentFX
@@ -30,9 +34,9 @@ TagManager:
   - PlayerProjectile
   - EnemyProjectile
   - 
-  - 
-  - 
-  - 
+  - EnemyOnlyInteractLayer
+  - PlayerOnlyInteractFloor
+  - PlayerDetectLayer
   - 
   - 
   - 
@@ -42,6 +46,21 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Environment
+    uniqueID: 1573955449
+    locked: 0
+  - name: Enemies
+    uniqueID: 585879429
+    locked: 0
+  - name: Player
+    uniqueID: 3311266389
+    locked: 0
+  - name: Projectiles
+    uniqueID: 1470353907
+    locked: 0
+  - name: UI
+    uniqueID: 1864070425
     locked: 0
   m_RenderingLayers:
   - Default

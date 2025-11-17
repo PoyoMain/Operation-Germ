@@ -1,0 +1,754 @@
+fileFormatVersion: 2
+guid: 4fd9e7832b358ac4585c5ae25c942130
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4198298056930517643
+    second: Blood_Stream-3_0
+  - first:
+      213: -6355853341390221903
+    second: Blood_Stream-3_1
+  - first:
+      213: 3993012372043677965
+    second: Blood_Stream-3_2
+  - first:
+      213: -489831794515972592
+    second: Blood_Stream-3_3
+  - first:
+      213: -418933815697700463
+    second: Blood_Stream-3_4
+  - first:
+      213: 7360501628851415414
+    second: Blood_Stream-3_5
+  - first:
+      213: 617955083005626852
+    second: Blood_Stream-3_6
+  - first:
+      213: 1585859991951820653
+    second: Blood_Stream-3_7
+  - first:
+      213: -2380749312220559606
+    second: Blood_Stream-3_8
+  - first:
+      213: 7919458283496040444
+    second: Blood_Stream-3_9
+  - first:
+      213: 3273845653667819868
+    second: Blood_Stream-3_10
+  - first:
+      213: -302992566073468361
+    second: Blood_Stream-3_11
+  - first:
+      213: -243498296898433251
+    second: Blood_Stream-3_12
+  - first:
+      213: -6319526347135876838
+    second: Blood_Stream-3_13
+  - first:
+      213: 8820420756664467904
+    second: Blood_Stream-3_14
+  - first:
+      213: 9134483096354922309
+    second: Blood_Stream-3_15
+  - first:
+      213: -9057887745880088548
+    second: Blood_Stream-3_16
+  - first:
+      213: 5423051262849682926
+    second: Blood_Stream-3_17
+  - first:
+      213: -4414374084161040231
+    second: Blood_Stream-3_18
+  - first:
+      213: -7113021021789476827
+    second: Blood_Stream-3_19
+  - first:
+      213: -6321208932213737189
+    second: Blood_Stream-3_20
+  - first:
+      213: -7712636380314981798
+    second: Blood_Stream-3_21
+  - first:
+      213: -6801389765399431441
+    second: Blood_Stream-3_22
+  - first:
+      213: -7703068300077502859
+    second: Blood_Stream-3_23
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 0
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Blood_Stream-3_0
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 1523
+        width: 10
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57d91772926acb5c0800000000000000
+      internalID: -4198298056930517643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_1
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1526
+        width: 27
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1bdc4fd8f097bc7a0800000000000000
+      internalID: -6355853341390221903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_2
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 1037
+        width: 380
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d014763b8970a6730800000000000000
+      internalID: 3993012372043677965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_3
+      rect:
+        serializedVersion: 2
+        x: 1011
+        y: 1108
+        width: 369
+        height: 410
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01eee200494c339f0800000000000000
+      internalID: -489831794515972592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_4
+      rect:
+        serializedVersion: 2
+        x: 1587
+        y: 1451
+        width: 56
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 19980fa0ae5af2af0800000000000000
+      internalID: -418933815697700463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_5
+      rect:
+        serializedVersion: 2
+        x: 1545
+        y: 1304
+        width: 14
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6796f5cdb31c52660800000000000000
+      internalID: 7360501628851415414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_6
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 1080
+        width: 289
+        height: 362
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e982b9bfda639800800000000000000
+      internalID: 617955083005626852
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_7
+      rect:
+        serializedVersion: 2
+        x: 1878
+        y: 1189
+        width: 356
+        height: 133
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d67cacba24b120610800000000000000
+      internalID: 1585859991951820653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_8
+      rect:
+        serializedVersion: 2
+        x: 284
+        y: 1054
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a0786d14d11e5fed0800000000000000
+      internalID: -2380749312220559606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_9
+      rect:
+        serializedVersion: 2
+        x: 291
+        y: 1050
+        width: 47
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf76e49895197ed60800000000000000
+      internalID: 7919458283496040444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_10
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 266
+        width: 350
+        height: 492
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c51b354c6490f6d20800000000000000
+      internalID: 3273845653667819868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_11
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 307
+        width: 357
+        height: 432
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73a5b91dddd8bcbf0800000000000000
+      internalID: -302992566073468361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_12
+      rect:
+        serializedVersion: 2
+        x: 1449
+        y: 220
+        width: 244
+        height: 415
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1fc4fdc69bee9cf0800000000000000
+      internalID: -243498296898433251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_13
+      rect:
+        serializedVersion: 2
+        x: 1817
+        y: 269
+        width: 395
+        height: 443
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a118e3205488c48a0800000000000000
+      internalID: -6319526347135876838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_14
+      rect:
+        serializedVersion: 2
+        x: 2055
+        y: 181
+        width: 150
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0c1c77212fd686a70800000000000000
+      internalID: 8820420756664467904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_15
+      rect:
+        serializedVersion: 2
+        x: 2206
+        y: 169
+        width: 37
+        height: 39
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54f9b05caf334ce70800000000000000
+      internalID: 9134483096354922309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_16
+      rect:
+        serializedVersion: 2
+        x: 2239
+        y: 166
+        width: 173
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c10247bf51beb4280800000000000000
+      internalID: -9057887745880088548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_17
+      rect:
+        serializedVersion: 2
+        x: 2354
+        y: 178
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eed83e8146c824b40800000000000000
+      internalID: 5423051262849682926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_18
+      rect:
+        serializedVersion: 2
+        x: 2361
+        y: 181
+        width: 14
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99014e7a82efcb2c0800000000000000
+      internalID: -4414374084161040231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_19
+      rect:
+        serializedVersion: 2
+        x: 2223
+        y: 173
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5282a5c2119794d90800000000000000
+      internalID: -7113021021789476827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_20
+      rect:
+        serializedVersion: 2
+        x: 2324
+        y: 163
+        width: 22
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b19bf54a7fd8648a0800000000000000
+      internalID: -6321208932213737189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_21
+      rect:
+        serializedVersion: 2
+        x: 2339
+        y: 170
+        width: 24
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a5a229d431637f490800000000000000
+      internalID: -7712636380314981798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_22
+      rect:
+        serializedVersion: 2
+        x: 2253
+        y: 160
+        width: 30
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fe6b36e2b0c9c91a0800000000000000
+      internalID: -6801389765399431441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Blood_Stream-3_23
+      rect:
+        serializedVersion: 2
+        x: 2284
+        y: 159
+        width: 44
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57eee459134391590800000000000000
+      internalID: -7703068300077502859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Blood_Stream-3_0: -4198298056930517643
+      Blood_Stream-3_1: -6355853341390221903
+      Blood_Stream-3_10: 3273845653667819868
+      Blood_Stream-3_11: -302992566073468361
+      Blood_Stream-3_12: -243498296898433251
+      Blood_Stream-3_13: -6319526347135876838
+      Blood_Stream-3_14: 8820420756664467904
+      Blood_Stream-3_15: 9134483096354922309
+      Blood_Stream-3_16: -9057887745880088548
+      Blood_Stream-3_17: 5423051262849682926
+      Blood_Stream-3_18: -4414374084161040231
+      Blood_Stream-3_19: -7113021021789476827
+      Blood_Stream-3_2: 3993012372043677965
+      Blood_Stream-3_20: -6321208932213737189
+      Blood_Stream-3_21: -7712636380314981798
+      Blood_Stream-3_22: -6801389765399431441
+      Blood_Stream-3_23: -7703068300077502859
+      Blood_Stream-3_3: -489831794515972592
+      Blood_Stream-3_4: -418933815697700463
+      Blood_Stream-3_5: 7360501628851415414
+      Blood_Stream-3_6: 617955083005626852
+      Blood_Stream-3_7: 1585859991951820653
+      Blood_Stream-3_8: -2380749312220559606
+      Blood_Stream-3_9: 7919458283496040444
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

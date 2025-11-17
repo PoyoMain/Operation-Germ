@@ -1,0 +1,487 @@
+fileFormatVersion: 2
+guid: 4c7c8a2830f265a4ba1a18aa93d38652
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5158956537011710362
+    second: Cum_Explosion-Sheet_0
+  - first:
+      213: -1498481014236461906
+    second: Cum_Explosion-Sheet_1
+  - first:
+      213: 8481736269600162417
+    second: Cum_Explosion-Sheet_2
+  - first:
+      213: -4748668472326880376
+    second: Cum_Explosion-Sheet_3
+  - first:
+      213: 4077776125400989988
+    second: Cum_Explosion-Sheet_4
+  - first:
+      213: -3686561103215716924
+    second: Cum_Explosion-Sheet_5
+  - first:
+      213: 8227411799200556917
+    second: Cum_Explosion-Sheet_6
+  - first:
+      213: -9129551100903573662
+    second: Cum_Explosion-Sheet_7
+  - first:
+      213: 887506257407671716
+    second: Cum_Explosion-Sheet_8
+  - first:
+      213: -2896209135991983154
+    second: Cum_Explosion-Sheet_9
+  - first:
+      213: -5518448442698762001
+    second: Cum_Explosion-Sheet_10
+  - first:
+      213: -4512477849794067986
+    second: Cum_Explosion-Sheet_11
+  - first:
+      213: 1982366525576602131
+    second: Cum_Explosion-Sheet_12
+  - first:
+      213: 1519862532651623710
+    second: Cum_Explosion-Sheet_13
+  - first:
+      213: 4878247452765862459
+    second: Cum_Explosion-Sheet_14
+  - first:
+      213: -323246982144783941
+    second: Cum_Explosion-Sheet_15
+  - first:
+      213: -7775143884354557598
+    second: Cum_Explosion-Sheet_16
+  - first:
+      213: -2399737905023991242
+    second: Cum_Explosion-Sheet_17
+  - first:
+      213: 8588909826128046475
+    second: Cum_Explosion-Sheet_18
+  - first:
+      213: 5714852375667112492
+    second: Cum_Explosion-Sheet_19
+  - first:
+      213: 6599132610923624096
+    second: Cum_Explosion-Sheet_20
+  - first:
+      213: -378606703821944806
+    second: Cum_Explosion-Sheet_21
+  - first:
+      213: 3311219753683484647
+    second: Cum_Explosion-Sheet_22
+  - first:
+      213: 2563229174584613729
+    second: Cum_Explosion-Sheet_23
+  - first:
+      213: 5130939440345222914
+    second: Cum_Explosion-Sheet_24
+  - first:
+      213: 2760147503004227978
+    second: Cum_Explosion-Sheet_25
+  - first:
+      213: 8116146910237045899
+    second: Cum_Explosion-Sheet_26
+  - first:
+      213: 5318848414348392969
+    second: Cum_Explosion-Sheet_27
+  - first:
+      213: -8401148491933474475
+    second: Cum_Explosion-Sheet_28
+  - first:
+      213: -1218815308252139373
+    second: Cum_Explosion-Sheet_29
+  - first:
+      213: -3174612124721180084
+    second: Cum_Explosion-Sheet_30
+  - first:
+      213: 3336479467340087447
+    second: Cum_Explosion-Sheet_31
+  - first:
+      213: 33470109403947399
+    second: Cum_Explosion-Sheet_32
+  - first:
+      213: -764929602863779624
+    second: Cum_Explosion-Sheet_33
+  - first:
+      213: 5682003232076434430
+    second: Cum_Explosion-Sheet_34
+  - first:
+      213: -3213886341717475363
+    second: Cum_Explosion-Sheet_35
+  - first:
+      213: -4020694925014157777
+    second: Cum_Explosion-Sheet_36
+  - first:
+      213: -136353178533125977
+    second: Cum_Explosion-Sheet_37
+  - first:
+      213: 3303350012566955269
+    second: Cum_Explosion-Sheet_38
+  - first:
+      213: -6756206299273807915
+    second: Cum_Explosion-Sheet_39
+  - first:
+      213: 1272770542113629419
+    second: Cum_Explosion-Sheet_40
+  - first:
+      213: 1034485502053739722
+    second: Cum_Explosion-Sheet_41
+  - first:
+      213: -8871313415049867310
+    second: Cum_Explosion-Sheet_42
+  - first:
+      213: -8425106262653813622
+    second: Cum_Explosion-Sheet_43
+  - first:
+      213: 6694818367637154792
+    second: Cum_Explosion-Sheet_44
+  - first:
+      213: -4756030057791031768
+    second: Cum_Explosion-Sheet_45
+  - first:
+      213: -4334828036366817597
+    second: Cum_Explosion-Sheet_46
+  - first:
+      213: 3003479323944731524
+    second: Cum_Explosion-Sheet_47
+  - first:
+      213: 2616864385513311308
+    second: Cum_Explosion-Sheet_48
+  - first:
+      213: -1892496991056444087
+    second: Cum_Explosion-Sheet_49
+  - first:
+      213: 7240806124698071147
+    second: Cum_Explosion-Sheet_50
+  - first:
+      213: -2271529065527883064
+    second: Cum_Explosion-Sheet_51
+  - first:
+      213: -5579964951608930256
+    second: Cum_Explosion-Sheet_52
+  - first:
+      213: 2179692906864959960
+    second: Cum_Explosion-Sheet_53
+  - first:
+      213: 4934110391461778966
+    second: Cum_Explosion-Sheet_54
+  - first:
+      213: 7223899236732045734
+    second: Cum_Explosion-Sheet_55
+  - first:
+      213: -4982650714930445272
+    second: Cum_Explosion-Sheet_56
+  - first:
+      213: -957335457502544583
+    second: Cum_Explosion-Sheet_57
+  - first:
+      213: 7118710087318972124
+    second: Cum_Explosion-Sheet_58
+  - first:
+      213: -7504323281575721448
+    second: Cum_Explosion-Sheet_59
+  - first:
+      213: 3961308216061170770
+    second: Cum_Explosion-Sheet_60
+  - first:
+      213: -8231398060172409850
+    second: Cum_Explosion-Sheet_61
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Cum_Explosion-Sheet_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 164
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 666dcb7ec54b768b0800000000000000
+      internalID: -5158956537011710362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cum_Explosion-Sheet_1
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 164
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea4c4c3f473543be0800000000000000
+      internalID: -1498481014236461906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cum_Explosion-Sheet_2
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 0
+        width: 164
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1728014f23e25b570800000000000000
+      internalID: 8481736269600162417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cum_Explosion-Sheet_3
+      rect:
+        serializedVersion: 2
+        x: 492
+        y: 0
+        width: 164
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8830cd61f27591eb0800000000000000
+      internalID: -4748668472326880376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cum_Explosion-Sheet_4
+      rect:
+        serializedVersion: 2
+        x: 656
+        y: 0
+        width: 164
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4214814f7cb279830800000000000000
+      internalID: 4077776125400989988
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cum_Explosion-Sheet_5
+      rect:
+        serializedVersion: 2
+        x: 820
+        y: 0
+        width: 164
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c51e087534b6dcc0800000000000000
+      internalID: -3686561103215716924
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cum_Explosion-Sheet_6
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 0
+        width: 164
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 577e430d073ad2270800000000000000
+      internalID: 8227411799200556917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Cum_Explosion-Sheet_7
+      rect:
+        serializedVersion: 2
+        x: 1148
+        y: 0
+        width: 164
+        height: 164
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 267bdd7e4a15d4180800000000000000
+      internalID: -9129551100903573662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: d679a98c9068d7841a6c382e34fda0a5
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Cum_Explosion-Sheet_0: -5158956537011710362
+      Cum_Explosion-Sheet_1: -1498481014236461906
+      Cum_Explosion-Sheet_2: 8481736269600162417
+      Cum_Explosion-Sheet_3: -4748668472326880376
+      Cum_Explosion-Sheet_4: 4077776125400989988
+      Cum_Explosion-Sheet_5: -3686561103215716924
+      Cum_Explosion-Sheet_6: 8227411799200556917
+      Cum_Explosion-Sheet_7: -9129551100903573662
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
