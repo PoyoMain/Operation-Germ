@@ -30,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 velocity;
     private bool jumpDown;
     private bool jumpHeld;
+    private bool dashDown;
     private bool cachedQueryStartInColliders;
     private float time;
 
@@ -66,12 +67,20 @@ public class PlayerMovement : MonoBehaviour
             jumpToConsume = true;
             timeJumpWasPressed = time;
         }
+
+        if (!dashDown)
+        {
+            dashDown = Controls.Dash.WasPressedThisFrame();
+            dashInputTimer = stats.InputBufferTime;
+        }
+
     }
 
     private void FixedUpdate()
     {
         CheckCollisions();
 
+        HandleDash();
         HandleKnockback();
         HandleJump();
         HandleDirection();
@@ -80,6 +89,67 @@ public class PlayerMovement : MonoBehaviour
 
         ApplyVelocity();
     }
+
+    #region Dash
+    private float dashInputTimer;
+    private float dashTimer;
+    private readonly float dashDecelerationPercentage = 0.2f;
+    private bool hasDashInAir;
+    public bool IsDashing => dashTimer > 0;
+
+    private void HandleDash()
+    {
+        if (dashInputTimer > 0)
+        {
+            dashInputTimer -= Time.deltaTime;
+            if (dashInputTimer <= 0) dashDown = false;
+        }
+
+
+        if (IsDashing)
+        {
+            dashTimer -= Time.fixedDeltaTime;
+
+            if (dashTimer <= stats.DashTime * dashDecelerationPercentage) velocity.x = Mathf.MoveTowards(velocity.x, 0, stats.GroundDeceleration * Time.fixedDeltaTime);
+
+            if (dashTimer <= 0) anim.SetBool("IsDashing", false);
+        }
+
+        if (!dashDown) return;
+
+        if (!IsGrounded && !hasDashInAir) return;
+
+        if (playerAttack.IsParrying) return;
+
+        if (dashDown && !IsDashing) ExecuteDash();
+
+        dashDown = false;
+        dashInputTimer = 0;
+    }
+
+    private void ExecuteDash()
+    {
+        int directionInteger = (moveInput == Vector2.right) ? 1 : 
+            (moveInput == Vector2.left) ? -1 : 
+            (transform.eulerAngles == new Vector3(0, ROTATION_FACING_RIGHT, 0) || transform.eulerAngles == new Vector3(0, -ROTATION_FACING_RIGHT, 0)) ? 1 : -1;
+        velocity = new(stats.DashPower * directionInteger, 0);
+        dashTimer = stats.DashTime;
+        anim.SetBool("IsDashing", true);
+        if (!IsGrounded) hasDashInAir = false;
+
+        // Rotate GameObject based on movement input
+        if (moveInput.x > 0 && transform.localEulerAngles.y != ROTATION_FACING_RIGHT)
+        {
+            Vector3 newRot = new(0, ROTATION_FACING_RIGHT, 0);
+            transform.localEulerAngles = newRot;
+        }
+        else if (moveInput.x < 0 && transform.localEulerAngles.y != ROTATION_FACING_LEFT)
+        {
+            Vector3 newRot = new(0, ROTATION_FACING_LEFT, 0);
+            transform.localEulerAngles = newRot;
+        }
+    }
+    #endregion
 
     #region Collision
     private float frameLeftGround = float.MinValue;
@@ -105,6 +175,7 @@ public class PlayerMovement : MonoBehaviour
             coyoteUsable = true;
             bufferedJumpUsable = true;
             endedJumpEarly = false;
+            hasDashInAir = true;
         }
 
         //Left the Ground
@@ -137,6 +208,12 @@ public class PlayerMovement : MonoBehaviour
         if (!endedJumpEarly && !IsGrounded && !jumpHeld && rb.linearVelocity.y >= 0)
         {
             endedJumpEarly = true;
+        }
+
+        if (!endedJumpEarly && IsDashing)
+        {
+            endedJumpEarly = true;
+            jumpTimer = 0;
         }
 
         if ((jumpHeld || endedJumpEarly)) HandleJumpMovement();
@@ -181,7 +258,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleDirection()
     {
-        if (IsInKnockback) return;
+        if (IsInKnockback || IsDashing) return;
 
         if (IsGrounded && (playerAttack.IsCharging || playerAttack.IsParrying || playerAttack.IsAttacking))
         {
@@ -221,6 +298,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleGravity()
     {
+        if (IsDashing) return;
+
         if (IsGrounded && velocity.y <= 0f)
         {
             velocity.y = stats.GroundingForce;
