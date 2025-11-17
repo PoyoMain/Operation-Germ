@@ -1,28 +1,31 @@
 fileFormatVersion: 2
-guid: e6c0ffaf5d3b0e3418622afe1ae6185e
+guid: b8ff93a674006934999c9fdf918aa2b4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8428126455697246732
-    second: Beneath the Surface Stage Select_brain(1)_0
+      213: -7451184521956170733
+    second: Beneath the Surface Stage Select_brain_0
   - first:
-      213: 5303671065717955881
-    second: Beneath the Surface Stage Select_brain(1)_1
+      213: 7184996021475163897
+    second: Beneath the Surface Stage Select_brain_1
   - first:
-      213: 5956317273675750829
-    second: Beneath the Surface Stage Select_brain(1)_2
+      213: -7799908673182542610
+    second: Beneath the Surface Stage Select_brain_2
   - first:
-      213: -7256091380024557078
-    second: Beneath the Surface Stage Select_brain(1)_3
+      213: -1872225146585197958
+    second: Beneath the Surface Stage Select_brain_3
   - first:
-      213: 3798755820305711590
-    second: Beneath the Surface Stage Select_brain(1)_4
+      213: -8353690355565014733
+    second: Beneath the Surface Stage Select_brain_4
   - first:
-      213: -4534276198942534616
-    second: Beneath the Surface Stage Select_brain(1)_5
+      213: -4995822330807700556
+    second: Beneath the Surface Stage Select_brain_5
   - first:
-      213: 6244933593036990067
-    second: Beneath the Surface Stage Select_brain(1)_6
+      213: 3091658361173526634
+    second: Beneath the Surface Stage Select_brain_6
+  - first:
+      213: 727354066350473872
+    second: Beneath the Surface Stage Select_brain_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,13 +134,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beneath the Surface Stage Select_brain(1)_0
+      name: Beneath the Surface Stage Select_brain_0
       rect:
         serializedVersion: 2
-        x: 112
-        y: 1037
-        width: 728
-        height: 426
+        x: 52
+        y: 1395
+        width: 73
+        height: 71
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -146,14 +149,36 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4f5f71684a7490b80800000000000000
-      internalID: -8428126455697246732
+      spriteID: 314e9e4c723189890800000000000000
+      internalID: -7451184521956170733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beneath the Surface Stage Select_brain(1)_1
+      name: Beneath the Surface Stage Select_brain_1
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 1037
+        width: 728
+        height: 430
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9fe3f9450db36b360800000000000000
+      internalID: 7184996021475163897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Beneath the Surface Stage Select_brain_2
       rect:
         serializedVersion: 2
         x: 855
@@ -168,14 +193,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 92dd2a5fbbc6a9940800000000000000
-      internalID: 5303671065717955881
+      spriteID: ee4577e236821c390800000000000000
+      internalID: -7799908673182542610
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beneath the Surface Stage Select_brain(1)_2
+      name: Beneath the Surface Stage Select_brain_3
       rect:
         serializedVersion: 2
         x: 1890
@@ -190,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dad57f2a00719a250800000000000000
-      internalID: 5956317273675750829
+      spriteID: a725c3e06258406e0800000000000000
+      internalID: -1872225146585197958
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beneath the Surface Stage Select_brain(1)_3
+      name: Beneath the Surface Stage Select_brain_4
       rect:
         serializedVersion: 2
         x: 18
@@ -212,14 +237,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ae1ccd3955f2d4b90800000000000000
-      internalID: -7256091380024557078
+      spriteID: 331d0f0a1eab11c80800000000000000
+      internalID: -8353690355565014733
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beneath the Surface Stage Select_brain(1)_4
+      name: Beneath the Surface Stage Select_brain_5
       rect:
         serializedVersion: 2
         x: 2051
@@ -234,14 +259,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e105c9ba44e7b430800000000000000
-      internalID: 3798755820305711590
+      spriteID: 4b33e332f064baab0800000000000000
+      internalID: -4995822330807700556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beneath the Surface Stage Select_brain(1)_5
+      name: Beneath the Surface Stage Select_brain_6
       rect:
         serializedVersion: 2
         x: 150
@@ -256,14 +281,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 824958812d30311c0800000000000000
-      internalID: -4534276198942534616
+      spriteID: a684d9036e6c7ea20800000000000000
+      internalID: 3091658361173526634
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Beneath the Surface Stage Select_brain(1)_6
+      name: Beneath the Surface Stage Select_brain_7
       rect:
         serializedVersion: 2
         x: 1884
@@ -278,8 +303,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 376afda04067aa650800000000000000
-      internalID: 6244933593036990067
+      spriteID: 09281ce6ba4181a00800000000000000
+      internalID: 727354066350473872
       vertices: []
       indices: 
       edges: []
@@ -298,13 +323,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Beneath the Surface Stage Select_brain(1)_0: -8428126455697246732
-      Beneath the Surface Stage Select_brain(1)_1: 5303671065717955881
-      Beneath the Surface Stage Select_brain(1)_2: 5956317273675750829
-      Beneath the Surface Stage Select_brain(1)_3: -7256091380024557078
-      Beneath the Surface Stage Select_brain(1)_4: 3798755820305711590
-      Beneath the Surface Stage Select_brain(1)_5: -4534276198942534616
-      Beneath the Surface Stage Select_brain(1)_6: 6244933593036990067
+      Beneath the Surface Stage Select_brain_0: -7451184521956170733
+      Beneath the Surface Stage Select_brain_1: 7184996021475163897
+      Beneath the Surface Stage Select_brain_2: -7799908673182542610
+      Beneath the Surface Stage Select_brain_3: -1872225146585197958
+      Beneath the Surface Stage Select_brain_4: -8353690355565014733
+      Beneath the Surface Stage Select_brain_5: -4995822330807700556
+      Beneath the Surface Stage Select_brain_6: 3091658361173526634
+      Beneath the Surface Stage Select_brain_7: 727354066350473872
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

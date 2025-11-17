@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 36376a8e39eba4146990733baa9fb0ce
+guid: c4ad2becebfeb4f48a404221ee7c6390
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6321173913546878355
-    second: Beneath the Surface Stage Select_stomach(1)_0
+      213: -129812141498462690
+    second: Beneath the Surface Stage Select_stomach_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,7 +113,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beneath the Surface Stage Select_stomach(1)_0
+      name: Beneath the Surface Stage Select_stomach_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39d6d60fe2259b750800000000000000
-      internalID: 6321173913546878355
+      spriteID: e1e837a8b80d23ef0800000000000000
+      internalID: -129812141498462690
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Beneath the Surface Stage Select_stomach(1)_0: 6321173913546878355
+      Beneath the Surface Stage Select_stomach_0: -129812141498462690
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

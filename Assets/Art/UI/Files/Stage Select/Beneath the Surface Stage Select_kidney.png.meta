@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 32e9353282ef6c141b9046d93e066e27
+guid: 3f47767e406163a408b82017e0f2b2e9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8494135530219291704
-    second: Beneath the Surface Stage Select_heart(1)_0
+      213: 284706328038561683
+    second: Beneath the Surface Stage Select_kidney_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Beneath the Surface Stage Select_heart(1)_0
+      name: Beneath the Surface Stage Select_kidney_0
       rect:
         serializedVersion: 2
-        x: 2
+        x: 1
         y: 0
-        width: 866
-        height: 1254
+        width: 865
+        height: 1256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8cb31473db4ce1a80800000000000000
-      internalID: -8494135530219291704
+      spriteID: 3975b0c95ea73f300800000000000000
+      internalID: 284706328038561683
       vertices: []
       indices: 
       edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Beneath the Surface Stage Select_heart(1)_0: -8494135530219291704
+      Beneath the Surface Stage Select_kidney_0: 284706328038561683
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
