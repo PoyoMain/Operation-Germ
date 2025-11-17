@@ -44,8 +44,8 @@ public class HeartBurn : MonoBehaviour
         timerBetweenMoves = timeBetweenMoves;
         //StartCoroutine(AttackRoutine());
 
-        SpawnFireMissile();
-        //SpawnFireBall();
+        //SpawnFireMissile();
+        SpawnFireBall();
         //SpawnFireLog();
     }
 
