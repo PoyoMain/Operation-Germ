@@ -2125,7 +2125,7 @@ MonoBehaviour:
   throwRate: 5
   throwRateNoArmor: 4
   kidneyStoneProjectileData: {fileID: 11400000, guid: 4b0beabe887e4cf46b17cd114eb0cb61, type: 2}
-  minThrowAngle: 35
+  minThrowAngle: 25
   maxThrowAngle: 55
   minThrowForce: 10
   maxThrowForce: 15
@@ -3693,7 +3693,7 @@ MonoBehaviour:
   throwRate: 6
   throwRateNoArmor: 4
   kidneyStoneProjectileData: {fileID: 11400000, guid: 4b0beabe887e4cf46b17cd114eb0cb61, type: 2}
-  minThrowAngle: 35
+  minThrowAngle: 25
   maxThrowAngle: 55
   minThrowForce: 10
   maxThrowForce: 15
