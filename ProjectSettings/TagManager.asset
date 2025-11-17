@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Ground
   - EnemyBoss
+  - ExplodeSound
+  - MissileSound
+  - BallHitSound
   layers:
   - Default
   - TransparentFX

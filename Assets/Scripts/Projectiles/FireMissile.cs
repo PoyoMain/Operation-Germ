@@ -11,6 +11,7 @@ public class FireMissile : MonoBehaviour, IProjectile
     [SerializeField] private float missileLifeTime;
     [SerializeField] private TrackTarget trackTarget;
     [SerializeField] private float maxLooseTime;
+    [SerializeField] private AudioSource missileHit;
 
     private float looseTimer;
     private Rigidbody2D rigidBody;
@@ -40,6 +41,7 @@ public class FireMissile : MonoBehaviour, IProjectile
 
     public void OnHit(Collision2D collision)
     {
+        missileHit.Play();
         if (collision.collider.CompareTag("Enemy")) return;
 
         Destroy();
@@ -67,9 +69,11 @@ public class FireMissile : MonoBehaviour, IProjectile
     {
         
         rigidBody = GetComponent<Rigidbody2D>();
-        
+        GameObject audio = GameObject.FindGameObjectWithTag("MissileSound");
+        missileHit = audio.GetComponent<AudioSource>();
 
-        
+
+
     }
 
     // Update is called once per frame

@@ -16,6 +16,8 @@ public class HeartBurn : MonoBehaviour
     [SerializeField] private Transform topFaceTransform;
     [SerializeField] private ProjectileSO fireBallData;
     [SerializeField] private float fireBallWaitTime;
+    [SerializeField] private AudioSource smallSpit;
+    [SerializeField] private AudioSource largeSpit;
 
     [Header("FireLog Settings")]
     [SerializeField] private Transform midFaceTransform;
@@ -42,10 +44,10 @@ public class HeartBurn : MonoBehaviour
         
         animator = GetComponent<Animator>();
         timerBetweenMoves = timeBetweenMoves;
-        //StartCoroutine(AttackRoutine());
+        StartCoroutine(AttackRoutine());
 
         //SpawnFireMissile();
-        SpawnFireBall();
+        //SpawnFireBall();
         //SpawnFireLog();
     }
 
@@ -112,6 +114,7 @@ public class HeartBurn : MonoBehaviour
     
     public void SpawnFireBall()
     {
+        smallSpit.Play();
         IProjectile projectile = Instantiate(fireBallData.EnemyProjectile, topFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
         Vector2 direction = Vector2.left;
         projectile.Initialize(direction, fireBallLaunchForce);
@@ -120,6 +123,7 @@ public class HeartBurn : MonoBehaviour
 
     public void SpawnFireLog()
     {
+        smallSpit.Play();
         IProjectile projectile = Instantiate(fireLogData.EnemyProjectile, midFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
         Vector2 direction = Vector2.left;
         projectile.Initialize(direction, logLaunchForce);
@@ -133,14 +137,17 @@ public class HeartBurn : MonoBehaviour
             switch (i)
             {
                 case 0:
+                    largeSpit.Play();
                     IProjectile projectile0 = Instantiate(fireMissileData2.EnemyProjectile, topFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
                     projectile0.Initialize(direction, 0);
                     break;
                 case 1:
+                    largeSpit.Play();
                     IProjectile projectile1 = Instantiate(fireMissileData.EnemyProjectile, midFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
                     projectile1.Initialize(direction, 0);
                     break;
                 case 2:
+                    largeSpit.Play();
                     IProjectile projectile2 = Instantiate(fireMissileData1.EnemyProjectile, botFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
                     projectile2.Initialize(direction, 0);
                     break;

@@ -78,6 +78,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDataReference: {fileID: 11400000, guid: 7757fcf764fdf5344b8d77a32198e33d, type: 2}
   explosionPrefab: {fileID: 6965784992527141980, guid: 16921b05dd38da44bb41b9ac9fe34bf7, type: 3}
+  ballHit: {fileID: 0}
+  explode: {fileID: 0}
 --- !u!95 &4245575269376039165
 Animator:
   serializedVersion: 7
