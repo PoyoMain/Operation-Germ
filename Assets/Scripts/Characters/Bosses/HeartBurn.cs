@@ -26,6 +26,8 @@ public class HeartBurn : MonoBehaviour
     [Header("FireMissile Settings")]
     [SerializeField] private Transform botFaceTransform;
     [SerializeField] private ProjectileSO fireMissileData;
+    [SerializeField] private ProjectileSO fireMissileData1;
+    [SerializeField] private ProjectileSO fireMissileData2;
     [SerializeField] private int numMissiles;
     [SerializeField] private float fireMissileWaitTime;
 
@@ -40,9 +42,9 @@ public class HeartBurn : MonoBehaviour
         
         animator = GetComponent<Animator>();
         timerBetweenMoves = timeBetweenMoves;
-        StartCoroutine(AttackRoutine());
+        //StartCoroutine(AttackRoutine());
 
-        //SpawnFireMissile();
+        SpawnFireMissile();
         //SpawnFireBall();
         //SpawnFireLog();
     }
@@ -131,7 +133,7 @@ public class HeartBurn : MonoBehaviour
             switch (i)
             {
                 case 0:
-                    IProjectile projectile0 = Instantiate(fireMissileData.EnemyProjectile, topFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
+                    IProjectile projectile0 = Instantiate(fireMissileData2.EnemyProjectile, topFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
                     projectile0.Initialize(direction, 0);
                     break;
                 case 1:
@@ -139,7 +141,7 @@ public class HeartBurn : MonoBehaviour
                     projectile1.Initialize(direction, 0);
                     break;
                 case 2:
-                    IProjectile projectile2 = Instantiate(fireMissileData.EnemyProjectile, botFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
+                    IProjectile projectile2 = Instantiate(fireMissileData1.EnemyProjectile, botFaceTransform.position, Quaternion.identity).GetComponent<IProjectile>();
                     projectile2.Initialize(direction, 0);
                     break;
             }

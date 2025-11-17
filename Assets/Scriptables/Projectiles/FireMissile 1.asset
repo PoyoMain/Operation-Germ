@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 358def4896bb2054ea7ede45965f0adc, type: 3}
+  m_Name: FireMissile 1
+  m_EditorClassIdentifier: 
+  identifyAmount: 4
+  playerLaunchAngle: 0
+  playerLaunchForce: 0
+  playerCooldown: 1
+  iconSpriteEnemy: {fileID: 0}
+  iconSpritePlayer: {fileID: 0}
+  iconEnemyBorder: {fileID: 0}
+  enemyProjectile: {fileID: 2955387006759933215, guid: 1552354b1a853ac4ebbbf7fa2457a235, type: 3}
+  playerProjectile: {fileID: 2955387006759933215, guid: 0e2599880cdd89c49bef4a42f5360411, type: 3}

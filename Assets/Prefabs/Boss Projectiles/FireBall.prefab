@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1964954221943674859}
   - component: {fileID: 2095576348563817076}
   - component: {fileID: 3708740339297184315}
+  - component: {fileID: 4245575269376039165}
   m_Layer: 21
   m_Name: FireBall
   m_TagString: Untagged
@@ -77,6 +78,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDataReference: {fileID: 11400000, guid: 7757fcf764fdf5344b8d77a32198e33d, type: 2}
   explosionPrefab: {fileID: 6965784992527141980, guid: 16921b05dd38da44bb41b9ac9fe34bf7, type: 3}
+--- !u!95 &4245575269376039165
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096372169501069239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 326a69c8a35bc0d4f8780b538c6950ba, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &2660012992297625569
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +127,7 @@ Transform:
   m_GameObject: {fileID: 2660012992297625569}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.274, y: -0.228, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -145,7 +168,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1
+  m_Radius: 1.1
 --- !u!114 &66572210954905706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,7 +209,7 @@ Transform:
   m_GameObject: {fileID: 4790275789444436656}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -0.274, y: -0.228, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -227,7 +250,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 1
+  m_Radius: 1.1
 --- !u!1 &7857342199503504430
 GameObject:
   m_ObjectHideFlags: 0
@@ -304,10 +327,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2996840500881216439, guid: 9474558b7977ddb49a5ded1ade345b0a, type: 3}
+  m_Sprite: {fileID: -8573913969870339997, guid: 88ee91a4f15a5ae4382cfc13f113c711, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_FlipX: 1
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
