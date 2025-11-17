@@ -27,7 +27,10 @@ public class BossButton : MonoBehaviour
     {
         if (BossManager.Instance.BossesDefeated < BossManager.Instance.BossesNeededForFinalBoss)
         {
-            if (bossPart == BossPart.Brain) gameObject.SetActive(false);
+            if (bossPart == BossPart.Brain)
+            {
+                gameObject.SetActive(false);
+            }
             else if (BossManager.Instance.IsBossDefeated(bossPart))
             {
                 clearedImage.enabled = true;
