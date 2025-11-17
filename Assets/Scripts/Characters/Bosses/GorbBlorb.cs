@@ -36,6 +36,12 @@ public class GorbBlorb : MonoBehaviour
     [SerializeField] private Transform poisonSpineSpawnPoint;
     [SerializeField] private float spineLaunchForce;
 
+    [Header("Audio")]
+    [SerializeField] private SFXPlayer lobShootSFX;
+    [SerializeField] private SFXPlayer spineShootSFX;
+    [SerializeField] private SFXPlayer jumpSFX;
+    [SerializeField] private SFXPlayer landSFX;
+
     private const string ANIM_IS_ATTACKING__PARAM = "IsAttacking";
     private const string ANIM_ATTACK_AGAIN_PARAM = "AttackAgain";
     private const string ANIM_CHOSEN_ATTACK_PARAM = "ChosenAttack";
@@ -253,6 +259,8 @@ public class GorbBlorb : MonoBehaviour
         Vector2 launchDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
         float launchForce = Random.Range(minLobLaunchForce, maxLobLaunchForce);
         projectile.Initialize(launchDirection, launchForce);
+
+        lobShootSFX.Play();
     }
     #endregion
 
@@ -280,6 +288,7 @@ public class GorbBlorb : MonoBehaviour
         float angleRad = jumpAngle * Mathf.Deg2Rad;
         Vector2 jumpDirection = (transform.right * Mathf.Cos(angleRad) + transform.up * Mathf.Sin(angleRad)).normalized;
         rb.AddForce(jumpDirection * jumpForce, ForceMode2D.Impulse);
+        jumpSFX.Play();
 
         while (rb.linearVelocity.y > 0.1f) yield return null;
 
@@ -288,6 +297,7 @@ public class GorbBlorb : MonoBehaviour
 
         while (rb.linearVelocity.y < -0.1f) yield return null;
 
+        landSFX.Play();
         SpawnSlamProjectiles();
         anim.SetBool(ANIM_IS_ATTACKING__PARAM, false);
         EndAttack();
@@ -355,6 +365,8 @@ public class GorbBlorb : MonoBehaviour
     {
         IProjectile projectile = Instantiate(poisonSpineData.EnemyProjectile, poisonSpineSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
         projectile.Initialize(transform.right, spineLaunchForce);
+
+        spineShootSFX.Play();
     }
     #endregion
 

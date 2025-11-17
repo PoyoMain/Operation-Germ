@@ -5,6 +5,9 @@ public class Spike : MonoBehaviour, IProjectile
 {
     [SerializeField] private ProjectileSO projectileData;
 
+    [Header("Audio")]
+    [SerializeField] private SFXPlayer spikeShootSFX;
+
     public ProjectileSO ProjectileData => projectileData;
 
     private Rigidbody2D rb;
@@ -38,6 +41,7 @@ public class Spike : MonoBehaviour, IProjectile
         readyToFire = true;
         rb.linearVelocity = launchDirection * launchPower;
         anim.SetBool("ReadyToFire", readyToFire);
+        spikeShootSFX.Play();
     }
 
     //private void OnCollisionEnter2D(Collision2D collision)
