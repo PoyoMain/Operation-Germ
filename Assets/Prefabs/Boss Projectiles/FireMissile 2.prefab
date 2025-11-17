@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 158864272703133826}
   - component: {fileID: 8463148284448593444}
   - component: {fileID: -104454110525500301}
+  - component: {fileID: -8577959002116367461}
   m_Layer: 21
   m_Name: FireMissile 2
   m_TagString: Untagged
@@ -140,6 +141,7 @@ MonoBehaviour:
   missileLifeTime: 8
   trackTarget: 0
   maxLooseTime: 4
+  missileHit: {fileID: 0}
   trackTransform: {fileID: 0}
 --- !u!50 &8463148284448593444
 Rigidbody2D:
@@ -190,6 +192,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-8577959002116367461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2955387006759933215}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97c64c53a92665e44bfdffd9b0371885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyTime: 5
 --- !u!1 &3930000984302652718
 GameObject:
   m_ObjectHideFlags: 0

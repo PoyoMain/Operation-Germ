@@ -8,6 +8,10 @@ public class FireBall : MonoBehaviour, IProjectile
     public ProjectileSO ProjectileData => projectileDataReference;
 
     [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private AudioSource ballHit;
+    [SerializeField] private AudioSource explode;
+
+
     private float explosionRadius;
     private int numBounces;
     private Rigidbody2D rigidBody;
@@ -16,6 +20,10 @@ public class FireBall : MonoBehaviour, IProjectile
     {
         rigidBody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        GameObject audio1 = GameObject.FindGameObjectWithTag("ExplodeSound");
+        explode = audio1.GetComponent<AudioSource>();
+        GameObject audio2 = GameObject.FindGameObjectWithTag("BallHitSound");
+        ballHit = audio2.GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -31,7 +39,7 @@ public class FireBall : MonoBehaviour, IProjectile
 
     public void Explode()
     {
-        
+        explode.Play();
         Instantiate(explosionPrefab, transform.position, Quaternion.identity );
         Destroy(gameObject);
     }
@@ -59,6 +67,7 @@ public class FireBall : MonoBehaviour, IProjectile
 
         if (collision.collider.CompareTag("Ground"))
         {
+            ballHit.Play();
             anim.SetBool("HitFloor", true);
             numBounces++;
             if(numBounces == 3)
