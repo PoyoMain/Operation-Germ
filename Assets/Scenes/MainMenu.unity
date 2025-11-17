@@ -271,6 +271,22 @@ PrefabInstance:
       propertyPath: m_RenderMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1015206607771594023, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1583072258918250384, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1731815233675888139, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2522000051564156289, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2725392962030876069, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -354,6 +370,30 @@ PrefabInstance:
     - target: {fileID: 3825584387094329935, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
       propertyPath: m_Name
       value: Canvas - Bloodstream
+      objectReference: {fileID: 0}
+    - target: {fileID: 4824401642307763500, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6243903261773026280, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6865956562945579103, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114019471595502200, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7646054138994537941, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8302642004743961253, guid: 31b7076aaacd1cb4bbf0b36dd1666032, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1400,7 +1440,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 442.8, y: 0}
+  m_AnchoredPosition: {x: 442.8, y: -41}
   m_SizeDelta: {x: 1040.64, y: 1079.16}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1691598317
@@ -1417,7 +1457,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
