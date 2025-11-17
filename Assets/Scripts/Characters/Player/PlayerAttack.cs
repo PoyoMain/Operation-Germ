@@ -215,7 +215,7 @@ public class PlayerAttack : MonoBehaviour
     {
         if (playerMovement.IsInKnockback) return;
 
-        if (!chargeHeld && IsCharging)
+        if ((!chargeHeld && IsCharging) || playerMovement.IsDashing)
         {
             isChargingOne = false;
             isChargingTwo = false;
@@ -225,7 +225,7 @@ public class PlayerAttack : MonoBehaviour
             anim.SetBool(ANIM_CHARGE_PARAM, IsCharging);
         }
 
-        if (IsParrying || IsAttacking) return;
+        if (IsParrying || IsAttacking || playerMovement.IsDashing) return;
 
         if (!chargeHeld) return;
 
@@ -311,6 +311,7 @@ public class PlayerAttack : MonoBehaviour
         if (!attackDown) return;
         if (IsAttacking) return;
         if (IsCharging) return;
+        if (playerMovement.IsDashing) return;
         if (attackOneDown && CanUseAttackOne) return;
         else if (attackTwoDown && CanUseAttackTwo) return;
 
@@ -359,7 +360,7 @@ public class PlayerAttack : MonoBehaviour
             attackTimer -= Time.fixedDeltaTime;
         }
 
-        if (attackTimer <= 0 && attackDown && !IsAttacking && !playerMovement.IsInKnockback && !IsParrying && !chargeHeld) ExecuteAttack();
+        if (attackTimer <= 0 && attackDown && !IsAttacking && !playerMovement.IsInKnockback && !IsParrying && !chargeHeld && !playerMovement.IsDashing) ExecuteAttack();
 
         attackOneDown = false;
         attackTwoDown = false;
