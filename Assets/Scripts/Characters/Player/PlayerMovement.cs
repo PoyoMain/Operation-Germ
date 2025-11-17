@@ -136,6 +136,18 @@ public class PlayerMovement : MonoBehaviour
         dashTimer = stats.DashTime;
         anim.SetBool("IsDashing", true);
         if (!IsGrounded) hasDashInAir = false;
+
+        // Rotate GameObject based on movement input
+        if (moveInput.x > 0 && transform.localEulerAngles.y != ROTATION_FACING_RIGHT)
+        {
+            Vector3 newRot = new(0, ROTATION_FACING_RIGHT, 0);
+            transform.localEulerAngles = newRot;
+        }
+        else if (moveInput.x < 0 && transform.localEulerAngles.y != ROTATION_FACING_LEFT)
+        {
+            Vector3 newRot = new(0, ROTATION_FACING_LEFT, 0);
+            transform.localEulerAngles = newRot;
+        }
     }
     #endregion
 
