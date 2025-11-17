@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class BossButton : MonoBehaviour
 {
     [SerializeField] private BossPart bossPart;
+    [SerializeField] private Image clearedImage;
     private Button button;
 
     private void Awake()
@@ -26,9 +27,20 @@ public class BossButton : MonoBehaviour
     {
         if (BossManager.Instance.BossesDefeated < BossManager.Instance.BossesNeededForFinalBoss)
         {
-            if (bossPart == BossPart.Brain) gameObject.SetActive(false);
-            else if (BossManager.Instance.IsBossDefeated(bossPart)) button.interactable = false;
-            else button.interactable = true;
+            if (bossPart == BossPart.Brain)
+            {
+                gameObject.SetActive(false);
+            }
+            else if (BossManager.Instance.IsBossDefeated(bossPart))
+            {
+                clearedImage.enabled = true;
+                button.interactable = false;
+            }
+            else
+            {
+                clearedImage.enabled = false;
+                button.interactable = true;
+            }
         }
         else
         {
