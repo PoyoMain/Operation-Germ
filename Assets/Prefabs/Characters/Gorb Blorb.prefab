@@ -1254,7 +1254,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startHealth: 100
-  invincibilityTime: 0
+  invincibilityTime: 0.1
 --- !u!95 &7184798984610269006
 Animator:
   serializedVersion: 7

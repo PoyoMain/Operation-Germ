@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee5c0fc3729ab34eaccd64768be83c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   dealKnockback: 1
 --- !u!1 &2711266963439510688
 GameObject:
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee5c0fc3729ab34eaccd64768be83c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   dealKnockback: 1
 --- !u!1 &5014769745059698914
 GameObject:
@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee5c0fc3729ab34eaccd64768be83c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   dealKnockback: 1
 --- !u!1 &6289839779163293092
 GameObject:
@@ -426,6 +426,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileData: {fileID: 11400000, guid: 816880e7ed40d39468754406453a7607, type: 2}
+  spikeShootSFX: {fileID: 0}
 --- !u!1 &7214326857108348361
 GameObject:
   m_ObjectHideFlags: 0
@@ -594,7 +595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee5c0fc3729ab34eaccd64768be83c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   dealKnockback: 1
 --- !u!1 &8183113854010410671
 GameObject:
@@ -677,7 +678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee5c0fc3729ab34eaccd64768be83c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   dealKnockback: 1
 --- !u!1 &8860482776383682287
 GameObject:

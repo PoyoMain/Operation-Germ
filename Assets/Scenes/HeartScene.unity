@@ -969,8 +969,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06452f0559ffccc4386efc27c64dc56f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 1000
-  invincibilityTime: 0
+  startHealth: 100
+  invincibilityTime: 0.1
 --- !u!114 &864931596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,7 +1154,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 552b32e2f49778b41a8fc0b2d4d5d4d0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

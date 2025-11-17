@@ -78,6 +78,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDataReference: {fileID: 11400000, guid: 7757fcf764fdf5344b8d77a32198e33d, type: 2}
   explosionPrefab: {fileID: 6965784992527141980, guid: 8c8d2a4f5af5fb641b545dac8d6c0dd2, type: 3}
+  ballHit: {fileID: 0}
+  explode: {fileID: 0}
 --- !u!95 &745343195443401635
 Animator:
   serializedVersion: 7
@@ -181,7 +183,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee5c0fc3729ab34eaccd64768be83c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 1
+  damage: 2
   dealKnockback: 1
 --- !u!1 &4790275789444436656
 GameObject:

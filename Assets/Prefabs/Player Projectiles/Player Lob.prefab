@@ -233,6 +233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDataReference: {fileID: 11400000, guid: 12fdbbc4e97243e40823076d6ecf3348, type: 2}
   poisonPuddlePrefab: {fileID: 4441014841914799530, guid: d5eb5186f51d4164aac3f55aba1152b7, type: 3}
+  hitFloorSFX: {fileID: 0}
 --- !u!95 &5151328303256596501
 Animator:
   serializedVersion: 7
@@ -336,5 +337,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee5c0fc3729ab34eaccd64768be83c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 3
+  damage: 2
   dealKnockback: 1

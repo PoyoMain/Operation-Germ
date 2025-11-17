@@ -685,7 +685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ae8a11dd85f5f45ad38bda04415c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHealth: 100
+  startHealth: 75
   invincibilityTime: 0.1
 --- !u!1 &4320221776804859095
 GameObject:

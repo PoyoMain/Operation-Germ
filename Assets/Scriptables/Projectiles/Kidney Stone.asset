@@ -15,7 +15,7 @@ MonoBehaviour:
   identifyAmount: 5
   playerLaunchAngle: 25
   playerLaunchForce: 13
-  playerCooldown: 0.3
+  playerCooldown: 0.5
   iconSpriteEnemy: {fileID: 21300000, guid: 987c520870c2417409f941cf60c55d20, type: 3}
   iconSpritePlayer: {fileID: 21300000, guid: 06d579cbf9d3bc9459083ba1432aef44, type: 3}
   iconEnemyBorder: {fileID: 21300000, guid: a9d39361da7e8674b85061d1c83e1c25, type: 3}
