@@ -1237,10 +1237,10 @@ MonoBehaviour:
   poisonSpineData: {fileID: 11400000, guid: 1330a085278a9924ba8f22de0fc12e8c, type: 2}
   poisonSpineSpawnPoint: {fileID: 4883568117564838965}
   spineLaunchForce: 15
-  lobShootSFX: {fileID: 0}
-  spineShootSFX: {fileID: 0}
-  jumpSFX: {fileID: 0}
-  landSFX: {fileID: 0}
+  lobShootSFX: {fileID: 6181341803330596119}
+  spineShootSFX: {fileID: 8874839622964485730}
+  jumpSFX: {fileID: 3297754342933463418}
+  landSFX: {fileID: 6986469383391481593}
 --- !u!114 &3408980056229239695
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -296,6 +296,11 @@ public class Bimbly : MonoBehaviour
     }
     #endregion
 
+    private void Electrocute()
+    {
+        electricuteSFX.Play();
+    }
+
     private void EndAttack()
     {
         isAttacking = false;
