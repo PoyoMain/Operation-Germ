@@ -234,7 +234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectileDataReference: {fileID: 11400000, guid: 12fdbbc4e97243e40823076d6ecf3348, type: 2}
   poisonPuddlePrefab: {fileID: 4441014841914799530, guid: 0d9cc977dd6bdc748b0bb1a41ef32eb6, type: 3}
-  hitFloorSFX: {fileID: 0}
+  hitFloorSFX: {fileID: 8208056265611860343}
 --- !u!95 &5035883844220198030
 Animator:
   serializedVersion: 7

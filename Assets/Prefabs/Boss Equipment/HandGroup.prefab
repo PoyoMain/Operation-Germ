@@ -609,7 +609,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8519680
   detectTerritory: {fileID: 6298259928712751818}
-  hitGroundSFX: {fileID: 0}
+  hitGroundSFX: {fileID: 7145697097977459151}
 --- !u!50 &3026820678634822315
 Rigidbody2D:
   serializedVersion: 5
@@ -1079,7 +1079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neuronHitSO: {fileID: 11400000, guid: b69a96e5251568e40867a2412a4fc8a1, type: 2}
-  hitSFX: {fileID: 0}
+  hitSFX: {fileID: 7481570716877375648}
 --- !u!95 &7323271378060127501
 Animator:
   serializedVersion: 7

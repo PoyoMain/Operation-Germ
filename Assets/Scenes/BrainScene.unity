@@ -1164,7 +1164,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72e25b015f1009d47bdc49ed0c71a577, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: daf3c824b829ecc45a4ae5626a9d51a2, type: 3}
 --- !u!82 &890923925
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2833,10 +2834,10 @@ MonoBehaviour:
   teleportPositionRight: {fileID: 377118139}
   teleportPositionMiddle: {fileID: 718405017}
   neuronHitEventSO: {fileID: 11400000, guid: b69a96e5251568e40867a2412a4fc8a1, type: 2}
-  electricShootSFX: {fileID: 0}
-  electricuteSFX: {fileID: 0}
-  teleportSFX: {fileID: 0}
-  mindWaveSFX: {fileID: 0}
+  electricShootSFX: {fileID: 2130794531}
+  electricuteSFX: {fileID: 882761219}
+  teleportSFX: {fileID: 477902748}
+  mindWaveSFX: {fileID: 890923924}
 --- !u!95 &2109577918
 Animator:
   serializedVersion: 7

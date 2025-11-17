@@ -2312,8 +2312,8 @@ MonoBehaviour:
   spikeRate: 6
   spikeRateNoArmor: 5
   dizzyTime: 5
-  throwSFX: {fileID: 0}
-  dizzySFX: {fileID: 0}
+  throwSFX: {fileID: 835174100}
+  dizzySFX: {fileID: 1856031423}
 --- !u!1 &746361598
 GameObject:
   m_ObjectHideFlags: 0
@@ -4027,8 +4027,8 @@ MonoBehaviour:
   spikeRate: 7
   spikeRateNoArmor: 5
   dizzyTime: 5
-  throwSFX: {fileID: 0}
-  dizzySFX: {fileID: 0}
+  throwSFX: {fileID: 307650257}
+  dizzySFX: {fileID: 2051773979}
 --- !u!95 &1572263070
 Animator:
   serializedVersion: 7

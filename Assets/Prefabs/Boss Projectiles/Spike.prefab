@@ -571,7 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectileData: {fileID: 11400000, guid: 816880e7ed40d39468754406453a7607, type: 2}
-  spikeShootSFX: {fileID: 0}
+  spikeShootSFX: {fileID: 6185145477800076584}
 --- !u!1 &7214326857108348361
 GameObject:
   m_ObjectHideFlags: 0
