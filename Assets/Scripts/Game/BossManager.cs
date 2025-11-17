@@ -10,6 +10,7 @@ public class BossManager : MonoBehaviour
     [SerializeField] private int bossesToUnlockFinalBoss = 4;
 
     private Dictionary<BossPart, bool> bosses;
+    private int kidneysDefeated;
 
     public int BossesDefeated => bosses.Count(x => x.Value == true);
     public int BossesNeededForFinalBoss => bossesToUnlockFinalBoss;
@@ -36,6 +37,12 @@ public class BossManager : MonoBehaviour
 
     public void DefeatBoss(BossPart bossPart)
     {
+        if (bossPart == BossPart.Kidney)
+        { 
+            kidneysDefeated++;
+            if (kidneysDefeated < 2) return;
+        }
+
         bosses.Add(bossPart, true);
 
         if (BossesDefeated == BossesNeededForFinalBoss + 1) SceneManager.LoadScene("WinScene");

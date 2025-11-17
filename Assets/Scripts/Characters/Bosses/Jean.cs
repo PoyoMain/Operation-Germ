@@ -170,6 +170,7 @@ public class Jean : MonoBehaviour
     private void BossDefeated()
     {
         BossManager.Instance.DefeatBoss(bossPart);
+        Destroy(transform.parent.gameObject);
     }
     #endregion
 }
