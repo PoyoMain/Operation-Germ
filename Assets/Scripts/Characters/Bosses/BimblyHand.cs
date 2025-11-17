@@ -22,8 +22,11 @@ public class BimblyHand : MonoBehaviour
     [SerializeField] private LayerMask hitLayers;
 
     [Header("Components")]
-    [SerializeField] private PlayerDetectTerritory detectTerritory;  
-    
+    [SerializeField] private PlayerDetectTerritory detectTerritory;
+
+    [Header("Audio")]
+    [SerializeField] private SFXPlayer hitGroundSFX;
+
     private State state = State.Idle;
     private Rigidbody2D rb;
     private Animator anim;
@@ -200,6 +203,7 @@ public class BimblyHand : MonoBehaviour
             });
 
             yield return tween.WaitForCompletion();
+            hitGroundSFX.Play();
             anim.SetBool(ANIM_PARAM_SLAM, false);
             yield return new WaitForSeconds(1f);
             yield return transform.DOMoveY(aboveY, 0.5f).SetEase(Ease.InOutQuart).WaitForCompletion();

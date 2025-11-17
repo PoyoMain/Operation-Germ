@@ -5,7 +5,10 @@ public class PoisonLob : MonoBehaviour, IProjectile
 {
     [SerializeField] private ProjectileSO projectileDataReference;
     [SerializeField] private GameObject poisonPuddlePrefab;
-    
+
+    [Header("Audio")]
+    [SerializeField] private SFXPlayer hitFloorSFX;
+
     private Rigidbody2D rb;
     private SpriteRenderer sRend;
 
@@ -52,6 +55,7 @@ public class PoisonLob : MonoBehaviour, IProjectile
         if (collision.collider.CompareTag("Ground"))
         {
             Instantiate(poisonPuddlePrefab, collision.GetContact(0).point, Quaternion.identity);
+            hitFloorSFX.Play();
         }
 
         Destroy();

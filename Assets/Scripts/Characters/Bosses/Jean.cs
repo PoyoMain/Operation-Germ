@@ -34,6 +34,10 @@ public class Jean : MonoBehaviour
     [Header("Dizzy Stats")]
     [SerializeField] private float dizzyTime;
 
+    [Header("Audio")]
+    [SerializeField] private SFXPlayer throwSFX;
+    [SerializeField] private SFXPlayer dizzySFX;
+
     private const string ANIM_PARAM_DIZZY = "IsDizzy";
     private const string ANIM_PARAM_REMOVE_ARMOR = "ArmorRemoved";
     private const string ANIM_PARAM_THROW = "IsThrowing";
@@ -78,6 +82,7 @@ public class Jean : MonoBehaviour
         armorHitboxParent.SetActive(false);
         hitboxParent.SetActive(true);
         hurtboxParent.SetActive(true);
+        dizzySFX.Play(looping: true);
 
         Invoke(nameof(EndDizzyPhase), dizzyTime);
     }
@@ -90,6 +95,7 @@ public class Jean : MonoBehaviour
         armorHitboxParent.SetActive(true);
         hitboxParent.SetActive(false);
         hurtboxParent.SetActive(false);
+        dizzySFX.Stop();
     }
     #endregion
 
@@ -138,6 +144,8 @@ public class Jean : MonoBehaviour
         IProjectile projectile = Instantiate(kidneyStoneProjectileData.EnemyProjectile, throwSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
         projectile.Initialize(launchDirection, force);
 
+        throwSFX.Play();
+
         EndThrow();
     }
 
@@ -152,6 +160,8 @@ public class Jean : MonoBehaviour
 
     private void HandleSpikeTimer()
     {
+        if (isDizzy) return;
+
         if (spikeTimer > 0)
         {
             spikeTimer -= Time.fixedDeltaTime;
