@@ -6,6 +6,9 @@ public class Neuron : MonoBehaviour
     [Header("Listen Events")]
     [SerializeField] private VoidEventSO neuronHitSO;
 
+    [Header("Audio")]
+    [SerializeField] private SFXPlayer hitSFX;
+
     private Animator anim;
 
     private void Awake()
@@ -15,6 +18,7 @@ public class Neuron : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        hitSFX.Play();
         neuronHitSO.RaiseEvent();
         anim.SetTrigger("Activate");
     }
