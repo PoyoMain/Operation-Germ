@@ -33,6 +33,12 @@ public class Bimbly : MonoBehaviour
     [Header("Listen Events")]
     [SerializeField] private VoidEventSO neuronHitEventSO;
 
+    [Header("Audio")]
+    [SerializeField] private SFXPlayer electricShootSFX;
+    [SerializeField] private SFXPlayer electricuteSFX;
+    [SerializeField] private SFXPlayer teleportSFX;
+    [SerializeField] private SFXPlayer mindWaveSFX;
+
     private const string ANIM_PARAM_IS_ATTACKING = "IsAttacking";
     private const string ANIM_PARAM_CHOSEN_ATTACK = "ChosenAttack";
     private const int MIND_WAVE_ATTACK_INDEX = 1;
@@ -132,6 +138,8 @@ public class Bimbly : MonoBehaviour
     {
         IProjectile projectile = Instantiate(creepOrbData.EnemyProjectile, projectileSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
         projectile.Initialize(Vector2.zero, creepOrbMoveSpeed);
+
+        electricShootSFX.Play();
     }
     #endregion
 
@@ -157,6 +165,8 @@ public class Bimbly : MonoBehaviour
     {
         IProjectile projectile = Instantiate(RingOrbProjectileData.EnemyProjectile, projectileSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
         projectile.Initialize(Vector2.zero, ringOrbMoveSpeed);
+
+        electricShootSFX.Play();
     }
     #endregion
 
@@ -187,6 +197,8 @@ public class Bimbly : MonoBehaviour
     {
         IProjectile projectile = Instantiate(mindWaveData.EnemyProjectile, projectileSpawnPoint.position, Quaternion.identity).GetComponent<IProjectile>();
         projectile.Initialize(transform.right, mindWaveShootForce);
+
+        mindWaveSFX.Play();
     }
     #endregion
 
@@ -255,6 +267,7 @@ public class Bimbly : MonoBehaviour
 
     private void Teleport()
     {
+        teleportSFX.Play();
         Invoke(nameof(Reappear), 1);
     }
 
