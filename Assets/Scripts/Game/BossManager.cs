@@ -51,7 +51,19 @@ public class BossManager : MonoBehaviour
 
     public void ResetBosses()
     {
-        bosses.Clear();
+        if (BossesDefeated < BossesNeededForFinalBoss)
+        {
+            bosses.Clear();
+        }
+        else if (BossesDefeated == BossesNeededForFinalBoss + 1)
+        {
+            bosses.Clear();
+        }
+    }
+
+    public void FullResetBosses()
+    {
+
     }
 
     public bool IsBossDefeated(BossPart bossPart)

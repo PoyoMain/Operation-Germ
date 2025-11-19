@@ -35,6 +35,7 @@ public class HeartBurn : MonoBehaviour
 
 
     private Animator animator;
+    private BossHealth health;
     private float timerBetweenMoves;
     private bool isAttacking = false;
     private bool canAttack;
@@ -43,12 +44,22 @@ public class HeartBurn : MonoBehaviour
     {
         
         animator = GetComponent<Animator>();
+        TryGetComponent(out health);
         timerBetweenMoves = timeBetweenMoves;
         StartCoroutine(AttackRoutine());
 
         //SpawnFireMissile();
         //SpawnFireBall();
         //SpawnFireLog();
+    }
+    private void OnEnable()
+    {
+        health.OnBossDefeated += BossDefeated;
+    }
+
+    private void OnDisable()
+    {
+        health.OnBossDefeated -= BossDefeated;
     }
 
     private void FixedUpdate()
@@ -163,4 +174,8 @@ public class HeartBurn : MonoBehaviour
         timerBetweenMoves = timeBetweenMoves;
     }
 
+    private void BossDefeated()
+    {
+        BossManager.Instance.DefeatBoss(bossPart);
+    }
 }

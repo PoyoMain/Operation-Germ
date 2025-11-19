@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 358def4896bb2054ea7ede45965f0adc, type: 3}
   m_Name: Fire Ball
   m_EditorClassIdentifier: 
-  identifyAmount: 3
-  playerLaunchAngle: 25
-  playerLaunchForce: 8
+  identifyAmount: 6
+  playerLaunchAngle: 15
+  playerLaunchForce: 6
   playerCooldown: 0.5
-  iconSpriteEnemy: {fileID: 0}
-  iconSpritePlayer: {fileID: 0}
+  iconSpriteEnemy: {fileID: -5487818764026928650, guid: ef118039454e3ce40ab07e7b933f0473, type: 3}
+  iconSpritePlayer: {fileID: 2611645441176179675, guid: edea2190f0893a24bb9152321a3e7e07, type: 3}
   iconEnemyBorder: {fileID: 21300000, guid: ae842e0f84bd30f41a622e196bf23136, type: 3}
   enemyProjectile: {fileID: 2096372169501069239, guid: 0b2972f78301b674b8be31c5eedea9a7, type: 3}
   playerProjectile: {fileID: 2096372169501069239, guid: 2bbffad0767727f4eaa26ae110cc7a1f, type: 3}

@@ -24,7 +24,7 @@ public class MoveManager : MonoBehaviour
         {
             if (Instance == null)
             {
-                destroyOtherInstance = true;
+                //destroyOtherInstance = true;
                 Instance = this;
                 DontDestroyOnLoad(gameObject);
             }
